@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 04, 2018 at 01:07 AM
+-- Generation Time: Jan 05, 2018 at 08:27 PM
 -- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `cemetery`
 --
 
-CREATE TABLE `cemetery` (
+CREATE TABLE IF NOT EXISTS `cemetery` (
   `id` int(10) NOT NULL,
   `placeId` int(10) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE `cemetery` (
 -- Table structure for table `country`
 --
 
-CREATE TABLE `country` (
+CREATE TABLE IF NOT EXISTS `country` (
   `id` int(10) NOT NULL,
   `name` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -50,7 +50,7 @@ CREATE TABLE `country` (
 -- Table structure for table `other_photos`
 --
 
-CREATE TABLE `other_photos` (
+CREATE TABLE IF NOT EXISTS `other_photos` (
   `id` int(10) NOT NULL,
   `photoId` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
@@ -62,7 +62,7 @@ CREATE TABLE `other_photos` (
 -- Table structure for table `photo`
 --
 
-CREATE TABLE `photo` (
+CREATE TABLE IF NOT EXISTS `photo` (
   `id` int(10) NOT NULL,
   `name` varchar(255) NOT NULL,
   `cemeteryId` int(10) NOT NULL,
@@ -90,7 +90,7 @@ CREATE TABLE `photo` (
 -- Table structure for table `place`
 --
 
-CREATE TABLE `place` (
+CREATE TABLE IF NOT EXISTS `place` (
   `id` int(10) NOT NULL,
   `regionId` int(10) NOT NULL,
   `name` varchar(64) NOT NULL
@@ -102,7 +102,7 @@ CREATE TABLE `place` (
 -- Table structure for table `region`
 --
 
-CREATE TABLE `region` (
+CREATE TABLE IF NOT EXISTS `region` (
   `id` int(10) NOT NULL,
   `countryId` int(10) NOT NULL,
   `name` varchar(32) NOT NULL
@@ -114,12 +114,13 @@ CREATE TABLE `region` (
 -- Table structure for table `user`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE IF NOT EXISTS `user` (
   `userId` int(10) NOT NULL,
   `name` varchar(32) NOT NULL,
   `surname` varchar(32) NOT NULL,
   `type` int(10) NOT NULL,
-  `pass` varchar(32) NOT NULL
+  `pass` varchar(32) NOT NULL,
+  `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -129,7 +130,7 @@ CREATE TABLE `user` (
 --
 -- Indexes for table `cemetery`
 --
-ALTER TABLE `cemetery`
+ALTER TABLE IF NOT EXISTS `cemetery`
   ADD PRIMARY KEY (`id`),
   ADD KEY `placeId` (`placeId`);
 
