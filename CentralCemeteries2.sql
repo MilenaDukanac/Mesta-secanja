@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 -- Indexes for table `cemetery`
 --
-ALTER TABLE IF NOT EXISTS `cemetery`
+ALTER TABLE `cemetery`
   ADD PRIMARY KEY (`id`),
   ADD KEY `placeId` (`placeId`);
 
