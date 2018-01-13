@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 13, 2018 at 05:58 PM
+-- Generation Time: Jan 13, 2018 at 06:30 PM
 -- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -17,8 +17,11 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `CentralCemeteries2`
+-- Database: `CentralCemeteries`
 --
+
+CREATE DATABASE IF NOT EXISTS `CentralCemeteries` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `CentralCemeteries`;
 
 -- --------------------------------------------------------
 
@@ -26,15 +29,16 @@ SET time_zone = "+00:00";
 -- Table structure for table `cemetery`
 --
 
-DROP TABLE IF EXISTS `CentralCemeteries2`.`cemetery`;
-
+DROP TABLE IF EXISTS `cemetery`;
 CREATE TABLE IF NOT EXISTS `cemetery` (
-  `id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `placeId` int(10) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `additionalData` varchar(255) DEFAULT NULL,
   `longitude` float DEFAULT NULL,
-  `latitude` float DEFAULT NULL
+  `latitude` float DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `placeId` (`placeId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -42,11 +46,12 @@ CREATE TABLE IF NOT EXISTS `cemetery` (
 --
 -- Table structure for table `country`
 --
-DROP TABLE IF EXISTS `CentralCemeteries2`.`country`;
 
+DROP TABLE IF EXISTS `country`;
 CREATE TABLE IF NOT EXISTS `country` (
-  `id` int(10) NOT NULL,
-  `name` varchar(32) NOT NULL
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -54,12 +59,14 @@ CREATE TABLE IF NOT EXISTS `country` (
 --
 -- Table structure for table `other_photos`
 --
-DROP TABLE IF EXISTS `CentralCemeteries2`.`other_photos`;
 
+DROP TABLE IF EXISTS `other_photos`;
 CREATE TABLE IF NOT EXISTS `other_photos` (
   `id` int(10) NOT NULL,
   `photoId` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `photoId` (`photoId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -67,10 +74,10 @@ CREATE TABLE IF NOT EXISTS `other_photos` (
 --
 -- Table structure for table `photo`
 --
-DROP TABLE IF EXISTS `CentralCemeteries2`.`photo`;
 
+DROP TABLE IF EXISTS `photo`;
 CREATE TABLE IF NOT EXISTS `photo` (
-  `id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `cemeteryId` int(10) NOT NULL,
   `author` varchar(64) NOT NULL,
@@ -89,7 +96,9 @@ CREATE TABLE IF NOT EXISTS `photo` (
   `historical_monuments` varchar(255) DEFAULT NULL,
   `other` varchar(255) DEFAULT NULL,
   `longitude` float DEFAULT NULL,
-  `latitude` float DEFAULT NULL
+  `latitude` float DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `cemeteryId` (`cemeteryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -97,12 +106,14 @@ CREATE TABLE IF NOT EXISTS `photo` (
 --
 -- Table structure for table `place`
 --
-DROP TABLE IF EXISTS `CentralCemeteries2`.`place`;
 
+DROP TABLE IF EXISTS `place`;
 CREATE TABLE IF NOT EXISTS `place` (
-  `id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `regionId` int(10) NOT NULL,
-  `name` varchar(64) NOT NULL
+  `name` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `regionId` (`regionId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -110,12 +121,14 @@ CREATE TABLE IF NOT EXISTS `place` (
 --
 -- Table structure for table `region`
 --
-DROP TABLE IF EXISTS `CentralCemeteries2`.`region`;
 
+DROP TABLE IF EXISTS `region`;
 CREATE TABLE IF NOT EXISTS `region` (
-  `id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `countryId` int(10) NOT NULL,
-  `name` varchar(32) NOT NULL
+  `name` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `countryId` (`countryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -123,102 +136,18 @@ CREATE TABLE IF NOT EXISTS `region` (
 --
 -- Table structure for table `user`
 --
-DROP TABLE IF EXISTS `CentralCemeteries2`.`user`;
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
-  `userId` int(10) NOT NULL,
+  `userId` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
   `surname` varchar(32) NOT NULL,
   `type` int(10) NOT NULL,
   `pass` varchar(32) NOT NULL,
-  `email` varchar(255) NOT NULL
+  `email` varchar(255) NOT NULL,
+  PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `cemetery`
---
-ALTER TABLE `cemetery`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `placeId` (`placeId`);
-
---
--- Indexes for table `country`
---
-ALTER TABLE `country`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `other_photos`
---
-ALTER TABLE `other_photos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `photoId` (`photoId`);
-
---
--- Indexes for table `photo`
---
-ALTER TABLE `photo`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `cemeteryId` (`cemeteryId`);
-
---
--- Indexes for table `place`
---
-ALTER TABLE `place`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `regionId` (`regionId`);
-
---
--- Indexes for table `region`
---
-ALTER TABLE `region`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `countryId` (`countryId`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`userId`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `cemetery`
---
-ALTER TABLE `cemetery`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `country`
---
-ALTER TABLE `country`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `photo`
---
-ALTER TABLE `photo`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `place`
---
-ALTER TABLE `place`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `region`
---
-ALTER TABLE `region`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `userId` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
