@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 05, 2018 at 08:27 PM
+-- Generation Time: Jan 13, 2018 at 05:58 PM
 -- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -26,11 +26,15 @@ SET time_zone = "+00:00";
 -- Table structure for table `cemetery`
 --
 
+DROP TABLE IF EXISTS `CentralCemeteries2`.`cemetery`;
+
 CREATE TABLE IF NOT EXISTS `cemetery` (
   `id` int(10) NOT NULL,
   `placeId` int(10) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `additionalData` varchar(255) DEFAULT NULL
+  `additionalData` varchar(255) DEFAULT NULL,
+  `longitude` float DEFAULT NULL,
+  `latitude` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -38,6 +42,7 @@ CREATE TABLE IF NOT EXISTS `cemetery` (
 --
 -- Table structure for table `country`
 --
+DROP TABLE IF EXISTS `CentralCemeteries2`.`country`;
 
 CREATE TABLE IF NOT EXISTS `country` (
   `id` int(10) NOT NULL,
@@ -49,6 +54,7 @@ CREATE TABLE IF NOT EXISTS `country` (
 --
 -- Table structure for table `other_photos`
 --
+DROP TABLE IF EXISTS `CentralCemeteries2`.`other_photos`;
 
 CREATE TABLE IF NOT EXISTS `other_photos` (
   `id` int(10) NOT NULL,
@@ -61,13 +67,13 @@ CREATE TABLE IF NOT EXISTS `other_photos` (
 --
 -- Table structure for table `photo`
 --
+DROP TABLE IF EXISTS `CentralCemeteries2`.`photo`;
 
 CREATE TABLE IF NOT EXISTS `photo` (
   `id` int(10) NOT NULL,
   `name` varchar(255) NOT NULL,
   `cemeteryId` int(10) NOT NULL,
   `author` varchar(64) NOT NULL,
-  `geolocation` varchar(255) DEFAULT NULL,
   `year` int(10) NOT NULL,
   `note` varchar(255) DEFAULT NULL,
   `years` int(10) DEFAULT NULL,
@@ -81,7 +87,9 @@ CREATE TABLE IF NOT EXISTS `photo` (
   `religious_symbol` varchar(255) DEFAULT NULL,
   `shape` varchar(255) DEFAULT NULL,
   `historical_monuments` varchar(255) DEFAULT NULL,
-  `other` varchar(255) DEFAULT NULL
+  `other` varchar(255) DEFAULT NULL,
+  `longitude` float DEFAULT NULL,
+  `latitude` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -89,6 +97,7 @@ CREATE TABLE IF NOT EXISTS `photo` (
 --
 -- Table structure for table `place`
 --
+DROP TABLE IF EXISTS `CentralCemeteries2`.`place`;
 
 CREATE TABLE IF NOT EXISTS `place` (
   `id` int(10) NOT NULL,
@@ -101,6 +110,7 @@ CREATE TABLE IF NOT EXISTS `place` (
 --
 -- Table structure for table `region`
 --
+DROP TABLE IF EXISTS `CentralCemeteries2`.`region`;
 
 CREATE TABLE IF NOT EXISTS `region` (
   `id` int(10) NOT NULL,
@@ -113,6 +123,7 @@ CREATE TABLE IF NOT EXISTS `region` (
 --
 -- Table structure for table `user`
 --
+DROP TABLE IF EXISTS `CentralCemeteries2`.`user`;
 
 CREATE TABLE IF NOT EXISTS `user` (
   `userId` int(10) NOT NULL,
@@ -216,31 +227,31 @@ ALTER TABLE `user`
 -- Constraints for table `cemetery`
 --
 ALTER TABLE `cemetery`
-  ADD CONSTRAINT `cemetery_ibfk_1` FOREIGN KEY (`placeId`) REFERENCES `place` (`id`);
+  ADD CONSTRAINT `cemetery_ibfk_1` FOREIGN KEY (`placeId`) REFERENCES `place` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `other_photos`
 --
 ALTER TABLE `other_photos`
-  ADD CONSTRAINT `other_photos_ibfk_1` FOREIGN KEY (`photoId`) REFERENCES `photo` (`id`);
+  ADD CONSTRAINT `other_photos_ibfk_1` FOREIGN KEY (`photoId`) REFERENCES `photo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `photo`
 --
 ALTER TABLE `photo`
-  ADD CONSTRAINT `photo_ibfk_1` FOREIGN KEY (`cemeteryId`) REFERENCES `cemetery` (`id`);
+  ADD CONSTRAINT `photo_ibfk_1` FOREIGN KEY (`cemeteryId`) REFERENCES `cemetery` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `place`
 --
 ALTER TABLE `place`
-  ADD CONSTRAINT `place_ibfk_1` FOREIGN KEY (`regionId`) REFERENCES `region` (`id`);
+  ADD CONSTRAINT `place_ibfk_1` FOREIGN KEY (`regionId`) REFERENCES `region` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `region`
 --
 ALTER TABLE `region`
-  ADD CONSTRAINT `region_ibfk_1` FOREIGN KEY (`countryId`) REFERENCES `country` (`id`);
+  ADD CONSTRAINT `region_ibfk_1` FOREIGN KEY (`countryId`) REFERENCES `country` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
