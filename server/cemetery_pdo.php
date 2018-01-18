@@ -26,13 +26,14 @@ function getCemetery($db, $id){
     return $stmt->fetch(PDO::FETCH_OBJ);
 }
 
-function insertCemetery($db ,$place_id, $description, $additional_data, $longitude, $latitude){
+function insertCemetery($db, $name,$place_id, $description, $additional_data, $longitude, $latitude){
 
     $query = "insert into CentralCemeteries.cemetery
-              values(NULL, :place_id, :description, :additional_data, :longitude, :latitude)";
+              values(NULL, :nname, :place_id, :description, :additional_data, :longitude, :latitude)";
 
     $stmt = $db->prepare($query);
 
+    $stmt->bindParam(":nname", $name, PDO::PARAM_INT);
     $stmt->bindParam(":place_id", $place_id, PDO::PARAM_INT);
     $stmt->bindParam(":description", $description, PDO::PARAM_STR);
     $stmt->bindParam(":additional_data", $additional_data, PDO::PARAM_STR);
@@ -79,6 +80,27 @@ function getCemeteriesInCountry($db, $countryId){
     }
 }
 
+function deleteCemetery($db, $id){
+
+    $db->beginTransaction();
+    $query = "delete from CentralCemeteries.cemetery
+              where id = :id";
+
+    $stmt = $db->prepare($query);
+
+    $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+
+    if($stmt->execute()){
+        $db->commit();
+        return true;
+    }
+    else{
+        $db->rollback();
+        return false;
+    }
+}
+
+
 
 
 try{
@@ -99,7 +121,7 @@ try{
 //    $cemetery_info=$pdo->getCemetery($cemetery_id);
 //    var_dump($cemetery_info);
 
-//    $insert_cemetery=$pdo->insertCemetery(1, "Test description", null, 45.3815612, 20.36857370000007);
+//    $insert_cemetery=insertCemetery($pdo,1, "Test description", null, 45.3815612, 20.36857370000007);
 //    var_dump($insert_cemetery);
 //
 
