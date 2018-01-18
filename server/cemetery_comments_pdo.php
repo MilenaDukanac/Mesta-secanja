@@ -5,7 +5,7 @@ include 'connection.php';
 // Dohvatanje svih komentara za odredjeno groblje - ko je napisao, kada i sta
 function getCemeteryComments($db, $cemeteryId){
 
-    $query="select id, username, time, text 
+    $query="select id, COALESCE(username, 'neregistrovani') as username, time, text 
             from centralcemeteries.cemetery_comments
             where cemeteryId = :cemeteryId
             order by time desc";
@@ -78,17 +78,18 @@ try{
     $pdo=Connection::getConnectionInstance();
 
    // getCemeteryComments test
-  //  $cemeteryId = 2;
-//    $comments = getCemeteryComments($pdo,$cemeteryId);
-//    var_dump($comments);
+    $cemeteryId = 2;
+    $comments = getCemeteryComments($pdo,$cemeteryId);
+    var_dump($comments);
 
       // insertPhotoComment test
-   //   $cemeteryId = 2;
+  //    $cemeteryId = 2;
+  //    $username = null;
    //   $username = "korisnik";
-   //   $email = "testkorisnik@test.com";
-   //   $text = "Bio sam ovde.";
-   //   $comm = insertCemeteryComment($pdo, $cemeteryId, $username, $email, $text);
-   //   echo $comm;
+  //    $email = "testkorisnik@test.com";
+  //    $text = "Bio sam ovde.";
+  //    $comm = insertCemeteryComment($pdo, $cemeteryId, $username, $email, $text);
+  //    echo $comm;
 
       // deleteCemeteryComment test
   //  $id = 6;
