@@ -1,33 +1,17 @@
 <?php
 
-interface ConnectionData{
-    const username = 'root';
-    const password = '';
-    const host = 'localhost';
-    const db_name = 'centralcemeteries';
-};
+include '../settings.php';
 
-class PDO_DB implements ConnectionData{
-
+class Connection extends PDO
+{
     private static $db = null;
-
-    private function __construct(){
-    }
-
-    private function __clone(){
-    }
-
-    private function __wakeup(){
-    }
-
 
     public static function getConnectionInstance(){
         if(self::$db==null){
-            self::$db = new PDO_DB();
-            self::$db = new PDO('mysql:'.ConnectionData::host.';dbname='.ConnectionData::db_name, ConnectionData::username, ConnectionData::password,
-                array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            $settings = $GLOBALS['settings'];
+            self::$db = new PDO('mysql:dbname='.$settings['mysql_db'].'; host='.$settings['mysql_host'], $settings['mysql_user'], $settings['mysql_password'],
+            array(PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         }
-
         return self::$db;
     }
 
@@ -37,8 +21,6 @@ class PDO_DB implements ConnectionData{
     } */
 
 }
-$con = PDO_DB::getConnectionInstance();
-
-
+$con = Connection::getConnectionInstance();
 
 ?>
