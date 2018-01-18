@@ -1,8 +1,9 @@
 <?php
 
+require __DIR__ .'\..\vendor\autoload.php';
 include_once "user_pdo.php";
+use Firebase\JWT\JWT;
 
-/* Niz sa mapiranjem statusnih kodova u statusne poruke */
 $status_messages=array(
     200 => "OK",
     201 => "Created",
@@ -20,7 +21,8 @@ $response->error_message="";
 
 /* Podrzane metode API-ja */
 $supported_methods=array("GET", "POST", "PUT", "DELETE");
-$method=strtoupper($_SERVER['REQUEST_METHOD']);
+//$method=strtoupper($_SERVER['REQUEST_METHOD']);
+$method = "POST";
 
 /* Provera zahteva koji treba da se opsluzi */
 if(!in_array($method,$supported_methods)) {
@@ -35,7 +37,7 @@ else {
         $number_of_url_elements=count($url_elements)-1;
     }
 
-    $pdo = PDO_DB::getConnectionInstance();
+    $pdo = Connection::getConnectionInstance();
 
     try{
 
@@ -47,7 +49,10 @@ else {
 
                     case 1:
                         // TODO: GET
-                        // get/login pa da se ocekuje da postoji token          composer
+                        // get/login pa da se ocekuje da postoji token
+
+                        // Proverava se JWT potpis. Uzimamo informacije iz jwt
+
                         break;
 
                     case 2:
@@ -64,16 +69,24 @@ else {
 
                 $new_user = json_decode(file_get_contents("php://input"));
 
-                // TODO: Autentikacija, autorizacija, validacija, verifikacija
+                // TODO: validacija
                 // name - dozvoljena slova
                 // surname - dozvoljena slova
                 // username - treba da bude jedinstveno; dozvoljena su slova, cifre i _; izmedju 5-16
                 // email - treba da bude u odgovarajucem formatu
                 // password - dozvoljeno je sve; treba da bude izmedju 8 i 32
 
-                if($pdo->insertUser($pdo, $new_user->name, $new_user->surname, $new_user->type, $new_user->username, $new_user->pass, $new_user->email)){
+                $header = ['alg' => 'HS256', 'typ' => 'JWT'];
+                $payload = ['data' => ['username' => $new_user->username, 'email' => $new_user->email, 'password' => $new_user->pass]];
+                $key = base64_encode(openssl_random_pseudo_bytes(64));
 
-                    $response->data = stdClass();
+                $jwt = JWT::encode($payload, $key, $header['alg']);
+
+              //  var_dump($jwt);
+
+                if(insertUser($pdo, $new_user->name, $new_user->surname, $new_user->type, $new_user->username, $new_user->pass, $new_user->email)){
+
+                    $response->data = new stdClass();
                     $response->status = 201;
                 }
                 else{
@@ -85,11 +98,12 @@ else {
 
             case "PUT":
 
+                // TODO: nije prioritet
                 break;
 
             case "DELETE":
 
-
+                // TODO
                 break;
         }
 
@@ -102,27 +116,21 @@ else {
         $response->data=null;
     }
 
+    // zaglavlje
 
-    /*
-        Generisati HTTP odgovor
-        u okviru odgovora obavezno postaviti i zaglavlja
-        neophodna za CORS pregovaranje
+ /*   if(headers_sent()){
+        echo "Ne moze!";
+    }*/
+ //   else {
 
-        Format odgovora treba da bude JSON
-    */
+        // Menjamo promenljivama
+        header("HTTP/1.1 " . $response->status . " " . $status_messages[$response->status]);
+        // Dodajemo da je u json formatu
+        header("Content-Type:application/json");
+    //}
 
 
-
-    // Menjamo promenljivama
-    header("HTTP/1.1 ".$response->status." ".$status_messages[$response->status]);
-    // Dodajemo da je u json formatu
-    header("Content-Type:application/json");
-
-    // dodajemo cros podrsku
-    header("Access-Control-Allow-Origin:*");
-    header("Access-Control-Allow-Methods:GET, POST");
-
-    // I telo je odgovor u json formatu
+    // telo
     if($response->data != null){
         echo json_encode($response->data);
     }
