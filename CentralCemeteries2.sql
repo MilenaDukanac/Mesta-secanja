@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 17, 2018 at 08:38 PM
+-- Generation Time: Jan 18, 2018 at 09:26 PM
 -- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -44,21 +44,15 @@ CREATE TABLE IF NOT EXISTS `categories` (
 DROP TABLE IF EXISTS `cemetery`;
 CREATE TABLE IF NOT EXISTS `cemetery` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `placeId` int(10) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `regionId` int(10) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `additionalData` varchar(255) DEFAULT NULL,
   `longitude` double DEFAULT NULL,
   `latitude` double DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `placeId` (`placeId`)
+  KEY `placeId` (`regionId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `cemetery`
---
-
-INSERT INTO `cemetery` (`id`, `placeId`, `description`, `additionalData`, `longitude`, `latitude`) VALUES
-(1, 1, 'Test description', NULL, 45.381561279296875, 20.368574142456055);
 
 -- --------------------------------------------------------
 
@@ -89,13 +83,6 @@ CREATE TABLE IF NOT EXISTS `country` (
   `name` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `country`
---
-
-INSERT INTO `country` (`id`, `name`) VALUES
-(1, 'Serbia');
 
 -- --------------------------------------------------------
 
@@ -167,28 +154,6 @@ CREATE TABLE IF NOT EXISTS `photo_tags` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `place`
---
-
-DROP TABLE IF EXISTS `place`;
-CREATE TABLE IF NOT EXISTS `place` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `regionId` int(10) NOT NULL,
-  `name` varchar(64) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `regionId` (`regionId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `place`
---
-
-INSERT INTO `place` (`id`, `regionId`, `name`) VALUES
-(1, 1, 'Zrenjanin');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `region`
 --
 
@@ -200,13 +165,6 @@ CREATE TABLE IF NOT EXISTS `region` (
   PRIMARY KEY (`id`),
   KEY `countryId` (`countryId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `region`
---
-
-INSERT INTO `region` (`id`, `countryId`, `name`) VALUES
-(1, 1, 'Banat');
 
 -- --------------------------------------------------------
 
@@ -234,12 +192,12 @@ CREATE TABLE IF NOT EXISTS `user` (
   `userId` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
   `surname` varchar(32) NOT NULL,
-  `type` varchar(5) NOT NULL,
+  `type` varchar(5) NOT NULL DEFAULT 'other',
   `pass` varchar(32) NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(16) NOT NULL,
   PRIMARY KEY (`userId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Constraints for dumped tables
@@ -249,7 +207,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Constraints for table `cemetery`
 --
 ALTER TABLE `cemetery`
-  ADD CONSTRAINT `cemetery_ibfk_1` FOREIGN KEY (`placeId`) REFERENCES `place` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `cemetery_ibfk_1` FOREIGN KEY (`regionId`) REFERENCES `region` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `cemetery_comments`
@@ -281,12 +239,6 @@ ALTER TABLE `photo_comments`
 ALTER TABLE `photo_tags`
   ADD CONSTRAINT `photo_tags_ibfk_1` FOREIGN KEY (`photoId`) REFERENCES `photo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `photo_tags_ibfk_2` FOREIGN KEY (`tagId`) REFERENCES `tags` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `place`
---
-ALTER TABLE `place`
-  ADD CONSTRAINT `place_ibfk_1` FOREIGN KEY (`regionId`) REFERENCES `region` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `region`
