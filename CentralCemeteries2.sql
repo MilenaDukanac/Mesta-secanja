@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 18, 2018 at 09:26 PM
+-- Generation Time: Jan 19, 2018 at 12:49 AM
 -- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `cemetery` (
   `latitude` double DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `placeId` (`regionId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -65,6 +65,7 @@ CREATE TABLE IF NOT EXISTS `cemetery_comments` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `cemeteryId` int(10) NOT NULL,
   `email` varchar(100) NOT NULL,
+  `username` varchar(16) DEFAULT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `text` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
@@ -82,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `country` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -131,6 +132,7 @@ CREATE TABLE IF NOT EXISTS `photo_comments` (
   `photoId` int(10) NOT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `email` varchar(100) NOT NULL,
+  `username` varchar(16) DEFAULT NULL,
   `text` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `photoId` (`photoId`)
@@ -148,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `photo_tags` (
   `tagId` int(10) NOT NULL,
   `value` varchar(255) NOT NULL,
   PRIMARY KEY (`photoId`,`tagId`),
-  KEY `tagId` (`tagId`)
+  KEY `photo_tags_ibfk_2` (`tagId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -164,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `region` (
   `name` varchar(32) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `countryId` (`countryId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -196,8 +198,10 @@ CREATE TABLE IF NOT EXISTS `user` (
   `pass` varchar(32) NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(16) NOT NULL,
+  `institution` varchar(100) NOT NULL,
+  `note` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`userId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Constraints for dumped tables
@@ -207,50 +211,50 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Constraints for table `cemetery`
 --
 ALTER TABLE `cemetery`
-  ADD CONSTRAINT `cemetery_ibfk_1` FOREIGN KEY (`regionId`) REFERENCES `region` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `cemetery_ibfk_1` FOREIGN KEY (`regionId`) REFERENCES `region` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `cemetery_comments`
 --
 ALTER TABLE `cemetery_comments`
-  ADD CONSTRAINT `cemetery_comments_ibfk_1` FOREIGN KEY (`cemeteryId`) REFERENCES `cemetery` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `cemetery_comments_ibfk_1` FOREIGN KEY (`cemeteryId`) REFERENCES `cemetery` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `other_photos`
 --
 ALTER TABLE `other_photos`
-  ADD CONSTRAINT `other_photos_ibfk_1` FOREIGN KEY (`photoId`) REFERENCES `photo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `other_photos_ibfk_1` FOREIGN KEY (`photoId`) REFERENCES `photo` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `photo`
 --
 ALTER TABLE `photo`
-  ADD CONSTRAINT `photo_ibfk_1` FOREIGN KEY (`cemeteryId`) REFERENCES `cemetery` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `photo_ibfk_1` FOREIGN KEY (`cemeteryId`) REFERENCES `cemetery` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `photo_comments`
 --
 ALTER TABLE `photo_comments`
-  ADD CONSTRAINT `photo_comments_ibfk_1` FOREIGN KEY (`photoId`) REFERENCES `photo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `photo_comments_ibfk_1` FOREIGN KEY (`photoId`) REFERENCES `photo` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `photo_tags`
 --
 ALTER TABLE `photo_tags`
-  ADD CONSTRAINT `photo_tags_ibfk_1` FOREIGN KEY (`photoId`) REFERENCES `photo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `photo_tags_ibfk_2` FOREIGN KEY (`tagId`) REFERENCES `tags` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `photo_tags_ibfk_1` FOREIGN KEY (`photoId`) REFERENCES `photo` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `photo_tags_ibfk_2` FOREIGN KEY (`tagId`) REFERENCES `tags` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `region`
 --
 ALTER TABLE `region`
-  ADD CONSTRAINT `region_ibfk_1` FOREIGN KEY (`countryId`) REFERENCES `country` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `region_ibfk_1` FOREIGN KEY (`countryId`) REFERENCES `country` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `tags`
 --
 ALTER TABLE `tags`
-  ADD CONSTRAINT `tags_ibfk_1` FOREIGN KEY (`categoryId`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `tags_ibfk_1` FOREIGN KEY (`categoryId`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
