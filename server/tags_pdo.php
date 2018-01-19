@@ -73,7 +73,7 @@ class PDO_DB implements ConnectionData{
 	}
 
 	//Metoda koja vraca tag sa datim identifikatorom
-	public function getTag() {
+	public function getTag($id) {
 		
 		$query = "select * 
 				  from centralcemeteries.tags 
@@ -117,11 +117,13 @@ try{
 //    $tag_info = $pdo->getTag($tag_id);
 //    var_dump($tag_info);
 
- //   $insert_tag = $pdo->insertTag(2,"century",10);
-   // var_dump($insert_tag);
+    //$insert_tag = $pdo->insertTag(3,"day",10);
+    //var_dump($insert_tag);
 
-  $all_tags = $pdo->getAllTags();
-  var_dump($all_tags);
+ //$all_tags = $pdo->getAllTags();
+ //var_dump($all_tags);
+ $tag=$pdo->getTag(1);
+ var_dump($tag);
 
 }catch(PDOException $e){
     echo $e->getMessage();

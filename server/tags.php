@@ -46,19 +46,6 @@ else {
     $pdo = PDO_DB::getInstance();
 
     try{
-        /*
-         * Podrzat API:
-         * GET  /goals sa znacenjem dohvatanja svih zadataka
-         * GET  /goals/{id} sa znacenjem dohvatanja pojedinacnog zadatka
-         * POST /goal za dodavanje novog zadatka
-         *
-         *
-         * U slucaju izostanka nekog od obaveznih parametara URLa ili
-         * prosledjivanja nedozvoljene vrednosti (npr. nekorektne vrednosti za vaznost)
-         * vratiti " 400 Bad request"
-         *
-         */
-
         switch($method){
 
             case "GET":
@@ -119,6 +106,7 @@ else {
 
 				if($new_tag_id == -1){
 					$response->status = 400;
+					$response->data=null;
 				}
 				else{
 					$response->status = 201;
