@@ -5,7 +5,7 @@ include 'connection.php';
 // dohvatanje svih komentara jedne slike po photoId
 function getPhotoComments($db, $photoId){
 
-    $query="select *
+    $query="select id, COALESCE(username, 'unregistered') as username, time, text
             from centralcemeteries.photo_comments 
             where photoId=:photoId
             order by time desc";
