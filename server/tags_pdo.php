@@ -1,70 +1,36 @@
 <?php
-/*
-    Parametri za povezivanje sa bazom podataka
-    korisnicko ime: root;
-    sifra: root
-    host: localhost
-    dbname: centralcemeteries
-*/
-interface ConnectionData{
-    const username = 'root';
-    const password = '';
-    const host = 'localhost';
-    const dbname = 'centralcemeteries';
-}
+include 'connection.php';
 
-class PDO_DB implements ConnectionData{
-    static private $db = NULL;
-
-    private $connection;
-
-    private function __construct(){
-    }
-
-    private function __clone(){
-    }
-
-    private function __wakeup(){
-    }
-
-    public static function getInstance(){
-        if(self::$db == NULL){
-            self::$db = new PDO_DB();
-            self::$db->connection = new PDO('mysql:'.ConnectionData::host.';dbname='.ConnectionData::dbname,
-	            				        ConnectionData::username,
-                                        ConnectionData::password,
-	            				        array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
-        }
-
-	    return self::$db;
-    }
+// Podrazumevane vrednosti za username i email, jer moze da se uloguje sa bilo kojim od ta dva
+$username='a';
+$email='a@a.com';
 	
     //Metoda za kreiranje dodatnih oznaka
 	
-    public function insertTag($id,$name,$categoryId){
+    function insertTag($db,$id,$name,$categoryId){
 
         $query = "insert into centralcemeteries.tags values(:id,:name,:categoryId);";
 
-		$stmt = self::$db->connection->prepare($query);
+		$stmt = $db->prepare($query);
 		
 		$stmt->bindParam(":id", $id, PDO::PARAM_INT);
 		$stmt->bindParam(":name", $name, PDO::PARAM_STR);
 		$stmt->bindParam(":categoryId", $categoryId, PDO::PARAM_INT);
         
         if($stmt->execute())
-			return self::$db->connection->lastInsertId();
+			return $db->lastInsertId();
 		else 
 			return -1;
     }
 
 	//Metoda koja vraca sve oznake
 	
-	public function getAllTags() {
+	function getAllTags($db) {
 		
 		$query = "select * 
 				  from centralcemeteries.tags";
 				  
-		$stmt = self::$db->connection->prepare($query);
+		$stmt = $db->prepare($query);
 		
 		if($stmt->execute())
             return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -73,13 +39,13 @@ class PDO_DB implements ConnectionData{
 	}
 
 	//Metoda koja vraca tag sa datim identifikatorom
-	public function getTag($id) {
+	function getTag($db,$id) {
 		
 		$query = "select * 
 				  from centralcemeteries.tags 
 				  where id=:id";
 				  
-		$stmt = self::$db->connection->prepare($query);
+		$stmt = $db->prepare($query);
 		$stmt->bindParam(":id",$id,PDO::PARAM_INT);
 		
 		if($stmt->execute())
@@ -90,7 +56,7 @@ class PDO_DB implements ConnectionData{
 	
 	//Metoda koja vrsi filtriranje po nekoj oznaci
    
-    public function getPhotos($tag_id){
+    function getPhotos($db,$tag_id){
 
         $query = "select p.id 
 				from centralcemeteries.photo p 
@@ -98,7 +64,7 @@ class PDO_DB implements ConnectionData{
 				join centralcemeteries.tags t on pt.tagId = t.id
 				where t.id=:tag_id"; 
 
-        $stmt = self::$db->connection->prepare($query);
+        $stmt = $db->prepare($query);
 
         $stmt->bindParam(":tag_id", $tag_id, PDO::PARAM_INT);
         if($stmt->execute()){
@@ -107,10 +73,10 @@ class PDO_DB implements ConnectionData{
             return FALSE;
         }
     }
-}
+
 
 try{
-     $pdo = PDO_DB::getInstance();
+     $pdo=Connection::getConnectionInstance();
 
 //    //getTag test
 //    $tag_id = 4;
@@ -122,7 +88,7 @@ try{
 
  //$all_tags = $pdo->getAllTags();
  //var_dump($all_tags);
- $tag=$pdo->getTag(1);
+ $tag=getTag($pdo,1);
  var_dump($tag);
 
 }catch(PDOException $e){

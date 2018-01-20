@@ -1,6 +1,6 @@
 <?php
 
-include_once "tags_pdo.php";
+include "tags_pdo.php";
 
 /* Niz sa mapiranjem statusnih kodova u statusne poruke */
 $status_messages = array(
@@ -43,7 +43,7 @@ else {
 //    echo $number_of_url_elements;
 
 
-    $pdo = PDO_DB::getInstance();
+    $pdo = Connection::getConnectionInstance();
 
     try{
         switch($method){
@@ -55,16 +55,16 @@ else {
 
                         if($url_elements[1] == "tags"){
                             // GET /tags
-                            $response->data = $pdo->getAllTags();
+                            $response->data = getAllTags($pdo);
                             $response->status = 200;
                         }
                         else{
                             $response->status = 400;
                             $response->data = null;
                         }
-						else if($url_elements[1] == "photos"){
+						if($url_elements[1] == "photos"){
                             // GET /photos
-                            $response->data = $pdo->getPhotos();
+                            $response->data = getPhotos($pdo);
                             $response->status = 200;
                         }
                         else{
@@ -76,7 +76,7 @@ else {
                     case 2:
                         if($url_elements[1] == "tags" and intval($url_elements[2]) != 0){
                             //GET /tags/{id}
-                            $result = $pdo->getTag($url_elements[2]);
+                            $result = getTag($pdo, $url_elements[2]);
                             if($result === FALSE){
                                 $response->data = null;
                                 $response->status = 404;
@@ -102,7 +102,7 @@ else {
 
             case "POST":
                 $new_tag = json_decode(file_get_contents("php://input"));         
-				$new_tag_id = $pdo->insertTag($new_tag->id,$new_tag->name,$new_tag->categoryId);
+				$new_tag_id = insertTag($pdo,$new_tag->id,$new_tag->name,$new_tag->categoryId);
 
 				if($new_tag_id == -1){
 					$response->status = 400;
