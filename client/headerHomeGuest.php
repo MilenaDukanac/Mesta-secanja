@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html  ng-app="app">
 <head>
     <title>  CENTRAL cemeteries </title>
     <meta charset="utf-8" />
@@ -18,21 +18,21 @@
     <link rel="stylesheet" href="assets/mobirise-gallery/style.css">
     <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
 
-    <script src="/assets/web/assets/jquery/jquery.min.js"></script>
-    <script src="/assets/tether/tether.min.js"></script>
-    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/assets/viewport-checker/jquery.viewportchecker.js"></script>
-    <script src="/assets/dropdown/js/script.min.js"></script>
-    <script src="/assets/touch-swipe/jquery.touch-swipe.min.js"></script>
-    <script src="/assets/smooth-scroll/smooth-scroll.js"></script>
-    <script src="/assets/theme/js/script.js"></script>
-    <script src="/assets/masonry/masonry.pkgd.min.js"></script>
-    <script src="/assets/imagesloaded/imagesloaded.pkgd.min.js"></script>
-    <script src="/assets/bootstrap-carousel-swipe/bootstrap-carousel-swipe.js"></script>
-    <script src="/assets/mobirise-gallery/player.min.js"></script>
-    <script src="/assets/mobirise-gallery/script.js"></script>
+    <script src="assets/web/assets/jquery/jquery.min.js"></script>
+    <script src="assets/tether/tether.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+    <script src="assets/dropdown/js/script.min.js"></script>
+    <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+    <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+    <script src="assets/theme/js/script.js"></script>
+    <script src="assets/masonry/masonry.pkgd.min.js"></script>
+    <script src="assets/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/bootstrap-carousel-swipe/bootstrap-carousel-swipe.js"></script>
+    <script src="assets/mobirise-gallery/player.min.js"></script>
+    <script src="assets/mobirise-gallery/script.js"></script>
 
-    <script type="text/javascript" src="angular-1.6.7/angular.min.js"></script>
+    <script type="text/javascript" src="angular-1.6.6/angular.min.js"></script>
     <script type="text/javascript" src="login.js"></script>
 
     <input name="animation" type="hidden">
@@ -90,7 +90,7 @@
                     <h2 class="mbr-info-subtitle mbr-section-subtitle">To use some of our special services, register or log in if you already have an account</h2>
                 </div>
 
-                <div class="mbr-table-cell col-md-4" ng-app="app" ng-controller="loginControler">
+                <div class="mbr-table-cell col-md-4" ng-controller="loginControler">
                     <div class="text-xs-center">
                         <form>
                             <div class="form-group">
@@ -104,7 +104,7 @@
                                 </div>
                             </div>
                         </form>
-                        <a class="btn btn-primary" href="home.php">Log in</a>
+                        <a class="btn btn-primary" ng-click="login()">Log in</a>
                         <a class="btn btn-secondary" href="registration.php">Register</a>
                     </div>
                 </div>

@@ -70,7 +70,7 @@
 							<a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><img src="assets/images/face2.jpg" class="avatar" alt="Avatar"> Name Surname <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="#" class="dropdown-item">Delete account</a></li>
-								<li><a href="#" class="dropdown-item">Log out</a></li>
+								<li><a href="logout.php" class="dropdown-item">Log out</a></li>
 							</ul>
 						  </li>
 					  </ul>

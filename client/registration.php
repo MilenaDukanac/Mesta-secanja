@@ -14,7 +14,7 @@ include('headerGuest.php');
 		</div>
 	</div>
 
-  <div class="mbr-section mbr-section-nopadding">
+  <div class="mbr-section mbr-section-nopadding" ng-controller="registerControler">
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-lg-6 col-lg-offset-3" data-form-type="formoid">
@@ -24,44 +24,48 @@ include('headerGuest.php');
             </div>
           </div>
 
-          <form action="home.php" method="post">
+          <form>
             <div class="form-group">
               <label class="form-control-label" for="form1-o-name">Name*</label>
-              <input type="text" class="form-control" name="name" required="" data-form-field="Name" id="form1-o-name">
+              <input type="text" class="form-control" name="name" required="" data-form-field="Name" id="form1-o-name" ng-model="newUser.name">
             </div>
 
             <div class="form-group">
               <label class="form-control-label" for="form1-o-surname">Surname*</label>
-              <input type="text" class="form-control" name="surname" required="" data-form-field="Surname" id="form1-o-surname">
+              <input type="text" class="form-control" name="surname" required="" data-form-field="Surname" id="form1-o-surname" ng-model="newUser.surname">
             </div>
 
             <div class="form-group">
               <label class="form-control-label" for="form1-o-email">Email*</label>
-              <input type="email" class="form-control" name="email" required="" data-form-field="Email" id="form1-o-email">
+              <input type="email" class="form-control" name="email" required="" data-form-field="Email" id="form1-o-email" ng-model="newUser.email">
             </div>
 
             <div class="form-group">
               <label class="form-control-label" for="form1-o-username">Username*</label>
-              <input type="text" class="form-control" name="username" required="" data-form-field="Username" id="form1-o-username">
+              <input type="text" class="form-control" name="username" required="" data-form-field="Username" id="form1-o-username" ng-model="newUser.username">
             </div>
 
             <div class="form-group">
               <label class="form-control-label" for="form1-o-password">Password*</label>
-              <input type="password" class="form-control" name="password" required="" data-form-field="Password" id="form1-o-password">
+              <input type="password" class="form-control" name="password" required="" data-form-field="Password" id="form1-o-password" ng-model="newUser.password">
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" for="form1-o-password">Confirm Password*</label>
+                <input type="password" class="form-control" name="password" required="" data-form-field="Password" id="form1-o-password" ng-model="confirmpassword">
             </div>
 			
 			<div class="form-group">
               <label class="form-control-label" for="form1-o-institution">Institution*</label>
-              <input type="text" class="form-control" name="institution" required="" data-form-field="Institution" id="form1-o-institution">
+              <input type="text" class="form-control" name="institution" required="" data-form-field="Institution" id="form1-o-institution" ng-model="newUser.institution">
             </div>
 			
 			<div class="form-group">
               <label class="form-control-label" for="form1-o-note">Note</label>
-              <input type="note" class="form-control text-area" name="note" data-form-field="Note" id="form1-o-note">
+              <input type="note" class="form-control text-area" name="note" data-form-field="Note" id="form1-o-note" ng-model="newUser.note">
             </div>
 
             <div class="mbr-buttons mbr-buttons--right btn-inverse">
-              <button type="submit" class="btn btn-sm btn-black">
+              <button type="submit" class="btn btn-sm btn-black" ng-click="register()">
                 Register
               </button>
             </div>
