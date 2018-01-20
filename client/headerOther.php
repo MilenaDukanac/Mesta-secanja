@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
     <link rel="stylesheet" href="assets/navdrop.css" type="text/css">
 
+    <script src="/assets/angular-1.6.7/angular.min.js"></script>
     <script src="/assets/web/assets/jquery/jquery.min.js"></script>
     <script src="/assets/tether/tether.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>

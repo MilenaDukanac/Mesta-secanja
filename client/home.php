@@ -1,5 +1,5 @@
 <?php
-include('headerGuest.php');
+include('headerHomeGuest.php');
 ?>
 
   <section class="mt-5" id="map1-7" data-rv-view="101">
