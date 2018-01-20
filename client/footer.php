@@ -50,8 +50,15 @@
 		</footer>
 		
 		<div id="scrollToTop" class="scrollToTop mbr-arrow-up">
-			<a style="text-align: center;"><i class="mbr-arrow-up-icon"></i></a>
+			<a style="text-align: center;"><i class="mbr-arrow-up-icon" onclick="topFunction()"></i></a>
 		</div>
+
+		<script>
+		function topFunction() {
+			document.body.scrollTop = 0;
+			document.documentElement.scrollTop = 0;
+		}
+		</script>
 		
 	</body>
 </html>

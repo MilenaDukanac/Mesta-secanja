@@ -24,7 +24,7 @@ include('headerGuest.php');
             </div>
           </div>
 
-          <form action="home1.html" method="post">
+          <form action="home.php" method="post">
             <div class="form-group">
               <label class="form-control-label" for="form1-o-name">Name*</label>
               <input type="text" class="form-control" name="name" required="" data-form-field="Name" id="form1-o-name">
@@ -56,8 +56,8 @@ include('headerGuest.php');
             </div>
 			
 			<div class="form-group">
-              <label class="form-control-label" for="form1-o-note">Note*</label>
-              <input type="note" class="form-control text-area" name="note" required="" data-form-field="Note" id="form1-o-note">
+              <label class="form-control-label" for="form1-o-note">Note</label>
+              <input type="note" class="form-control text-area" name="note" data-form-field="Note" id="form1-o-note">
             </div>
 
             <div class="mbr-buttons mbr-buttons--right btn-inverse">
