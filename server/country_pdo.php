@@ -5,7 +5,7 @@ include "connection.php";
 function getAllCountries($db){
 
     $query = "select *
-              from CentralCemeteries.country";
+              from centralcemeteries.country";
 
     $stmt = $db->prepare($query);
 
@@ -19,7 +19,7 @@ function getAllCountries($db){
 
 function getCountry($db, $id){
     $query = "select *
-              from CentralCemeteries.country
+              from centralcemeteries.country
               where id = :id";
 
     $stmt = $db->prepare($query);
@@ -34,7 +34,7 @@ function getCountry($db, $id){
 }
 
 function insertCountry($db, $name){
-    $query = "insert into CentralCemeteries.country
+    $query = "insert into centralcemeteries.country
               values(NULL, :nname)";
 
     $stmt = $db->prepare($query);
@@ -52,7 +52,7 @@ function insertCountry($db, $name){
 function deleteCountry($db, $id){
 
     $db->beginTransaction();
-    $query = "delete from CentralCemeteries.country
+    $query = "delete from centralcemeteries.country
               where id = :id";
 
     $stmt = $db->prepare($query);
@@ -72,7 +72,8 @@ function deleteCountry($db, $id){
 
 try{
 
-    $pdo=PDO_DB::getConnectionInstance();
+    echo "greskakaaa";
+    $pdo=Connection::getConnectionInstance();
 //
 //    $insert_country=insertCountry($pdo,"Hungary");
 //    var_dump($insert_country);
@@ -96,8 +97,8 @@ try{
 //    var_dump($country);
 
 
-    $delete = deleteCountry($pdo, 1);
-    var_dump($delete);
+//    $delete = deleteCountry($pdo, 1);
+//    var_dump($delete);
     
 }catch(PDOException $e){
 

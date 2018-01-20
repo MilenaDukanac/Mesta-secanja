@@ -5,7 +5,7 @@ include "connection.php";
 function getAllRegions($db){
 
     $query = "select *
-              from CentralCemeteries.region";
+              from centralcemeteries.region";
 
     $stmt = $db->prepare($query);
 
@@ -20,7 +20,7 @@ function getAllRegions($db){
 function getRegionsInCountry($db, $countryId){
 
     $query = "select *
-              from CentralCemeteries.region
+              from centralcemeteries.region
               where countryId = :countryId";
 
     $stmt = $db->prepare($query);
@@ -36,7 +36,7 @@ function getRegionsInCountry($db, $countryId){
 
 function getRegion($db, $id){
     $query = "select *
-              from CentralCemeteries.region
+              from centralcemeteries.region
               where id = :id";
 
     $stmt = $db->prepare($query);
@@ -51,7 +51,7 @@ function getRegion($db, $id){
 }
 
 function insertRegion($db, $countryId, $name){
-    $query = "insert into CentralCemeteries.region
+    $query = "insert into centralcemeteries.region
               values(NULL, :countryId, :nname)";
 
     $stmt = $db->prepare($query);
@@ -70,7 +70,7 @@ function insertRegion($db, $countryId, $name){
 function deleteRegion($db, $id){
 
     $db->beginTransaction();
-    $query = "delete from CentralCemeteries.region
+    $query = "delete from centralcemeteries.region
               where id = :id";
 
     $stmt = $db->prepare($query);

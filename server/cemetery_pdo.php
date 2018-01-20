@@ -3,7 +3,7 @@
 include 'connection.php';
 
 function getAllCemeteries($db){
-    $query = "select * from CentralCemeteries.cemetery";
+    $query = "select * from centralcemeteries.cemetery";
 
     $stmt = $db->prepare($query);
     if($stmt->execute()) {
@@ -17,7 +17,7 @@ function getAllCemeteries($db){
 
 
 function getCemetery($db, $id){
-    $query="select * from CentralCemeteries.cemetery where id=:Id";
+    $query="select * from centralcemeteries.cemetery where id=:Id";
     $stmt=$db->prepare($query);
     $stmt->bindParam(":Id", $id, PDO::PARAM_INT);
 
@@ -28,7 +28,7 @@ function getCemetery($db, $id){
 
 function insertCemetery($db, $name,$place_id, $description, $additional_data, $longitude, $latitude){
 
-    $query = "insert into CentralCemeteries.cemetery
+    $query = "insert into centralcemeteries.cemetery
               values(NULL, :nname, :place_id, :description, :additional_data, :longitude, :latitude)";
 
     $stmt = $db->prepare($query);
@@ -48,7 +48,7 @@ function insertCemetery($db, $name,$place_id, $description, $additional_data, $l
 }
 
 function getCemeteriesInRegion($db, $regionId){
-    $query = "select * from CentralCemeteries.cemetery where regionId = :regionId";
+    $query = "select * from centralcemeteries.cemetery where regionId = :regionId";
 
     $stmt = $db->prepare($query);
 
@@ -64,9 +64,9 @@ function getCemeteriesInRegion($db, $regionId){
 
 function getCemeteriesInCountry($db, $countryId){
     $query = "select * 
-              from CentralCemeteries.cemetery
+              from centralcemeteries.cemetery
               where regionId in (select id
-                                 from CentralCemeteries.region
+                                 from centralcemeteries.region
                                  where countryId = :countryId)";
     $stmt = $db->prepare($query);
 
@@ -83,7 +83,7 @@ function getCemeteriesInCountry($db, $countryId){
 function deleteCemetery($db, $id){
 
     $db->beginTransaction();
-    $query = "delete from CentralCemeteries.cemetery
+    $query = "delete from centralcemeteries.cemetery
               where id = :id";
 
     $stmt = $db->prepare($query);

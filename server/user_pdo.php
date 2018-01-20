@@ -15,7 +15,7 @@ function getUser($db, $pass, $username, $email){
 
     $stmt=$db->prepare($query);
 
-    $stmt->bindParam(":username", $username, PDO::PARAM_);
+    $stmt->bindParam(":username", $username, PDO::PARAM_STR);
     $stmt->bindParam(":email", $email, PDO::PARAM_STR);
     $stmt->bindParam(":pass", $pass, PDO::PARAM_STR);
 
@@ -51,21 +51,23 @@ function getUserInfo($db, $name, $surname){
 }
 
 // unosenje novog korisnika
-function insertUser($db, $name, $surname, $type, $username, $pass, $email){
+function insertUser($db, $name, $surname, $username, $pass, $email, $institution, $note){
 
     $db->beginTransaction();
 
-    $query = "insert into centralcemeteries.user (name, surname, type, username, pass, email)
-              values(:name, :surname, :type, :username, :pass, :email)";
+    $query = "insert into centralcemeteries.user (userId ,name, surname, type, username, pass, email, institution, note)
+              values(NULL, :name, :surname, DEFAULT, :username, :pass, :email, :institution, :note)";
 
     $stmt = $db->prepare($query);
 
     $stmt->bindParam(":name", $name, PDO::PARAM_STR);
     $stmt->bindParam(":surname", $surname, PDO::PARAM_STR);
-    $stmt->bindParam(":type", $type, PDO::PARAM_STR);
+//    $stmt->bindParam(":type", $type, PDO::PARAM_STR);
     $stmt->bindParam(":username", $username, PDO::PARAM_STR);
     $stmt->bindParam(":pass", $pass, PDO::PARAM_STR);
     $stmt->bindParam(":email", $email, PDO::PARAM_STR);
+    $stmt->bindParam(":institution", $institution, PDO::PARAM_STR);
+    $stmt->bindParam(":note", $note, PDO::PARAM_STR);
 
     if($stmt->execute()){
 
@@ -127,29 +129,31 @@ function deleteId($db, $userId){
 
 
 try{
-$pdo=PDO_DB::getConnectionInstance();
+//$pdo=Connection::getConnectionInstance();
 
-  /*  //getUser test
-    $username="usernameTest";
-  //  $email="test@jtest.com";
-    $pass="sifra";
-    $user_info=getUser($pdo,$pass,$username,$email);
-    var_dump($user_info);
+   //getUser test
+//    $username="test";
+//  //  $email="test@jtest.com";
+//    $pass="test";
+//    $user_info=getUser($pdo,$pass,$username,$email);
+//    var_dump($user_info->type);
 
     // insertUser
-    $name = "Test2";
-    $surname = "Testic";
-    $username = "testtestic";
-    $pass = "mojaSifra1";
-    $email = "test.testic@gmail.com";
-    $insert_info = insertUser($pdo,$name,$surname,$type,$username,$pass,$email);
-    echo $insert_info;
+//    $name = "Test2";
+//    $surname = "Testic";
+//    $username = "testtestic";
+//    $pass = "mojaSifra1";
+//    $email = "test.testic@gmail.com";
+//    $institution = "MATF";
+//    $note = "";
+//    $insert_info = insertUser($pdo,$name,$surname,$username,$pass,$email,$institution,$note);
+//    echo $insert_info;
+//
+//
+//    echo updateType($pdo, 1, "inner");
 
 
-    echo updateType($pdo, 1, "inner");
 
-
-  */
 
 }catch(PDOException $e){
 echo $e->getMessage();
