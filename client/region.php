@@ -2,152 +2,151 @@
 include('headerGuest.php');
 ?>
 
-  <section class="mbr-gallery mbr-section mbr-section-nopadding mbr-slider-carousel" data-filter="true" id="gallery4-v" data-rv-view="16" style="padding-top: 90px; padding-bottom: 0rem;">
-      <!-- Filter -->
-      <div class="mbr-gallery-filter container gallery-filter-active">
-          <ul>
-              <li class="mbr-gallery-filter-all active">All</li>
-          </ul>
-      </div>
+<section class="mbr-cards mbr-section mbr-section-nopadding" id="features1-x" data-rv-view="54" style="background-color: rgb(255, 255, 255); padding-top:90px">
+    <div class="mbr-cards-row row">
 
-      <!-- Gallery -->
-      <div class="mbr-gallery-row">
-          <div class=" mbr-gallery-layout-default">
-              <div>
-                  <div>
-                      <div class="mbr-gallery-item mbr-gallery-item__mobirise3 mbr-gallery-item--p1" data-video-url="false" data-tags="Awesome">
-                          <div href="#lb-gallery4-v" data-slide-to="0" data-toggle="modal">
+        <div class="mbr-cards-col col-xs-12 col-lg-2" style="padding-top: 80px; padding-bottom: 80px;">
+            <div class="container">
+                <div class="card cart-block">
+                    <div class="card-img"><img src="assets/images/desktop.jpg" class="card-img-top"></div>
+                    <div class="card-block">
+                        <h4 class="card-title">Responsive</h4>
+                        <h5 class="card-subtitle">One of Bootstrap 4's big points</h5>
+                        <p class="card-text">One of Bootstrap 4's big points is responsiveness and Mobirise makes effective use of this by generating highly responsive website for you.</p>
+                        <div class="card-btn"><a href="cemetery.html" class="btn btn-primary">MORE</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mbr-cards-col col-xs-12 col-lg-2" style="padding-top: 80px; padding-bottom: 80px;">
+            <div class="container">
+                <div class="card cart-block">
+                    <div class="card-img"><img src="assets/images/coworkers.jpg" class="card-img-top"></div>
+                    <div class="card-block">
+                        <h4 class="card-title">Web Fonts</h4>
+                        <h5 class="card-subtitle">Google has a highly exhaustive list of fonts</h5>
+                        <p class="card-text">Google has a highly exhaustive list of fonts compiled into its web font platform and Mobirise makes it easy for you to use them on your website easily and freely.</p>
+                        <div class="card-btn"><a href="cemetery.html" class="btn btn-primary">MORE</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mbr-cards-col col-xs-12 col-lg-2" style="padding-top: 80px; padding-bottom: 80px;">
+            <div class="container">
+                <div class="card cart-block">
+                    <div class="card-img"><img src="assets/images/code-man.jpg" class="card-img-top"></div>
+                    <div class="card-block">
+                        <h4 class="card-title">Unlimited Sites</h4>
+                        <h5 class="card-subtitle">Mobirise gives you the freedom to develop</h5>
+                        <p class="card-text">Mobirise gives you the freedom to develop as many websites as you like given the fact that it is a desktop app.</p>
+                        <div class="card-btn"><a href="cemetery.html" class="btn btn-primary">MORE</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mbr-cards-col col-xs-12 col-lg-2" style="padding-top: 80px; padding-bottom: 80px;">
+            <div class="container">
+                <div class="card cart-block">
+                    <div class="card-img"><img src="assets/images/windows-books.jpg" class="card-img-top"></div>
+                    <div class="card-block">
+                        <h4 class="card-title">Trendy Website Blocks</h4>
+                        <h5 class="card-subtitle">Choose from the large selection of blocks</h5>
+                        <p class="card-text">Choose from the large selection of latest pre-made blocks - jumbotrons, hero images, parallax scrolling, video backgrounds, hamburger menu, sticky header and more.</p>
+                        <div class="card-btn"><a href="cemetery.html" class="btn btn-primary">MORE</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mbr-cards-col col-xs-12 col-lg-2" style="padding-top: 80px; padding-bottom: 80px;">
+            <div class="container">
+                <div class="card cart-block">
+                    <div class="card-img"><img src="assets/images/room-laptop.jpg" class="card-img-top"></div>
+                    <div class="card-block">
+                        <h4 class="card-title">Host Anywhere</h4>
+                        <h5 class="card-subtitle">Don't limit yourself to just one platform</h5>
+                        <p class="card-text">Publish your website to a local drive, FTP or host on Amazon S3, Google Drive, Github. Don't limit yourself to just one platform or service provider.</p>
+                        <div class="card-btn"><a href="cemetery.html" class="btn btn-primary">MORE</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-
-
-                              <img src="assets/images/bike-small.jpg" alt="">
-
-                              <span class="icon-focus"></span>
-
-                          </div>
-                      </div><div class="mbr-gallery-item mbr-gallery-item__mobirise3 mbr-gallery-item--p1" data-video-url="false" data-tags="Responsive">
-                          <div href="#lb-gallery4-v" data-slide-to="1" data-toggle="modal">
-
-
-
-                              <img src="assets/images/code-man-small.jpg" alt="">
-
-                              <span class="icon-focus"></span>
-
-                          </div>
-                      </div><div class="mbr-gallery-item mbr-gallery-item__mobirise3 mbr-gallery-item--p1" data-video-url="false" data-tags="Creative">
-                          <div href="#lb-gallery4-v" data-slide-to="2" data-toggle="modal">
-
-
-
-                              <img src="assets/images/coworkers-small.jpg" alt="">
-
-                              <span class="icon-focus"></span>
-
-                          </div>
-                      </div><div class="mbr-gallery-item mbr-gallery-item__mobirise3 mbr-gallery-item--p1" data-video-url="false" data-tags="Animated">
-                          <div href="#lb-gallery4-v" data-slide-to="3" data-toggle="modal">
-
-
-
-                              <img src="assets/images/desktop-small.jpg" alt="">
-
-                              <span class="icon-focus"></span>
-
-                          </div>
-                      </div><div class="mbr-gallery-item mbr-gallery-item__mobirise3 mbr-gallery-item--p1" data-video-url="false" data-tags="Awesome">
-                          <div href="#lb-gallery4-v" data-slide-to="4" data-toggle="modal">
-
-
-
-                              <img src="assets/images/room-laptop-small.jpg" alt="">
-
-                              <span class="icon-focus"></span>
-
-                          </div>
-                      </div><div class="mbr-gallery-item mbr-gallery-item__mobirise3 mbr-gallery-item--p1" data-video-url="false" data-tags="Beautiful">
-                          <div href="#lb-gallery4-v" data-slide-to="5" data-toggle="modal">
-
-
-
-                              <img src="assets/images/table-small.jpg" alt="">
-
-                              <span class="icon-focus"></span>
-
-                          </div>
-                      </div><div class="mbr-gallery-item mbr-gallery-item__mobirise3 mbr-gallery-item--p1" data-video-url="false" data-tags="Responsive">
-                          <div href="#lb-gallery4-v" data-slide-to="6" data-toggle="modal">
+<section class="mbr-cards mbr-section mbr-section-nopadding" id="features1-x" data-rv-view="54" style="background-color: rgb(255, 255, 255);">
 
 
 
-                              <img src="assets/images/windows-books-small.jpg" alt="">
+    <div class="mbr-cards-row row">
 
-                              <span class="icon-focus"></span>
+        <div class="mbr-cards-col col-xs-12 col-lg-2" style="padding-top: 80px; padding-bottom: 80px;">
+            <div class="container">
+                <div class="card cart-block">
+                    <div class="card-img"><img src="assets/images/desktop.jpg" class="card-img-top"></div>
+                    <div class="card-block">
+                        <h4 class="card-title">Responsive</h4>
+                        <h5 class="card-subtitle">One of Bootstrap 4's big points</h5>
+                        <p class="card-text">One of Bootstrap 4's big points is responsiveness and Mobirise makes effective use of this by generating highly responsive website for you.</p>
+                        <div class="card-btn"><a href="cemetery.html" class="btn btn-primary">MORE</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mbr-cards-col col-xs-12 col-lg-2" style="padding-top: 80px; padding-bottom: 80px;">
+            <div class="container">
+                <div class="card cart-block">
+                    <div class="card-img"><img src="assets/images/coworkers.jpg" class="card-img-top"></div>
+                    <div class="card-block">
+                        <h4 class="card-title">Web Fonts</h4>
+                        <h5 class="card-subtitle">Google has a highly exhaustive list of fonts</h5>
+                        <p class="card-text">Google has a highly exhaustive list of fonts compiled into its web font platform and Mobirise makes it easy for you to use them on your website easily and freely.</p>
+                        <div class="card-btn"><a href="cemetery.html" class="btn btn-primary">MORE</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mbr-cards-col col-xs-12 col-lg-2" style="padding-top: 80px; padding-bottom: 80px;">
+            <div class="container">
+                <div class="card cart-block">
+                    <div class="card-img"><img src="assets/images/code-man.jpg" class="card-img-top"></div>
+                    <div class="card-block">
+                        <h4 class="card-title">Unlimited Sites</h4>
+                        <h5 class="card-subtitle">Mobirise gives you the freedom to develop</h5>
+                        <p class="card-text">Mobirise gives you the freedom to develop as many websites as you like given the fact that it is a desktop app.</p>
+                        <div class="card-btn"><a href="cemetery.html" class="btn btn-primary">MORE</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mbr-cards-col col-xs-12 col-lg-2" style="padding-top: 80px; padding-bottom: 80px;">
+            <div class="container">
+                <div class="card cart-block">
+                    <div class="card-img"><img src="assets/images/windows-books.jpg" class="card-img-top"></div>
+                    <div class="card-block">
+                        <h4 class="card-title">Trendy Website Blocks</h4>
+                        <h5 class="card-subtitle">Choose from the large selection of blocks</h5>
+                        <p class="card-text">Choose from the large selection of latest pre-made blocks - jumbotrons, hero images, parallax scrolling, video backgrounds, hamburger menu, sticky header and more.</p>
+                        <div class="card-btn"><a href="cemetery.html" class="btn btn-primary">MORE</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mbr-cards-col col-xs-12 col-lg-2" style="padding-top: 80px; padding-bottom: 80px;">
+            <div class="container">
+                <div class="card cart-block">
+                    <div class="card-img"><img src="assets/images/room-laptop.jpg" class="card-img-top"></div>
+                    <div class="card-block">
+                        <h4 class="card-title">Host Anywhere</h4>
+                        <h5 class="card-subtitle">Don't limit yourself to just one platform</h5>
+                        <p class="card-text">Publish your website to a local drive, FTP or host on Amazon S3, Google Drive, Github. Don't limit yourself to just one platform or service provider.</p>
+                        <div class="card-btn"><a href="cemetery.html" class="btn btn-primary">MORE</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-                          </div>
-                      </div><div class="mbr-gallery-item mbr-gallery-item__mobirise3 mbr-gallery-item--p1" data-video-url="false" data-tags="Animated">
-                          <div href="#lb-gallery4-v" data-slide-to="7" data-toggle="modal">
-
-
-
-                              <img src="assets/images/working-area-small.jpg" alt="">
-
-                              <span class="icon-focus"></span>
-
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="clearfix"></div>
-          </div>
-      </div>
-
-      <!-- Lightbox -->
-      <div data-app-prevent-settings="" class="mbr-slider modal fade carousel slide" tabindex="-1" data-keyboard="true" data-interval="false" id="lb-gallery4-v">
-          <div class="modal-dialog">
-              <div class="modal-content">
-                  <div class="modal-body">
-                      <ol class="carousel-indicators">
-                          <li data-app-prevent-settings="" data-target="#lb-gallery4-v" class=" active" data-slide-to="0"></li><li data-app-prevent-settings="" data-target="#lb-gallery4-v" data-slide-to="1"></li><li data-app-prevent-settings="" data-target="#lb-gallery4-v" data-slide-to="2"></li><li data-app-prevent-settings="" data-target="#lb-gallery4-v" data-slide-to="3"></li><li data-app-prevent-settings="" data-target="#lb-gallery4-v" data-slide-to="4"></li><li data-app-prevent-settings="" data-target="#lb-gallery4-v" data-slide-to="5"></li><li data-app-prevent-settings="" data-target="#lb-gallery4-v" data-slide-to="6"></li><li data-app-prevent-settings="" data-target="#lb-gallery4-v" data-slide-to="7"></li>
-                      </ol>
-                      <div class="carousel-inner">
-                          <div class="carousel-item active">
-                              <img src="assets/images/bike.jpg" alt="">
-                          </div><div class="carousel-item">
-                              <img src="assets/images/code-man.jpg" alt="">
-                          </div><div class="carousel-item">
-                              <img src="assets/images/coworkers.jpg" alt="">
-                          </div><div class="carousel-item">
-                              <img src="assets/images/desktop.jpg" alt="">
-                          </div><div class="carousel-item">
-                              <img src="assets/images/room-laptop.jpg" alt="">
-                          </div><div class="carousel-item">
-                              <img src="assets/images/table.jpg" alt="">
-                          </div><div class="carousel-item">
-                              <img src="assets/images/windows-books.jpg" alt="">
-                          </div><div class="carousel-item">
-                              <img src="assets/images/working-area.jpg" alt="">
-                          </div>
-                      </div>
-                      <a class="left carousel-control" role="button" data-slide="prev" href="#lb-gallery4-v">
-                          <span class="icon-prev" aria-hidden="true"></span>
-                          <span class="sr-only">Previous</span>
-                      </a>
-                      <a class="right carousel-control" role="button" data-slide="next" href="#lb-gallery4-v">
-                          <span class="icon-next" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
-                      </a>
-
-                      <a class="close" href="#" role="button" data-dismiss="modal">
-                          <span aria-hidden="true">×</span>
-                          <span class="sr-only">Close</span>
-                      </a>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
-  
 <?php
 include('footer.php');
 ?>
