@@ -9,7 +9,8 @@ include('headerGuest.php');
 
         <label for="country">Country: </label><br>
         <select id="country" ng-model="country">
-            <option value={{country.name}} ng-repeat="country in countries">
+            <option value="all" >All</option>
+            <option value="{{country.name}}" ng-repeat="country in countries">
               {{country.name}}
             </option>
         </select>
@@ -17,7 +18,7 @@ include('headerGuest.php');
             <div class="mbr-testimonials mbr-section mbr-section-nopadding">
                 <div class="container">
                     <div class="row">
-                        <div ng-repeat="region in regions|orderBy:'countryName'" class="col-xs-12 col-md-3 col-lg-3">
+                        <div ng-repeat="region in regions|orderBy:'countryName'|CountryFilter:country" class="col-xs-12 col-md-3 col-lg-3">
                             <div class="mbr-testimonial card card-block mbr-testimonial-lg">
                               <div class="card card-block">
                                   <div class="card-img"><img src="assets/images/desktop.jpg" class="card-img-top"></div>

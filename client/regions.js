@@ -1,7 +1,7 @@
 var regions = angular.module("regions", []);
 
 regions.filter("CountryFilter", function(){
-  return function(regions, countryName){
+  return function(regions, country){
     if(country == "all"){
       return regions;
     }
@@ -13,6 +13,7 @@ regions.filter("CountryFilter", function(){
 regions.controller("mainController", ["$scope", "$http", "$filter", function($scope, $http, $filter){
   $scope.regions = [];
   $scope.countries = [];
+  $scope.country ="all";
 
   $http({
     method: "GET",
