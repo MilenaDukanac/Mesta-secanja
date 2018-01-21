@@ -2,21 +2,16 @@
 
 include 'connection.php';
 
-// Podrazumevane vrednosti za username i email, jer moze da se uloguje sa bilo kojim od ta dva
-$username='a';
-$email='a@a.com';
-
 // Dohvatanje informacija o korisniku kada se loguje
-function getUser($db, $pass, $username, $email){
+function getUser($db, $pass, $username){
 
-    $query="select name, type 
+    $query="select name, surname, type 
             from centralcemeteries.user 
-            where (username=:username or email=:email) and pass=:pass";
+            where username=:username and pass=:pass";
 
     $stmt=$db->prepare($query);
 
     $stmt->bindParam(":username", $username, PDO::PARAM_STR);
-    $stmt->bindParam(":email", $email, PDO::PARAM_STR);
     $stmt->bindParam(":pass", $pass, PDO::PARAM_STR);
 
     if($stmt->execute())
@@ -133,9 +128,8 @@ try{
 
    //getUser test
 //    $username="test";
-//  //  $email="test@jtest.com";
 //    $pass="test";
-//    $user_info=getUser($pdo,$pass,$username,$email);
+//    $user_info=getUser($pdo,$pass,$username);
 //    var_dump($user_info->type);
 
     // insertUser
