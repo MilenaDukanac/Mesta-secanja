@@ -54,6 +54,20 @@ try{
                 }
 
             }
+            else if($_GET['type'] == 'unique'){
+                $username = $_GET["username"];
+
+                $data = exists($pdo, $username);
+
+                if ($data == null) {
+                    $response->status = 404;
+                    $response->data = "false";
+                }
+                else {
+                    $response->status = 200;
+                    $response->data = "true";
+                }
+            }
             else{
                 $response->status = 400;
                 $response->data = null;

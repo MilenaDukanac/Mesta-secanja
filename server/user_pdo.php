@@ -23,6 +23,24 @@ function getUser($db, $pass, $username){
     }
 }
 
+function exists($db, $username){
+    $query="select username 
+            from centralcemeteries.user 
+            where username=:username";
+
+    $stmt=$db->prepare($query);
+
+    $stmt->bindParam(":username", $username, PDO::PARAM_STR);
+
+    if($stmt->execute())
+    {
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+    else{
+        return null;
+    }
+}
+
 
 // dohvatanje informacija o korisniku na osnovu imena i prezimena, kada admin zeli da izmeni tip
 function getUserInfo($db, $name, $surname){
@@ -125,7 +143,9 @@ function deleteId($db, $userId){
 
 try{
 //$pdo=Connection::getConnectionInstance();
-
+//
+//$test = exists($pdo, "milos494");
+//var_dump($test);
    //getUser test
 //    $username="test";
 //    $pass="test";
