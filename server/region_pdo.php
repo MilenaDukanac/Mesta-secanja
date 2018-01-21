@@ -2,6 +2,20 @@
 
 include "connection.php";
 
+function getCountriesAndRegions($db){
+  $query = "select c.id as countryId, c.name as countryName, r.id as regionId, r.name as regionName
+            from centralcemeteries.country c left join centralcemeteries.region r on r.countryId = c.id";
+
+  $stmt = $db->prepare($query);
+
+  if($stmt->execute()){
+    return $stmt->fetchAll(PDO::FETCH_OBJ);
+  }
+  else{
+    return null;
+  }
+}
+
 function getAllRegions($db){
 
     $query = "select *
@@ -89,7 +103,10 @@ function deleteRegion($db, $id){
 
 try{
 
-    $pdo=PDO_DB::getConnectionInstance();
+    $pdo=Connection::getConnectionInstance();
+
+//    $all_regions=getCountriesAndRegions($pdo);
+//    var_dump($all_regions);
 //
 //    $insert_region=insertRegion($pdo,1, "Srem");
 //    var_dump($insert_region);
