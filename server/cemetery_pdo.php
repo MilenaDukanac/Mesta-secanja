@@ -62,6 +62,24 @@ function getCemeteriesInRegion($db, $regionId){
     }
 }
 
+function getCemeteriesInCountryInRegion($db,$countryName, $regionName){
+    $query = "select * from centralcemeteries.cemetery cc
+				join centralcemeteries.region r on r.id=cc.regionId 
+				join centralcemeteries.country c on c.id=r.countryId 
+				where c.name=:countryName and r.name=:regionName";
+
+    $stmt = $db->prepare($query);
+
+    $stmt->bindParam(":countryName", $countryName, PDO::PARAM_STR);
+	$stmt->bindParam(":regionName", $regionName, PDO::PARAM_STR);
+    if($stmt->execute()){
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+    else {
+        return null;
+    }
+}
+
 function getCemeteriesInCountry($db, $countryId){
     $query = "select * 
               from centralcemeteries.cemetery
@@ -103,10 +121,10 @@ function deleteCemetery($db, $id){
 
 
 
-try{
-    $pdo=PDO_DB::getConnectionInstance();
-//    $all_cemeteries=getAllCemeteries($pdo);
-//    var_dump($all_cemeteries);
+/*try{
+    $pdo=Connection::getConnectionInstance();
+    $all_cemeteries=getAllCemeteries($pdo);
+    var_dump($all_cemeteries);
 
 //    $cemteries_in_region = getCemeteriesInRegion($pdo, 1);
 //    var_dump($cemteries_in_region);
@@ -129,6 +147,6 @@ try{
 
     echo $e->getMessage();
     unset($pdo);
-}
+}*/
 
 ?>
