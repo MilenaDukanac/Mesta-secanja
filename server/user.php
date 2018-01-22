@@ -38,7 +38,7 @@ try{
                 $user = $_GET["username"];
                 $pass = $_GET['password'];
 
-                $data = getUser($pdo, $pass, $user, "");
+                $data = getUser($pdo, $pass, $user);
                 $response->data = $data;
                 if ($data == null) {
                     $response->status = 404;
@@ -51,6 +51,7 @@ try{
                     $_SESSION['type']=$data->type;
                     $_SESSION['name']=$data->name;
                     $_SESSION['surname']=$data->surname;
+                    $_SESSION['userId']=$data->userId;
                 }
 
             }
@@ -99,8 +100,6 @@ try{
                 $response->data = null;
             }
 
-
-
             break;
 
         case "PUT":
@@ -109,9 +108,16 @@ try{
             break;
 
         case "DELETE":
+          if(deleteId($pdo, int($_SESSION['userId']))){ //Ne brise mi iz baze
+            $response->data = "true";
+            $response->status = 200;
+          }
+          else{
+            $response->data = null;
+            $response->status = 400;
+          }
 
-            // TODO
-            break;
+          break;
     }
 
 
@@ -124,8 +130,8 @@ try{
 }
 
 
-    header("HTTP/1.1 " . $response->status . " " . $status_messages[$response->status]);
-    header("Content-Type:application/json");
+header("HTTP/1.1 " . $response->status . " " . $status_messages[$response->status]);
+header("Content-Type:application/json");
 
 if($response->data != null){
     echo json_encode($response->data);

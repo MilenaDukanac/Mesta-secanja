@@ -5,8 +5,8 @@ include 'connection.php';
 // Dohvatanje informacija o korisniku kada se loguje
 function getUser($db, $pass, $username){
 
-    $query="select name, surname, type 
-            from centralcemeteries.user 
+    $query="select name, surname, type, userId
+            from centralcemeteries.user
             where username=:username and pass=:pass";
 
     $stmt=$db->prepare($query);
@@ -24,8 +24,8 @@ function getUser($db, $pass, $username){
 }
 
 function exists($db, $username){
-    $query="select username 
-            from centralcemeteries.user 
+    $query="select username
+            from centralcemeteries.user
             where username=:username";
 
     $stmt=$db->prepare($query);
@@ -46,7 +46,7 @@ function exists($db, $username){
 function getUserInfo($db, $name, $surname){
 
     $query="select *
-            from centralcemeteries.user 
+            from centralcemeteries.user
             where name=:name and surname=:surname";
 
     $stmt=$db->prepare($query);
@@ -100,7 +100,7 @@ function updateType($db, $userId, $type){
     $db->beginTransaction();
 
     $query="update centralcemeteries.user
-            set type=:type 
+            set type=:type
             where userId=:userId";
 
     $stmt=$db->prepare($query);
@@ -139,7 +139,27 @@ function deleteId($db, $userId){
         return false;
     }
 }
+ // Brisanje korisnika na osnovu korisnickog imena, ono bi trebalo biti jedinstveno
+function deleteUser($db, $username){
 
+    $db->beginTransaction();
+
+    $query="delete from centralcemeteries.user
+            where username=:username";
+
+    $stmt=$db->prepare($query);
+
+    $stmt->bindParam(":username", $username, PDO::PARAM_STR);
+
+    if($stmt->execute()){
+        $db->commit();
+        return true;
+    }
+    else{
+        $db->rollback();
+        return false;
+    }
+}
 
 try{
 //$pdo=Connection::getConnectionInstance();
@@ -150,7 +170,7 @@ try{
 //    $username="test";
 //    $pass="test";
 //    $user_info=getUser($pdo,$pass,$username);
-//    var_dump($user_info->type);
+//    var_dump($user_info);
 
     // insertUser
 //    $name = "Test2";
@@ -165,8 +185,6 @@ try{
 //
 //
 //    echo updateType($pdo, 1, "inner");
-
-
 
 
 }catch(PDOException $e){
