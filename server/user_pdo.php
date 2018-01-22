@@ -163,15 +163,24 @@ function deleteUser($db, $username){
 
 try{
 //$pdo=Connection::getConnectionInstance();
-//
-//$test = exists($pdo, "milos494");
-//var_dump($test);
-   //getUser test
-//    $username="test";
-//    $pass="test";
+////
+
+//   //getUser test
+//    $username="jeka";
+//    $pass="jeka";
 //    $user_info=getUser($pdo,$pass,$username);
 //    var_dump($user_info);
 
+
+//
+//    $username="jeka";
+//    $pass="jeka";
+//    $user_info=deleteId($pdo,intval("4"));
+//    var_dump($user_info);
+
+
+    //$test = exists($pdo, "milos494");
+//var_dump($test);
     // insertUser
 //    $name = "Test2";
 //    $surname = "Testic";

@@ -108,7 +108,9 @@ try{
             break;
 
         case "DELETE":
-          if(deleteId($pdo, int($_SESSION['userId']))){ //Ne brise mi iz baze
+          session_start();
+
+          if(deleteId($pdo, intval($_SESSION['userId']))){ //Ne brise mi iz baze
             $response->data = "true";
             $response->status = 200;
           }
