@@ -32,14 +32,14 @@
     <script src="assets/mobirise-gallery/player.min.js"></script>
     <script src="assets/mobirise-gallery/script.js"></script>
 
-    <script type="text/javascript" src="angular-1.6.6/angular.min.js"></script>
+    <script type="text/javascript" src="assets/angular-1.6.7/angular.min.js"></script>
     <script type="text/javascript" src="login.js"></script>
 
     <input name="animation" type="hidden">
 
 </head>
 
-<body>
+<body style="padding-top: 90px;@media (max-width: device-width) { body {padding-top: 0px; }}">
 <section id="ext_menu-n" data-rv-view="92">
     <nav class="navbar navbar-dropdown">
         <div class="container">
@@ -81,7 +81,7 @@
     </nav>
 </section>
 
-<section class="mbr-info mbr-info-extra mbr-section mbr-section-md-padding mbr-after-navbar" id="msg-box1-d" data-rv-view="98" style="background-color: rgb(40, 50, 78); padding-top: 110px; padding-bottom: 30px;">
+<section class="mbr-info mbr-info-extra mbr-section mbr-section-md-padding mbr-after-navbar" id="msg-box1-d" data-rv-view="98" style="background-color: rgb(40, 50, 78); padding-top: 0px; padding-bottom: 30px;">
     <div class="container">
         <div class="row">
             <div class="mbr-table-md-up">

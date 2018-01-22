@@ -25,17 +25,19 @@
     <script src="assets/dropdown/js/script.min.js"></script>
     <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
     <script src="assets/smooth-scroll/smooth-scroll.js"></script>
-	<script src="assets/theme/js/script.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script src="assets/theme/js/script.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="angular-1.6.7/angular.min.js"></script>
+    <script type="text/javascript" src="assets/angular-1.6.7/angular.min.js"></script>
     <script type="text/javascript" src="login.js"></script>
 
     <input name="animation" type="hidden">
   </head>
 
-  <body>
+  <body style="padding-top: 90px;@media (max-width: device-width) { body {padding-top: 0px; }}">
 	<section id="ext_menu-n" data-rv-view="92">
 	  <nav class="navbar navbar-dropdown">
 		  <div class="container">
@@ -66,17 +68,21 @@
 							  <a class="nav-link link" href="#contacts4-3">CONTACT</a>
 						  </li>
 						  <li class="nav-item dropdown">
-							<a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><img src="assets/images/face2.jpg" class="avatar" alt="Avatar">
-                                <?php
-                                    echo $_SESSION['name']." ".$_SESSION['surname'];
-                                ?>
-                                <b class="caret">
-                                </b>
-                            </a>
+							<a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action">
+                <?php
+                  echo $_SESSION['name']." ".$_SESSION['surname'];
+                ?>
+                <b class="caret"></b>
+              </a>
 							<ul class="dropdown-menu">
 								<li><a href="#" class="dropdown-item">Expend inner circle</a></li>
 								<li><a href="#" class="dropdown-item">Add new tags</a></li>
-								<li><a href="#" class="dropdown-item">Log out</a></li>
+                <div class="dropdown-divider"></div>
+  							<li><a href="#" class="dropdown-item">Add new country</a></li>
+    					  <li><a href="#" class="dropdown-item">Add new region</a></li>
+      					<li><a href="#" class="dropdown-item">Add new cemetery</a></li>
+                <div class="dropdown-divider"></div>
+								<li><a href="logout.php" class="dropdown-item">Log out</a></li>
 							</ul>
 						  </li>
 					  </ul>

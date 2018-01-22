@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="deleteAccount">
 <head>
     <title>  CENTRAL cemeteries </title>
     <meta charset="utf-8" />
@@ -29,15 +29,17 @@
     <script src="assets/theme/js/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="angular-1.6.7/angular.min.js"></script>
-    <script type="text/javascript" src="login.js"></script>
+    <script type="text/javascript" src="assets/angular-1.6.7/angular.min.js"></script>
+    <script type="text/javascript" src="deleteAccount.js"></script>
 
     <input name="animation" type="hidden">
 </head>
 
-<body>
-<section id="ext_menu-n" data-rv-view="92">
+<body style="padding-top: 90px;@media (max-width: device-width) { body {padding-top: 0px; }}">
+<section id="ext_menu-n" data-rv-view="92" ng-controller=deleteController>
     <nav class="navbar navbar-dropdown">
         <div class="container">
             <div class="mbr-table">
@@ -71,11 +73,15 @@
                                 <?php
                                     echo $_SESSION['name']." ".$_SESSION['surname'];
                                 ?>
-                                <b class="caret">
-                                </b>
+                                <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#" class="dropdown-item">Delete account</a></li>
+                  							<li><a href="#" class="dropdown-item">Add new country</a></li>
+                    					  <li><a href="#" class="dropdown-item">Add new region</a></li>
+                      					<li><a href="#" class="dropdown-item">Add new cemetery</a></li>
+                                <div class="dropdown-divider"></div>
+                                <li><a href="#myModal" class="dropdown-item" data-toggle="modal">Delete account</a></li>
+                                <div class="dropdown-divider"></div>
                                 <li><a href="logout.php" class="dropdown-item">Log out</a></li>
                             </ul>
                         </li>
@@ -88,4 +94,20 @@
             </div>
         </div>
     </nav>
+    <div id="myModal" class="modal fade">
+      <div class="modal-dialog modal-confirm text-center">
+        <div class="modal-content">
+          <div class="modal-header bg-danger">
+            <h4 class="modal-title">Are you sure?</h4>
+          </div>
+          <div class="modal-body">
+            <p>Do you really want to delete your account?</p>
+          </div>
+          <div class="modal-footer btn-group center">
+            <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-danger" ng-click="delete()">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
 </section>

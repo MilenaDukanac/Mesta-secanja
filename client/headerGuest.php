@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html>
   <head>
     <title>  CENTRAL cemeteries </title>
     <meta charset="utf-8" />
@@ -25,21 +25,20 @@
     <script src="assets/dropdown/js/script.min.js"></script>
     <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
     <script src="assets/smooth-scroll/smooth-scroll.js"></script>
-	<script src="assets/theme/js/script.js"></script>
+	  <script src="assets/theme/js/script.js"></script>
     <script src="assets/masonry/masonry.pkgd.min.js"></script>
     <script src="assets/imagesloaded/imagesloaded.pkgd.min.js"></script>
     <script src="assets/bootstrap-carousel-swipe/bootstrap-carousel-swipe.js"></script>
     <script src="assets/mobirise-gallery/player.min.js"></script>
     <script src="assets/mobirise-gallery/script.js"></script>
-
-    <script type="text/javascript" src="angular-1.6.6/angular.min.js"></script>
-    <script type="text/javascript" src="register.js"></script>
+    <script type="text/javascript" src="assets/angular-1.6.7/angular.min.js"></script>
 
     <input name="animation" type="hidden">
-	
+
   </head>
 
-  <body>
+
+<body style="padding-top: 90px;@media (max-width: device-width) { body {padding-top: 0px; }}">
 <section id="ext_menu-n" data-rv-view="92">
   <nav class="navbar navbar-dropdown">
       <div class="container">
@@ -67,7 +66,7 @@
                           <a class="nav-link link" href="about.php">ABOUT</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link link" href="#contacts4-3">CONTACT</a> 
+                          <a class="nav-link link" href="#contacts4-3">CONTACT</a>
                       </li>
                   </ul>
 
