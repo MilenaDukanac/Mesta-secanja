@@ -1,6 +1,6 @@
-var app = angular.module('deleteAccount', []);
+var deleteAcount = angular.module('deleteAcount', []);
 
-app.controller('deleteController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
+deleteAcount.controller('deleteController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
 
     $scope.delete = function () {
         $http({

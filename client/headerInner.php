@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="deleteAccount">
+<html>
 <head>
     <title>  CENTRAL cemeteries </title>
     <meta charset="utf-8" />
@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
     <link rel="stylesheet" href="assets/navdrop.css" type="text/css">
 
-    <script src="angular-1.6.7/angular.min.js"></script>
     <script src="assets/web/assets/jquery/jquery.min.js"></script>
     <script src="assets/tether/tether.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -82,7 +81,7 @@
                                 <div class="dropdown-divider"></div>
                                 <li><a href="#myModal" class="dropdown-item" data-toggle="modal">Delete account</a></li>
                                 <div class="dropdown-divider"></div>
-                                <li><a href="logout.php" class="dropdown-item">Log out</a></li>
+                                <li><a href="#" class="dropdown-item">Log out</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -94,8 +93,8 @@
             </div>
         </div>
     </nav>
-    <div id="myModal" class="modal fade">
-      <div class="modal-dialog modal-confirm text-center">
+    <div id="myModal" class="modal fade" ng-app="deleteAcount">
+      <div class="modal-dialog modal-confirm text-center"  ng-controller="deleteController">
         <div class="modal-content">
           <div class="modal-header bg-danger">
             <h4 class="modal-title">Are you sure?</h4>

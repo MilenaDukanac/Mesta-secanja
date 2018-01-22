@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="deleteAccount">
+<html>
   <head>
     <title>  CENTRAL cemeteries </title>
     <meta charset="utf-8" />
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="assets/theme/css/style.css">
     <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
     <link rel="stylesheet" href="assets/navdrop.css" type="text/css">
-    <linc rel="stylesheet" href="assets/successpopup.css" type="text/css">
+    <link rel="stylesheet" href="assets/successpopup.css" type="text/css">
 
     <script src="assets/web/assets/jquery/jquery.min.js"></script>
     <script src="assets/tether/tether.min.js"></script>
@@ -40,7 +40,7 @@
   </head>
 
   <body style="padding-top: 90px;@media (max-width: device-width) { body {padding-top: 0px; }}">
-	<section id="ext_menu-n" data-rv-view="92" ng-controller=deleteController>
+	<section id="ext_menu-n" data-rv-view="92">
 	  <nav class="navbar navbar-dropdown">
 		  <div class="container">
 			  <div class="mbr-table">
@@ -79,7 +79,7 @@
   							<ul class="dropdown-menu">
   								<li><a href="#myModal" class="dropdown-item" data-toggle="modal">Delete account</a></li>
                   <div class="dropdown-divider"></div>
-  								<li><a href="logout.php" class="dropdown-item">Log out</a></li>
+  								<li><a href="#" class="dropdown-item">Log out</a></li>
   							</ul>
 						  </li>
 					  </ul>
@@ -91,8 +91,8 @@
 			  </div>
 		  </div>
 	  </nav>
-    <div id="myModal" class="modal fade">
-      <div class="modal-dialog modal-confirm text-center">
+    <div id="myModal" class="modal fade" ng-app="deleteAcount">
+      <div class="modal-dialog modal-confirm text-center" ng-controller="deleteController">
         <div class="modal-content">
           <div class="modal-header bg-danger">
             <h4 class="modal-title">Are you sure?</h4>

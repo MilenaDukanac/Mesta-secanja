@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  ng-app="app">
+<html>
 <head>
     <title>  CENTRAL cemeteries </title>
     <meta charset="utf-8" />
@@ -81,7 +81,7 @@
     </nav>
 </section>
 
-<section class="mbr-info mbr-info-extra mbr-section mbr-section-md-padding mbr-after-navbar" id="msg-box1-d" data-rv-view="98" style="background-color: rgb(40, 50, 78); padding-top: 0px; padding-bottom: 30px;">
+<section class="mbr-info mbr-info-extra mbr-section mbr-section-md-padding mbr-after-navbar" id="msg-box1-d" data-rv-view="98" style="background-color: rgb(40, 50, 78); padding-top: 0px; padding-bottom: 30px;"  ng-app="app">
     <div class="container">
         <div class="row">
             <div class="mbr-table-md-up">

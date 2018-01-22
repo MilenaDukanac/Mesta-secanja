@@ -7,8 +7,8 @@
         include 'headerAdmin.php';
     else if($_SESSION['type']==="other")
         include 'headerOther.php';
-//    else if($_SESSION['type']==="inner")
-//        include 'headerInner.php';
+   else if($_SESSION['type']==="inner")
+        include 'headerInner.php';
 //dodati
 
 ?>
