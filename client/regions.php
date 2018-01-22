@@ -3,8 +3,10 @@ include('headerGuest.php');
 ?>
 
   <script type="text/jscript" src="regions.js"> </script>
-
-  <section ng-app="regions" class="mbr-cards mbr-section mbr-section-nopadding" id="features1-x" data-rv-view="54" style="background-color: rgb(255, 255, 255); padding-top:90px">
+<script type="text/javascript">
+    niz.push("regions");
+</script>
+  <section class="mbr-cards mbr-section mbr-section-nopadding" id="features1-x" data-rv-view="54" style="background-color: rgb(255, 255, 255); padding-top:90px">
       <div ng-controller="mainController" class="mbr-cards-row row">
 
         <label for="country">Country: </label><br>

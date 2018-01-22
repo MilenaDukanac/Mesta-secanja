@@ -59,6 +59,10 @@
 			document.documentElement.scrollTop = 0;
 		}
 		</script>
+        <script type="text/javascript">
+            var rootApp = angular.module('rootApp', niz);
+            console.log(niz);
+        </script>
 		
 	</body>
 </html>

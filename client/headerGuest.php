@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="rootApp">
   <head>
     <title>  CENTRAL cemeteries </title>
     <meta charset="utf-8" />
@@ -33,6 +33,9 @@
     <script src="assets/mobirise-gallery/script.js"></script>
     <script type="text/javascript" src="assets/angular-1.6.7/angular.min.js"></script>
 
+      <script type="text/javascript">
+          var niz = [];
+      </script>
     <input name="animation" type="hidden">
 
   </head>

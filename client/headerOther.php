@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="rootApp">
   <head>
     <title>  CENTRAL cemeteries </title>
     <meta charset="utf-8" />
@@ -36,6 +36,9 @@
     <script type="text/javascript" src="assets/angular-1.6.7/angular.min.js"></script>
     <script type="text/javascript" src="deleteAccount.js"></script>
 
+      <script type="text/javascript">
+          var niz = [];
+      </script>
     <input name="animation" type="hidden">
   </head>
 
@@ -91,7 +94,10 @@
 			  </div>
 		  </div>
 	  </nav>
-    <div id="myModal" class="modal fade" ng-app="deleteAcount">
+        <script type="text/javascript">
+            niz.push("deleteAcount");
+        </script>
+    <div id="myModal" class="modal fade">
       <div class="modal-dialog modal-confirm text-center" ng-controller="deleteController">
         <div class="modal-content">
           <div class="modal-header bg-danger">

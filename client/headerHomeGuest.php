@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="rootApp">
 <head>
     <title>  CENTRAL cemeteries </title>
     <meta charset="utf-8" />
@@ -35,6 +35,9 @@
     <script type="text/javascript" src="assets/angular-1.6.7/angular.min.js"></script>
     <script type="text/javascript" src="login.js"></script>
 
+    <script type="text/javascript">
+        var niz = [];
+    </script>
     <input name="animation" type="hidden">
 
 </head>
@@ -80,8 +83,10 @@
         </div>
     </nav>
 </section>
-
-<section class="mbr-info mbr-info-extra mbr-section mbr-section-md-padding mbr-after-navbar" id="msg-box1-d" data-rv-view="98" style="background-color: rgb(40, 50, 78); padding-top: 0px; padding-bottom: 30px;"  ng-app="app">
+<script type="text/javascript">
+    niz.push("app");
+</script>
+<section class="mbr-info mbr-info-extra mbr-section mbr-section-md-padding mbr-after-navbar" id="msg-box1-d" data-rv-view="98" style="background-color: rgb(40, 50, 78); padding-top: 0px; padding-bottom: 30px;">
     <div class="container">
         <div class="row">
             <div class="mbr-table-md-up">
