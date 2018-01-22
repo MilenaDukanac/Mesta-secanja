@@ -1,7 +1,7 @@
 <?php
 include('headerGuest.php');
 ?>
-
+<script type="text/javascript" src="register.js"></script>
 <section ng-app="app" class="mbr-section form1 mbr-after-navbar" id="form1-o" data-rv-view="56" style="background-color: rgb(255, 255, 255); padding-top: 120px; padding-bottom: 0px;">
 	<div class="mbr-section mbr-section__container mbr-section__container--middle">
 		<div class="container">
