@@ -1,7 +1,9 @@
 <?php
 session_start();
-
-if($_SESSION['type']==="admin")
+if(!isset($_SESSION['type'])) {
+    include 'headerGuest.php';
+}
+else if($_SESSION['type']==="admin")
     include 'headerAdmin.php';
 else if($_SESSION['type']==="other")
     include 'headerOther.php';
