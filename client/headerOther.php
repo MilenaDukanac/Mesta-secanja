@@ -82,7 +82,7 @@
   							<ul class="dropdown-menu">
   								<li><a href="#myModal" class="dropdown-item" data-toggle="modal">Delete account</a></li>
                   <div class="dropdown-divider"></div>
-  								<li><a href="#" class="dropdown-item">Log out</a></li>
+  								<li><a href="logout.php" class="dropdown-item">Log out</a></li>
   							</ul>
 						  </li>
 					  </ul>
