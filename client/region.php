@@ -1,5 +1,14 @@
 <?php
-include('headerGuest.php');
+session_start();
+
+if($_SESSION['type']==="admin")
+    include 'headerAdmin.php';
+else if($_SESSION['type']==="other")
+    include 'headerOther.php';
+else if($_SESSION['type']==="inner")
+    include 'headerInner.php';
+else
+    include 'headerGuest.php'
 ?>
 
 <section class="mbr-cards mbr-section mbr-section-nopadding" id="features1-x" data-rv-view="54" style="background-color: rgb(255, 255, 255); padding-top:90px">

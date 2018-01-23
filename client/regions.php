@@ -1,5 +1,14 @@
 <?php
-include('headerGuest.php');
+session_start();
+
+if($_SESSION['type']==="admin")
+    include 'headerAdmin.php';
+else if($_SESSION['type']==="other")
+    include 'headerOther.php';
+else if($_SESSION['type']==="inner")
+    include 'headerInner.php';
+else
+    include 'headerGuest.php'
 ?>
 
   <script type="text/jscript" src="regions.js"> </script>
