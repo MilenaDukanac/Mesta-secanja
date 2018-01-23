@@ -29,7 +29,6 @@ if(!in_array($method,$supported_methods)) {
 $pdo = Connection::getConnectionInstance();
 
 try{
-
     switch ($method){
 
         case "GET":
@@ -37,6 +36,7 @@ try{
             if($_GET['type'] == 'login') {
                 $user = $_GET["username"];
                 $pass = $_GET['password'];
+
 
                 $data = getUser($pdo, $pass, $user);
                 $response->data = $data;
@@ -52,6 +52,7 @@ try{
                     $_SESSION['name']=$data->name;
                     $_SESSION['surname']=$data->surname;
                     $_SESSION['userId']=$data->userId;
+                    $_SESSION['institution']=$data->institution;
                 }
 
             }

@@ -5,7 +5,7 @@ include 'connection.php';
 // Dohvatanje informacija o korisniku kada se loguje
 function getUser($db, $pass, $username){
 
-    $query="select name, surname, type, userId
+    $query="select name, surname, type, userId, institution
             from centralcemeteries.user
             where username=:username and pass=:pass";
 
@@ -188,8 +188,8 @@ try{
 ////
 
 //   //getUser test
-//    $username="jeka";
-//    $pass="jeka";
+//    $username="vesna";
+//    $pass="sifraa";
 //    $user_info=getUser($pdo,$pass,$username);
 //    var_dump($user_info);
 
