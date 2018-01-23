@@ -76,14 +76,16 @@
                         <li class="nav-item dropdown">
                             <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action">
                                 <?php
-                                    echo $_SESSION['name']." ".$_SESSION['surname'];
+                                echo $_SESSION['name']." ".$_SESSION['surname'];
                                 ?>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                								<li><a href="#newCountry" class="dropdown-item" data-toggle="modal">Add new country</a></li>
-                								<li><a href="#newRegion" class="dropdown-item" data-toggle="modal">Add new region</a></li>
-                								<li><a href="#newCemetery" class="dropdown-item" data-toggle="modal">Add new cemetery</a></li>
+                                <li><a href="profile.php" class="dropdown-item">View profile</a></li>
+                                <div class="dropdown-divider"></div>
+                                <li><a href="#newCountry" class="dropdown-item" data-toggle="modal">Add new country</a></li>
+                                <li><a href="#newRegion" class="dropdown-item" data-toggle="modal">Add new region</a></li>
+                                <li><a href="#newCemetery" class="dropdown-item" data-toggle="modal">Add new cemetery</a></li>
                                 <div class="dropdown-divider"></div>
                                 <li><a href="#myModal" class="dropdown-item" data-toggle="modal">Delete account</a></li>
                                 <div class="dropdown-divider"></div>
@@ -104,136 +106,136 @@
         niz.push("deleteAcount");
     </script>
     <div id="myModal" class="modal fade">
-      <div class="modal-dialog modal-confirm text-center"  ng-controller="deleteController">
-        <div class="modal-content">
-          <div class="modal-header bg-danger">
-            <h4 class="modal-title">Are you sure?</h4>
-          </div>
-          <div class="modal-body">
-            <p>Do you really want to delete your account?</p>
-          </div>
-          <div class="modal-footer btn-group center">
-            <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-danger" ng-click="delete()">Delete</button>
-          </div>
+        <div class="modal-dialog modal-confirm text-center"  ng-controller="deleteController">
+            <div class="modal-content">
+                <div class="modal-header bg-danger">
+                    <h4 class="modal-title">Are you sure?</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to delete your account?</p>
+                </div>
+                <div class="modal-footer btn-group center">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" ng-click="delete()">Delete</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
     <script type="text/javascript">
-      niz.push("newCountry");
+        niz.push("newCountry");
     </script>
     <div id="newCountry" class="modal fade">
-      <div class="modal-dialog modal-confirm text-center" ng-controller="newCountryController">
-        <div class="modal-content">
-          <div class="modal-header bg-info">
-            <h4 class="modal-title">Add new country</h4>
-          </div>
-          <div class="container modal-body">
-            <form class="offset-3">
-              <div class="form-group">
-                <label class="form-control-label" for="form3-o-country">Country</label>
-                <input type="text" class="form-control" name="country" data-form-field="Country" id="form3-o-country" ng-model="countryName">
-              </div>
-              <div class=" form-group mbr-buttons mbr-buttons--center btn-inverse">
-                <button type="submit" class="btn btn-sm btn-primary" ng-click="newCountry()">
-                  Save
-                </button>
-                <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
-                  Close
-                </button>
-              </div>
-            <!--	<div ng-show="showExpendInnerMessage">{{expendInnerMessage}}</div>-->
-            </form>
-          </div>
+        <div class="modal-dialog modal-confirm text-center" ng-controller="newCountryController">
+            <div class="modal-content">
+                <div class="modal-header bg-info">
+                    <h4 class="modal-title">Add new country</h4>
+                </div>
+                <div class="container modal-body">
+                    <form class="offset-3">
+                        <div class="form-group">
+                            <label class="form-control-label" for="form3-o-country">Country</label>
+                            <input type="text" class="form-control" name="country" data-form-field="Country" id="form3-o-country" ng-model="countryName">
+                        </div>
+                        <div class=" form-group mbr-buttons mbr-buttons--center btn-inverse">
+                            <button type="submit" class="btn btn-sm btn-primary" ng-click="newCountry()">
+                                Save
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                                Close
+                            </button>
+                        </div>
+                        <!--	<div ng-show="showExpendInnerMessage">{{expendInnerMessage}}</div>-->
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
 
     <script type="text/javascript">
-      niz.push("newRegion");
+        niz.push("newRegion");
     </script>
     <div id="newRegion" class="modal fade">
-      <div class="modal-dialog modal-confirm text-center" ng-controller="newRegionController">
-        <div class="modal-content">
-          <div class="modal-header bg-info">
-            <h4 class="modal-title">Add new region</h4>
-          </div>
-          <div class="container modal-body">
-            <form class="offset-3">
-              <div class="form-group">
-                <label class="form-control-label" for="form4-o-country">Country</label>
-                <input type="text" class="form-control" name="type" data-form-field="Country" id="form4-o-country" ng-model="newRegion.country">
-              </div>
-              <div class="form-group">
-                <label class="form-control-label" for="form4-o-region">Region</label>
-                <input type="text" class="form-control" name="region" data-form-field="Region" id="form4-o-region" ng-model="newRegion.region">
-              </div>
-              <div class=" form-group mbr-buttons mbr-buttons--center btn-inverse">
-                <button type="submit" class="btn btn-sm btn-primary" ng-click="insertRegion()">
-                  Save
-                </button>
-                <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
-                  Close
-                </button>
-              </div>
-            <!--	<div ng-show="showNewRegionMessage">{{newRegionMessage}}</div>-->
-            </form>
-           </div>
+        <div class="modal-dialog modal-confirm text-center" ng-controller="newRegionController">
+            <div class="modal-content">
+                <div class="modal-header bg-info">
+                    <h4 class="modal-title">Add new region</h4>
+                </div>
+                <div class="container modal-body">
+                    <form class="offset-3">
+                        <div class="form-group">
+                            <label class="form-control-label" for="form4-o-country">Country</label>
+                            <input type="text" class="form-control" name="type" data-form-field="Country" id="form4-o-country" ng-model="newRegion.country">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="form4-o-region">Region</label>
+                            <input type="text" class="form-control" name="region" data-form-field="Region" id="form4-o-region" ng-model="newRegion.region">
+                        </div>
+                        <div class=" form-group mbr-buttons mbr-buttons--center btn-inverse">
+                            <button type="submit" class="btn btn-sm btn-primary" ng-click="insertRegion()">
+                                Save
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                                Close
+                            </button>
+                        </div>
+                        <!--	<div ng-show="showNewRegionMessage">{{newRegionMessage}}</div>-->
+                    </form>
+                </div>
+            </div>
         </div>
-       </div>
-     </div>
+    </div>
 
 
     <script type="text/javascript">
-      niz.push("newCemetery");
+        niz.push("newCemetery");
     </script>
     <div id="newCemetery" class="modal fade">
-      <div class="modal-dialog modal-confirm text-center" ng-controller="newCemeteryController">
-        <div class="modal-content">
-          <div class="modal-header bg-info">
-            <h4 class="modal-title">Add new cemetery</h4>
-          </div>
-          <div class="container modal-body">
-            <form class="offset-3">
-              <div class="form-group">
-                <label class="form-control-label" for="form5-o-region">Region</label>
-                <input type="text" class="form-control" name="region" data-form-field="Region" id="form5-o-username" ng-model="newCemetery.region">
-              </div>
-              <div class="form-group">
-                <label class="form-control-label" for="form5-o-cemetery">Cemetery</label>
-                <input type="text" class="form-control" name="cemetery" data-form-field="Cemetery" id="form5-o-cemetery" ng-model="newCemetery.cemetery">
-              </div>
-              <div class="form-group">
-                <label class="form-control-label" for="form5-o-description">Description</label>
-                <input type="text" class="form-control" name="description" data-form-field="description" id="form5-o-description" ng-model="newCemetery.description">
-              </div>
-              <div class="form-group">
-                <label class="form-control-label" for="form5-o-additional">Additional data</label>
-                <input type="text" class="form-control" name="additional" data-form-field="Additional data" id="form5-o-additional" ng-model="newCemetery.additionalData">
-              </div>
-              <div class="form-group">
-                <label class="form-control-label" for="form5-o-longitude">Longitude</label>
-                <input type="text" class="form-control" name="longitude" data-form-field="Longitude" id="form5-o-longitude" ng-model="newCemetery.longitude">
-              </div>
-              <div class="form-group">
-                <label class="form-control-label" for="form5-o-latitude">Latitude</label>
-                <input type="text" class="form-control" name="latitude" data-form-field="Latitude" id="form5-o-latitude" ng-model="newCemetery.latitude">
-              </div>
-              <div class=" form-group mbr-buttons mbr-buttons--center btn-inverse">
-                <button type="submit" class="btn btn-sm btn-primary" ng-click="insertCemetery()">
-                  Save
-                </button>
-                <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
-                  Close
-                </button>
-              </div>
-            <!--	<div ng-show="shownNewCemeteryMessage">{{newCemeteryMessage}}</div>-->
-            </form>
-          </div>
+        <div class="modal-dialog modal-confirm text-center" ng-controller="newCemeteryController">
+            <div class="modal-content">
+                <div class="modal-header bg-info">
+                    <h4 class="modal-title">Add new cemetery</h4>
+                </div>
+                <div class="container modal-body">
+                    <form class="offset-3">
+                        <div class="form-group">
+                            <label class="form-control-label" for="form5-o-region">Region</label>
+                            <input type="text" class="form-control" name="region" data-form-field="Region" id="form5-o-username" ng-model="newCemetery.region">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="form5-o-cemetery">Cemetery</label>
+                            <input type="text" class="form-control" name="cemetery" data-form-field="Cemetery" id="form5-o-cemetery" ng-model="newCemetery.cemetery">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="form5-o-description">Description</label>
+                            <input type="text" class="form-control" name="description" data-form-field="description" id="form5-o-description" ng-model="newCemetery.description">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="form5-o-additional">Additional data</label>
+                            <input type="text" class="form-control" name="additional" data-form-field="Additional data" id="form5-o-additional" ng-model="newCemetery.additionalData">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="form5-o-longitude">Longitude</label>
+                            <input type="text" class="form-control" name="longitude" data-form-field="Longitude" id="form5-o-longitude" ng-model="newCemetery.longitude">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="form5-o-latitude">Latitude</label>
+                            <input type="text" class="form-control" name="latitude" data-form-field="Latitude" id="form5-o-latitude" ng-model="newCemetery.latitude">
+                        </div>
+                        <div class=" form-group mbr-buttons mbr-buttons--center btn-inverse">
+                            <button type="submit" class="btn btn-sm btn-primary" ng-click="insertCemetery()">
+                                Save
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                                Close
+                            </button>
+                        </div>
+                        <!--	<div ng-show="shownNewCemeteryMessage">{{newCemeteryMessage}}</div>-->
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
 </section>
