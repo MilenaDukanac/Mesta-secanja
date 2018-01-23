@@ -29,15 +29,15 @@ function getCemetery($db, $id){
     return $stmt->fetch(PDO::FETCH_OBJ);
 }
 
-function insertCemetery($db, $name,$place_id, $description, $additional_data, $longitude, $latitude){
+function insertCemetery($db, $name,$region_id, $description, $additional_data, $longitude, $latitude){
 
     $query = "insert into centralcemeteries.cemetery
-              values(NULL, :nname, :place_id, :description, :additional_data, :longitude, :latitude)";
+              values(NULL, :name, :region_id, :description, :additional_data, :longitude, :latitude)";
 
     $stmt = $db->prepare($query);
 
-    $stmt->bindParam(":nname", $name, PDO::PARAM_INT);
-    $stmt->bindParam(":place_id", $place_id, PDO::PARAM_INT);
+    $stmt->bindParam(":name", $name, PDO::PARAM_INT);
+    $stmt->bindParam(":region_id", $region_id, PDO::PARAM_INT);
     $stmt->bindParam(":description", $description, PDO::PARAM_STR);
     $stmt->bindParam(":additional_data", $additional_data, PDO::PARAM_STR);
     $stmt->bindParam(":longitude", $longitude, PDO::PARAM_STR);
@@ -47,6 +47,23 @@ function insertCemetery($db, $name,$place_id, $description, $additional_data, $l
         return true;
     else
         return false;
+
+}
+
+function insertCemeteryWithRegionName($db, $name, $region_name, $description, $additional_data, $longitude, $latitude){
+    $query1 = "select id
+               from centralcemeteries.region
+               where name=:name";
+    $stmt1 = $db->prepare($query1);
+    $stmt1->bindParam(":name", $region_name, PDO::PARAM_STR);
+
+    if($stmt1->execute()) {
+        $region_id = $stmt1->fetch(PDO::FETCH_OBJ);
+    }
+    else
+        return false;
+
+    return insertCemetery($db, $name, intval($region_id), $description, $additional_data, $longitude, $latitude);
 
 }
 
@@ -125,7 +142,7 @@ function deleteCemetery($db, $id){
 
 
 try{
-//    $pdo=Connection::getConnectionInstance();
+//   $pdo=Connection::getConnectionInstance();
 //    $all_cemeteries=getAllCemeteries($pdo);
 //    var_dump($all_cemeteries);
 
@@ -145,6 +162,12 @@ try{
 //    $insert_cemetery=insertCemetery($pdo,1, "Test description", null, 45.3815612, 20.36857370000007);
 //    var_dump($insert_cemetery);
 //
+//    $insert_cemetery=insertCemeteryWithRegionName($pdo,"Najnovije groblje", "Sumadija", "neko bas lepo groblje", "many historical persons", 20.36857370000007, 24.45689769464);
+//    var_dump($insert_cemetery);
+
+
+//    $insert_cemetery=insertCemetery($pdo,"Najnovije groblje", "5", "neko bas lepo groblje", "many historical persons", 20.36857370000007, 24.45689769464);
+//    var_dump($insert_cemetery);
 
 }catch(PDOException $e){
 

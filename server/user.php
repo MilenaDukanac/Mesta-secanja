@@ -103,8 +103,16 @@ try{
             break;
 
         case "PUT":
+            //TODO
+            $new_inner = json_decode(file_get_contents("php://input"));
 
-            // TODO: nije prioritet
+            if(updateTypeByUsername($pdo, $new_inner->username)){
+                $response->status = 201;
+            }
+            else{
+                $response->status = 400;
+                $response->data = null;
+            }
             break;
 
         case "DELETE":

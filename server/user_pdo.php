@@ -118,6 +118,28 @@ function updateType($db, $userId, $type){
     }
 }
 
+function updateTypeByUsername($db, $username){
+
+    $db->beginTransaction();
+
+    $query="update centralcemeteries.user
+            set type='inner'
+            where username=:username";
+
+    $stmt=$db->prepare($query);
+
+    $stmt->bindParam(":username", $username, PDO::PARAM_INT);
+
+    if($stmt->execute()){
+        $db->commit();
+        return true;
+    }
+    else{
+        $db->rollback();
+        return false;
+    }
+}
+
 // Brisanje naloga
 function deleteId($db, $userId){
 

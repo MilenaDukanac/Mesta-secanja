@@ -49,35 +49,47 @@ try{
         case "GET":
 
             switch($number_of_url_elements){
-				case 1:
-					if($url_elements[1] == "cemeteries"){
-                            $response->data = getAllCemeteries($pdo);
-							//echo "uzeo sam podatke";
-                            $response->status = 200;
-                        }
-                        else{
-                            $response->status = 400;
-                            $response->data = null;
-                        }
+                case 1:
+                    if($url_elements[1] == "cemeteries"){
+                        $response->data = getAllCemeteries($pdo);
+                        //echo "uzeo sam podatke";
+                        $response->status = 200;
+                    }
+                    else{
+                        $response->status = 400;
+                        $response->data = null;
+                    }
 
-                        break;
-				case 3:
-					if($url_elements[1] == "cemeteries"){
-						$response->data = getCemeteriesInCountryInRegion($pdo,$url_elements[2],$url_elements[3]);
-							//echo "uzeo sam podatke";
-                            $response->status = 200;
-						
-					}
-					else{
-                            $response->status = 400;
-                            $response->data = null;
-                        }
-						break;
-					
-			}
-				
+                    break;
+                case 3:
+                    if($url_elements[1] == "cemeteries"){
+                        $response->data = getCemeteriesInCountryInRegion($pdo,$url_elements[2],$url_elements[3]);
+                        //echo "uzeo sam podatke";
+                        $response->status = 200;
 
-        
+                    }
+                    else{
+                        $response->status = 400;
+                        $response->data = null;
+                    }
+                    break;
+
+            }
+            break;
+        case 'POST':
+            $newCemetery = json_decode(file_get_contents("php://input"));
+
+            if(insertCemeteryWithRegionName($pdo, $newCemetery->cemetery, $newCemetery->region, $newCemetery->description, $newCemetery->additionalData, $newCemetery->longitude, $newCemetery->latitude)){
+                $response->status = 201;
+            }
+            else{
+                $response->status = 400;
+                $response->data = null;
+            }
+            break;
+
+
+
     }
 
 
@@ -96,10 +108,10 @@ try{
 }*/
 //   else {
 
-    // Menjamo promenljivama
-    header("HTTP/1.1 " . $response->status . " " . $status_messages[$response->status]);
-    // Dodajemo da je u json formatu
-    header("Content-Type:application/json");
+// Menjamo promenljivama
+header("HTTP/1.1 " . $response->status . " " . $status_messages[$response->status]);
+// Dodajemo da je u json formatu
+header("Content-Type:application/json");
 //}
 
 
