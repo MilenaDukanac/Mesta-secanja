@@ -3,7 +3,10 @@
 include 'connection.php';
 
 function getAllCemeteries($db){
-    $query = "select * from centralcemeteries.cemetery";
+    $query = "select cc.id, cc.name, cc.description, cc.additionalData, cc.longitude, cc.latitude, r.name as regionName, c.name as countryName
+              from centralcemeteries.cemetery cc
+              join centralcemeteries.region r on cc.regionId = r.id
+              join centralcemeteries.country c on c.id = r.countryId";
 
     $stmt = $db->prepare($query);
     if($stmt->execute()) {
@@ -71,7 +74,7 @@ function getCemeteriesInCountryInRegion($db,$countryName, $regionName){
     $stmt = $db->prepare($query);
 
     $stmt->bindParam(":countryName", $countryName, PDO::PARAM_STR);
-	$stmt->bindParam(":regionName", $regionName, PDO::PARAM_STR);
+    $stmt->bindParam(":regionName", $regionName, PDO::PARAM_STR);
     if($stmt->execute()){
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
@@ -121,10 +124,10 @@ function deleteCemetery($db, $id){
 
 
 
-/*try{
-    $pdo=Connection::getConnectionInstance();
-    $all_cemeteries=getAllCemeteries($pdo);
-    var_dump($all_cemeteries);
+try{
+//    $pdo=Connection::getConnectionInstance();
+//    $all_cemeteries=getAllCemeteries($pdo);
+//    var_dump($all_cemeteries);
 
 //    $cemteries_in_region = getCemeteriesInRegion($pdo, 1);
 //    var_dump($cemteries_in_region);
@@ -147,6 +150,6 @@ function deleteCemetery($db, $id){
 
     echo $e->getMessage();
     unset($pdo);
-}*/
+}
 
 ?>
