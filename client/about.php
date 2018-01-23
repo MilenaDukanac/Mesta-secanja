@@ -1,5 +1,12 @@
 <?php
-include('headerGuest.php');
+session_start();
+
+if($_SESSION['type']==="admin")
+    include 'headerAdmin.php';
+else if($_SESSION['type']==="other")
+    include 'headerOther.php';
+else if($_SESSION['type']==="inner")
+    include 'headerInner.php';
 ?>
 
 <section class="mbr-section" id="testimonials1-17" data-rv-view="16" style="background-color: rgb(40, 50, 78); padding-top: 80px; padding-bottom: 40px;">
