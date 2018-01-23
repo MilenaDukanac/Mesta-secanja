@@ -72,8 +72,7 @@ function deleteCountry($db, $id){
 
 try{
 
-    echo "greskakaaa";
-    $pdo=Connection::getConnectionInstance();
+//    $pdo=Connection::getConnectionInstance();
 //
 //    $insert_country=insertCountry($pdo,"Hungary");
 //    var_dump($insert_country);
