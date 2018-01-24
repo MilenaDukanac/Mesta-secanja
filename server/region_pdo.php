@@ -97,7 +97,7 @@ function insertRegionWithCountryName($db, $countryName, $name){
         return false;
     }
 
-    return insertRegion($db, intval($countryId), $name);
+    return insertRegion($db, intval($countryId->id), $name);
 }
 
 function deleteRegion($db, $id){

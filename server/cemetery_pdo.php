@@ -63,7 +63,7 @@ function insertCemeteryWithRegionName($db, $name, $region_name, $description, $a
     else
         return false;
 
-    return insertCemetery($db, $name, intval($region_id), $description, $additional_data, $longitude, $latitude);
+    return insertCemetery($db, $name, intval($region_id->id), $description, $additional_data, $longitude, $latitude);
 
 }
 
