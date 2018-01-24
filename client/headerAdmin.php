@@ -86,8 +86,8 @@
                                 <li><a href="profile.php" class="dropdown-item">View profile</a></li>
                                 <div class="dropdown-divider"></div>
                                 <li><a href="#expandInner" class="dropdown-item" data-toggle="modal">Expand inner circle</a></li>
-                                <li><a href="#newTag" class="dropdown-item" data-toggle="modal">Add new tag</a></li>
                                 <div class="dropdown-divider"></div>
+                                <li><a href="#newTag" class="dropdown-item" data-toggle="modal">Add new tag</a></li>
                                 <li><a href="#newCountry" class="dropdown-item" data-toggle="modal">Add new country</a></li>
                                 <li><a href="#newRegion" class="dropdown-item" data-toggle="modal">Add new region</a></li>
                                 <li><a href="#newCemetery" class="dropdown-item" data-toggle="modal">Add new cemetery</a></li>
