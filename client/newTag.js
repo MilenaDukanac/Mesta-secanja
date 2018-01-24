@@ -1,6 +1,6 @@
 var newTag = angular.module('newTag', []);
 
-expendInner.controller('newTagController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
+newTag.controller('newTagController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
 		$scope.newTag = {};
     $scope.newTagMessage = "";
     $scope.showNewTagMessage = false;
