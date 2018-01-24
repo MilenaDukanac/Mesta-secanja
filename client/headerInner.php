@@ -145,7 +145,7 @@
                                 Close
                             </button>
                         </div>
-                        <!--	<div ng-show="showExpendInnerMessage">{{expendInnerMessage}}</div>-->
+                        <!--	<div ng-show="showExpandInnerMessage">{{expandInnerMessage}}</div>-->
                     </form>
                 </div>
             </div>

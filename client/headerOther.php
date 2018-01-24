@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="assets/theme/css/style.css">
     <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
     <link rel="stylesheet" href="assets/navdrop.css" type="text/css">
-    <link rel="stylesheet" href="assets/successpopup.css" type="text/css">
 
     <script src="assets/web/assets/jquery/jquery.min.js"></script>
     <script src="assets/tether/tether.min.js"></script>
@@ -26,9 +25,9 @@
     <script src="assets/dropdown/js/script.min.js"></script>
     <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
     <script src="assets/smooth-scroll/smooth-scroll.js"></script>
-	  <script src="assets/theme/js/script.js"></script>
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="assets/theme/js/script.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -36,9 +35,9 @@
     <script type="text/javascript" src="assets/angular-1.6.7/angular.min.js"></script>
     <script type="text/javascript" src="deleteAccount.js"></script>
 
-      <script type="text/javascript">
-          var niz = [];
-      </script>
+    <script type="text/javascript">
+        var niz = [];
+    </script>
     <input name="animation" type="hidden">
   </head>
 
@@ -74,14 +73,14 @@
 						  </li>
 						  <li class="nav-item dropdown">
   							<a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action">
-                  <?php
-                    echo $_SESSION['name']." ".$_SESSION['surname'];
-                  ?>
-                  <b class="caret"></b>
-                </a>
+                                <?php
+                                    echo $_SESSION['name']." ".$_SESSION['surname'];
+                                ?>
+                                <b class="caret"></b>
+                            </a>
   							<ul class="dropdown-menu">
   								<li><a href="#myModal" class="dropdown-item" data-toggle="modal">Delete account</a></li>
-                  <div class="dropdown-divider"></div>
+                                 <div class="dropdown-divider"></div>
   								<li><a href="logout.php" class="dropdown-item">Log out</a></li>
   							</ul>
 						  </li>
