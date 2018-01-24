@@ -37,8 +37,29 @@ try{
                 $user = $_GET["username"];
                 $pass = $_GET['password'];
 
+                // JWT
 
-                $data = getUser($pdo, $pass, $user);
+                /* header */
+                $header = new stdClass();
+                $header->alg = "HS256";
+                $header->typ = "JWT";
+                $header_json = json_encode($header);
+                $header_json_base64 = base64_encode($header_json);
+
+                /* payload */
+                $payload = new stdClass();
+                $payload->password = $pass;
+                $payload_json = json_encode($payload);
+                $payload_json_base64 = base64_encode($payload_json);
+
+                /* signature */
+                $secret = "ovoJeTajna";
+                $signature = base64_encode(hash_hmac("sha256",$header_json_base64.".".$payload_json_base64, $secret, true));
+
+                $token = $header_json_base64.".".$payload_json_base64.".".$signature;
+
+
+                $data = getUser($pdo, $token, $user);
                 $response->data = $data;
                 if ($data == null) {
                     $response->status = 404;
@@ -78,19 +99,34 @@ try{
 
         case "POST":
 
-            //echo "usao sam u post deo";
             // POST/user
 
             $new_user = json_decode(file_get_contents("php://input"));
 
-            // TODO: validacija
-            // name - dozvoljena slova
-            // surname - dozvoljena slova
-            // username - treba da bude jedinstveno; dozvoljena su slova, cifre i _; izmedju 5-16
-            // email - treba da bude u odgovarajucem formatu
-            // password - dozvoljeno je sve; treba da bude izmedju 8 i 32
+            // JWT
 
-            if(insertUser($pdo, $new_user->name, $new_user->surname, $new_user->username, $new_user->password, $new_user->email, $new_user->institution, $new_user->note)){
+            /* header */
+            $header = new stdClass();
+            $header->alg = "HS256";
+            $header->typ = "JWT";
+            $header_json = json_encode($header);
+            $header_json_base64 = base64_encode($header_json);
+
+            /* payload */
+            $payload = new stdClass();
+            $payload->password = $new_user->password;
+            $payload_json = json_encode($payload);
+            $payload_json_base64 = base64_encode($payload_json);
+
+            /* signature */
+            $secret = "ovoJeTajna";
+            $signature = base64_encode(hash_hmac("sha256",$header_json_base64.".".$payload_json_base64, $secret, true));
+
+            $token = $header_json_base64.".".$payload_json_base64.".".$signature;
+
+
+
+            if(insertUser($pdo, $new_user->name, $new_user->surname, $new_user->username, $token, $new_user->email, $new_user->institution, $new_user->note)){
 
                 //$response->data = new StdClass();
                 $response->status = 201;
