@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="assets/theme/css/style.css">
     <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
     <link rel="stylesheet" href="assets/navdrop.css" type="text/css">
-    <link rel="stylesheet" href="assets/successpopup.css" type="text/css">
 
     <script src="assets/web/assets/jquery/jquery.min.js"></script>
     <script src="assets/tether/tether.min.js"></script>
@@ -33,7 +32,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="assets/angular-1.6.7/angular.min.js"></script>
-    <script type="text/javascript" src="expendInner.js"></script>
+    <script type="text/javascript" src="expandInner.js"></script>
     <script type="text/javascript" src="newTag.js"></script>
     <script type="text/javascript" src="newCountry.js"></script>
     <script type="text/javascript" src="newRegion.js"></script>
@@ -86,7 +85,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="profile.php" class="dropdown-item">View profile</a></li>
                                 <div class="dropdown-divider"></div>
-                                <li><a href="#expendInner" class="dropdown-item" data-toggle="modal">Expend inner circle</a></li>
+                                <li><a href="#expandInner" class="dropdown-item" data-toggle="modal">Expand inner circle</a></li>
                                 <li><a href="#newTag" class="dropdown-item" data-toggle="modal">Add new tag</a></li>
                                 <div class="dropdown-divider"></div>
                                 <li><a href="#newCountry" class="dropdown-item" data-toggle="modal">Add new country</a></li>
@@ -107,13 +106,13 @@
     </nav>
 
     <script type="text/javascript">
-        niz.push("expendInner");
+        niz.push("expandInner");
     </script>
-    <div id="expendInner" class="modal fade">
-        <div class="modal-dialog modal-confirm text-center" ng-controller="expendInnerController">
+    <div id="expandInner" class="modal fade">
+        <div class="modal-dialog modal-confirm text-center" ng-controller="expandInnerController">
             <div class="modal-content">
                 <div class="modal-header bg-info">
-                    <h4 class="modal-title">Expend inner circle</h4>
+                    <h4 class="modal-title">Expand inner circle</h4>
                 </div>
                 <div class="container modal-body">
                     <form class="offset-3">
@@ -121,19 +120,19 @@
                             <label class="form-control-label" for="form1-o-username">Username</label>
                             <input type="text" class="form-control" name="username" data-form-field="Name" id="form1-o-username" ng-model="newInner.username">
                         </div>
-                        <div class="form-group">
+                <!--        <div class="form-group">
                             <label class="form-control-label" for="form1-o-type">Type</label>
                             <input type="text" class="form-control" name="type" data-form-field="Type" id="form1-o-type" ng-model="newInner.type">
-                        </div>
+                        </div> -->
                         <div class=" form-group mbr-buttons mbr-buttons--center btn-inverse">
-                            <button type="submit" class="btn btn-sm btn-primary" ng-click="ExpendInner()">
+                            <button type="submit" class="btn btn-sm btn-primary" ng-click="ExpandInner()">
                                 Save
                             </button>
                             <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
                                 Close
                             </button>
                         </div>
-                        <!--	<div ng-show="showExpendInnerMessage">{{expendInnerMessage}}</div>-->
+                        <!--	<div ng-show="showExpandInnerMessage">{{expandInnerMessage}}</div>-->
                     </form>
                 </div>
             </div>
@@ -199,7 +198,7 @@
                                 Close
                             </button>
                         </div>
-                        <!--	<div ng-show="showExpendInnerMessage">{{expendInnerMessage}}</div>-->
+                        <!--	<div ng-show="showExpandInnerMessage">{{expandInnerMessage}}</div>-->
                     </form>
                 </div>
             </div>
