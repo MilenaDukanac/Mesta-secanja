@@ -1,10 +1,7 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['type'])) {
-    include 'headerGuest.php';
-}
-else if($_SESSION['type']==="admin")
+if($_SESSION['type']==="admin")
     include 'headerAdmin.php';
 else if($_SESSION['type']==="other")
     include 'headerOther.php';
@@ -18,103 +15,71 @@ else
 <script type="text/javascript">
     niz.push("oneCemetery");
 </script>
-<section ng-controller="oneCemeteryController" class="mbr-gallery mbr-section mbr-section-nopadding mbr-slider-carousel" data-filter="true" id="gallery4-v" data-rv-view="16" style="padding-top: 90px; padding-bottom: 0rem;">
+<section ng-controller="oneCemeteryController" style="padding-top: 30px; padding-bottom: 0rem; padding-left: 30px; padding-right: 30px">
+    <h4 class="text-md-center text-warning" style="background: #28324e">{{cemetery.name}}</h4>
+    <h5 class="text-black text-md-center">Region:</h5>
 
-  <!-- Gallery -->
-  <div class="mbr-gallery-row">
-      <div class=" mbr-gallery-layout-default">
-          <div>
+    <div style="padding-top: 30px; padding-bottom: 0rem">
+        <h5 class="text-warning" style="background: #28324e">Description:</h5>
+        <h6 class="text-black text-justify" style="padding-right: 30px; padding-left: 30px;">{{cemetery.description}}</h6>
+    </div>
+    <section  class="mbr-gallery mbr-section mbr-section-nopadding mbr-slider-carousel" data-filter="true" id="gallery4-v" data-rv-view="16" style="padding-top: 30px; padding-bottom: 0rem;">
+        <!--Description-->
+
+        <!-- Gallery -->
+        <h5 class="text-warning" style="background: #28324e">Galery:</h5>
+        <div class="mbr-gallery-row">
+          <div class=" mbr-gallery-layout-default">
               <div>
-                  <div class="mbr-gallery-item mbr-gallery-item__mobirise3 mbr-gallery-item--p1" data-video-url="false" data-tags="Awesome">
-                      <div href="#lb-gallery4-v" data-slide-to="0" data-toggle="modal">
+                  <div>
+                      <div ng-repeat="photo in photos" class="mbr-gallery-item mbr-gallery-item__mobirise3 mbr-gallery-item--p1" data-video-url="false" data-tags="Awesome">
+                          <div href="#lb-gallery4-v" data-slide-to="0" data-toggle="modal">
 
 
 
-                          <img src="assets/images/bike-small.jpg" alt="">
+                              <img src="../photos/{{photo.name}}" alt="" class="img-thumbnail">
 
-                          <span class="icon-focus"></span>
+                              <span class="icon-focus"></span>
 
+                          </div>
                       </div>
-                  </div><div class="mbr-gallery-item mbr-gallery-item__mobirise3 mbr-gallery-item--p1" data-video-url="false" data-tags="Responsive">
-                      <div href="#lb-gallery4-v" data-slide-to="1" data-toggle="modal">
 
-
-
-                          <img src="assets/images/code-man-small.jpg" alt="">
-
-                          <span class="icon-focus"></span>
-
-                      </div>
-                  </div><div class="mbr-gallery-item mbr-gallery-item__mobirise3 mbr-gallery-item--p1" data-video-url="false" data-tags="Creative">
-                      <div href="#lb-gallery4-v" data-slide-to="2" data-toggle="modal">
-
-
-
-                          <img src="assets/images/coworkers-small.jpg" alt="">
-
-                          <span class="icon-focus"></span>
-
-                      </div>
-                  </div><div class="mbr-gallery-item mbr-gallery-item__mobirise3 mbr-gallery-item--p1" data-video-url="false" data-tags="Animated">
-                      <div href="#lb-gallery4-v" data-slide-to="3" data-toggle="modal">
-
-
-
-                          <img src="assets/images/desktop-small.jpg" alt="">
-
-                          <span class="icon-focus"></span>
-
-                      </div>
-                  </div><div class="mbr-gallery-item mbr-gallery-item__mobirise3 mbr-gallery-item--p1" data-video-url="false" data-tags="Awesome">
-                      <div href="#lb-gallery4-v" data-slide-to="4" data-toggle="modal">
-
-
-
-                          <img src="assets/images/room-laptop-small.jpg" alt="">
-
-                          <span class="icon-focus"></span>
-
-                      </div>
-                  </div><div class="mbr-gallery-item mbr-gallery-item__mobirise3 mbr-gallery-item--p1" data-video-url="false" data-tags="Beautiful">
-                      <div href="#lb-gallery4-v" data-slide-to="5" data-toggle="modal">
-
-
-
-                          <img src="assets/images/table-small.jpg" alt="">
-
-                          <span class="icon-focus"></span>
-
-                      </div>
-                  </div><div class="mbr-gallery-item mbr-gallery-item__mobirise3 mbr-gallery-item--p1" data-video-url="false" data-tags="Responsive">
-                      <div href="#lb-gallery4-v" data-slide-to="6" data-toggle="modal">
-
-
-
-                          <img src="assets/images/windows-books-small.jpg" alt="">
-
-                          <span class="icon-focus"></span>
-
-                      </div>
-                  </div><div class="mbr-gallery-item mbr-gallery-item__mobirise3 mbr-gallery-item--p1" data-video-url="false" data-tags="Animated">
-                      <div href="#lb-gallery4-v" data-slide-to="7" data-toggle="modal">
-
-
-
-                          <img src="assets/images/working-area-small.jpg" alt="">
-
-                          <span class="icon-focus"></span>
-
-                      </div>
                   </div>
               </div>
+              <div class="clearfix"></div>
           </div>
-          <div class="clearfix"></div>
-      </div>
-  </div>
+        </div>
+    </section>
+    <div style="padding-top: 30px; padding-bottom: 0rem">
+        <h5 class="text-warning" style="background: #28324e">Additional data:</h5>
+        <h6 class="text-black text-justify" style="padding-right: 30px; padding-left: 30px;">{{cemetery.additionalData}}</h6>
+    </div>
+
+    <div style="padding-top: 30px; padding-bottom: 0rem">
+        <h5 class="text-warning" style="background: #28324e">Tags:</h5>
+
+    </div>
+
+    <div style="padding-top: 30px; padding-bottom: 0rem">
+        <h5 class="text-warning" style="background: #28324e">Tags:</h5>
+
+    </div>
 
 
+    <div style="padding-top: 30px; padding-bottom: 0rem">
+        <h5 class="text-warning" style="background: #28324e">Map:</h5>
+
+    </div>
 </section>
-  
+
+<section class="mt-5" id="map1-7" data-rv-view="101" style="padding-top: 30px; padding-bottom: 30px; padding-left: 30px; padding-right: 30px">
+    <div class="mbr-map" style="height: 600px;">
+        <iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;q=place_id:ChIJvT-116N6WkcR5H4X8lxkuB0" allowfullscreen=""></iframe>
+    </div>
+</section>
+
+
+
 <?php
 include('footer.php');
 ?>
