@@ -6,7 +6,7 @@ include 'connection.php';
 function getPhotoInfo($db, $id){
 
     $query="select name, author, year, note, longitude, latitude 
-            from CentralCemeteries.photo
+            from centralcemeteries.photo
             where id=:id";
 
     $stmt=$db->prepare($query);
@@ -26,7 +26,7 @@ function getPhotoInfo($db, $id){
 function getAllCemeteryPhotos($db, $cemeteryId){
 
     $query="select name
-            from CentralCemeteries.photo 
+            from centralcemeteries.photo 
             where cemeteryId=:cemeteryId";
 
     $stmt=$db->prepare($query);
@@ -46,7 +46,7 @@ function insertPhoto($db, $name, $cemeteryId, $author, $year, $note, $longitude,
 
     $db->beginTransaction();
 
-    $query = "insert into CentralCemeteries.photo (name, cemeteryId, author, year, note, longitude, latitude)
+    $query = "insert into centralcemeteries.photo (name, cemeteryId, author, year, note, longitude, latitude)
               values(:name, :cemeteryId, :author, :year, :note, :longitude, :latitude)";
 
     $stmt = $db->prepare($query);
@@ -74,7 +74,7 @@ function deletePhoto($db, $id){
 
     $db->beginTransaction();
 
-    $query="delete from CentralCemeteries.photo
+    $query="delete from centralcemeteries.photo
             where id=:id";
 
     $stmt=$db->prepare($query);
@@ -93,34 +93,34 @@ function deletePhoto($db, $id){
 
 
 try{
-    $pdo=PDO_DB::getConnectionInstance();
-
-     //getPhotoInfo test
-      $id=2;
-      $photoInfo=getphotoInfo($pdo,$id);
-      var_dump($userInfo);
-
-  
-      // getAllCemeteryPhotos test
-      $cemeteryId = 4;
-      $allPhotos = getAllCemeteryPhotos($pdo, $cemeteryId);
-      var_dump($allPhotos);
-
-      // insertPhoto test
-      $name = "server/lepa.pdf";// stavi nesto lokalno
-      $cemeteryId = 4;
-      $author = "Filip";
-      $year = 2023;
-      $note = "Mnogo lepa slika";
-      $longitude = null;//stavi i ovde nesto, ne znamo sta treba
-      $latitude = null;// -||-
-      $inserted = insertPhoto($pdo, $name, $cemeteryId, $author, $year, $note, $longitude, $latitude);
-      var_dump($inserted);
-  
-      // deletePhoto test
-      $id = 2;
-      $deleted = deletePhoto($pdo, $id);
-      var_dump($deleted);
+//    $pdo=PDO_DB::getConnectionInstance();
+//
+//     //getPhotoInfo test
+//      $id=2;
+//      $photoInfo=getphotoInfo($pdo,$id);
+//      var_dump($userInfo);
+//
+//
+//      // getAllCemeteryPhotos test
+//      $cemeteryId = 4;
+//      $allPhotos = getAllCemeteryPhotos($pdo, $cemeteryId);
+//      var_dump($allPhotos);
+//
+//      // insertPhoto test
+//      $name = "server/lepa.pdf";// stavi nesto lokalno
+//      $cemeteryId = 4;
+//      $author = "Filip";
+//      $year = 2023;
+//      $note = "Mnogo lepa slika";
+//      $longitude = null;//stavi i ovde nesto, ne znamo sta treba
+//      $latitude = null;// -||-
+//      $inserted = insertPhoto($pdo, $name, $cemeteryId, $author, $year, $note, $longitude, $latitude);
+//      var_dump($inserted);
+//
+//      // deletePhoto test
+//      $id = 2;
+//      $deleted = deletePhoto($pdo, $id);
+//      var_dump($deleted);
 
 
 }catch(PDOException $e){

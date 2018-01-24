@@ -61,6 +61,16 @@ try{
                     }
 
                     break;
+                case 2:
+                    if($url_elements[1] == "cemetery"){
+                        $response->data = getCemetery($pdo, intval($url_elements[2]));
+                        $response->status = 200;
+                    }
+                    else{
+                        $response->status = 400;
+                        $response->data = null;
+                    }
+                    break;
                 case 3:
                     if($url_elements[1] == "cemeteries"){
                         $response->data = getCemeteriesInCountryInRegion($pdo,$url_elements[2],$url_elements[3]);
