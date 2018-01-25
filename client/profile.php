@@ -51,13 +51,6 @@ else if($_SESSION['type']==="inner")
                     </div>
                 </div>
             </div>
-
-            <!-- Deo za slike koje je postavio taj korsnik -->
-            <div class="col-xs-12 col-md-12 col-lg-12 text-xs-center ">
-                <div class="card-block text-white">
-                    <p>Ovde bi mozda trebalo da idu slike koje je taj korisnik upload-ovao.</p>
-                </div>
-            </div>
         </div>
     </div>
 
