@@ -4,7 +4,7 @@ include "connection.php";
 
 function getCountriesAndRegions($db){
   $query = "select c.id as countryId, c.name as countryName, r.id as regionId, r.name as regionName
-            from centralcemeteries.country c left join centralcemeteries.region r on r.countryId = c.id";
+            from centralcemeteries.country c join centralcemeteries.region r on r.countryId = c.id";
 
   $stmt = $db->prepare($query);
 
