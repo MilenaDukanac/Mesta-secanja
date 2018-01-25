@@ -214,7 +214,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `name` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `surname` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `type` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'other',
-  `pass` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `pass` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `username` varchar(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `institution` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
