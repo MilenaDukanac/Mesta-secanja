@@ -1,6 +1,6 @@
 <?php
 
-include_once "region_pdo.php";
+include_once "place_pdo.php";
 
 /* Niz sa mapiranjem statusnih kodova u statusne poruke */
 $status_messages = array(
@@ -48,21 +48,9 @@ else {
                 switch($number_of_url_elements){
                     case 1:
 
-                        if($url_elements[1] == "regions"){
+                        if($url_elements[1] == "places"){
                             // GET /goals
-                            $result = getCountriesAndRegions($pdo);
-                            if($result === FALSE){
-                              $response->data = null;
-                              $response->status = 404;
-                            }
-                            else{
-                              $response->data = $result;
-                              $response->status = 200;
-                            }
-                        }
-                        else if($url_elements[1] == "allregions"){
-                            // GET /goals
-                            $result = getAllRegions($pdo);
+                            $result = getAllPlaces($pdo);
                             if($result === FALSE){
                               $response->data = null;
                               $response->status = 404;
@@ -86,9 +74,9 @@ else {
                 break;
 
               case 'POST':
-                $newRegion = json_decode(file_get_contents("php://input"));
+                $newPlace = json_decode(file_get_contents("php://input"));
 
-                if(insertRegionWithCountryName($pdo, $newRegion->country, $newRegion->region)){
+                if(insertPlaceWithRegionName($pdo, $newPlace->region, $newPlace->place)){
                     $response->data = "true";
                     $response->status = 201;
                 }

@@ -89,7 +89,7 @@ try{
         case 'POST':
             $newCemetery = json_decode(file_get_contents("php://input"));
 
-            if(insertCemeteryWithRegionName($pdo, $newCemetery->cemetery, $newCemetery->region, $newCemetery->description, $newCemetery->additionalData, $newCemetery->longitude, $newCemetery->latitude)){
+            if(insertCemeteryWithPlaceName($pdo, $newCemetery->cemetery, $newCemetery->place, $newCemetery->description, $newCemetery->additionalData, $newCemetery->longitude, $newCemetery->latitude)){
                 $response->status = 201;
             }
             else{

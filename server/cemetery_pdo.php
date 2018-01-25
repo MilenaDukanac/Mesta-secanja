@@ -3,21 +3,20 @@
 include 'connection.php';
 
 function getAllCemeteries($db){
-    $query = "select cc.id, cc.name, cc.description, cc.additionalData, cc.longitude, cc.latitude, r.name as regionName, c.name as countryName
+    $query = "select cc.id, cc.name, cc.description, cc.additionalData, cc.longitude, cc.latitude, p.name as placeName, r.name as regionName, c.name as countryName
               from centralcemeteries.cemetery cc
-              join centralcemeteries.region r on cc.regionId = r.id
-              join centralcemeteries.country c on c.id = r.countryId";
+              join centralcemeteries.place p on cc.placeId
+              join centralcemeteries.region r on p.regionId = r.id
+              join centralcemeteries.country c on r.countryId = c.id";
 
     $stmt = $db->prepare($query);
     if($stmt->execute()) {
-
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
     else {
         return null;
     }
 }
-
 
 function getCemetery($db, $id){
     $query="select * from centralcemeteries.cemetery where id=:Id";
@@ -29,7 +28,7 @@ function getCemetery($db, $id){
     return $stmt->fetch(PDO::FETCH_OBJ);
 }
 
-function insertCemetery($db, $name,$region_id, $description, $additional_data, $longitude, $latitude){
+function insertCemetery($db, $name,$place_id, $description, $additional_data, $longitude, $latitude){
 
     $query = "insert into centralcemeteries.cemetery
               values(NULL, :name, :region_id, :description, :additional_data, :longitude, :latitude)";
@@ -37,7 +36,7 @@ function insertCemetery($db, $name,$region_id, $description, $additional_data, $
     $stmt = $db->prepare($query);
 
     $stmt->bindParam(":name", $name, PDO::PARAM_INT);
-    $stmt->bindParam(":region_id", $region_id, PDO::PARAM_INT);
+    $stmt->bindParam(":region_id", $place_id, PDO::PARAM_INT);
     $stmt->bindParam(":description", $description, PDO::PARAM_STR);
     $stmt->bindParam(":additional_data", $additional_data, PDO::PARAM_STR);
     $stmt->bindParam(":longitude", $longitude, PDO::PARAM_STR);
@@ -50,20 +49,20 @@ function insertCemetery($db, $name,$region_id, $description, $additional_data, $
 
 }
 
-function insertCemeteryWithRegionName($db, $name, $region_name, $description, $additional_data, $longitude, $latitude){
+function insertCemeteryWithPlaceName($db, $name, $place_name, $description, $additional_data, $longitude, $latitude){
     $query1 = "select id
-               from centralcemeteries.region
+               from centralcemeteries.place
                where name=:name";
     $stmt1 = $db->prepare($query1);
-    $stmt1->bindParam(":name", $region_name, PDO::PARAM_STR);
+    $stmt1->bindParam(":name", $place_name, PDO::PARAM_STR);
 
     if($stmt1->execute()) {
-        $region_id = $stmt1->fetch(PDO::FETCH_OBJ);
+        $place_id = $stmt1->fetch(PDO::FETCH_OBJ);
     }
     else
         return false;
 
-    return insertCemetery($db, $name, intval($region_id->id), $description, $additional_data, $longitude, $latitude);
+    return insertCemetery($db, $name, intval($place_id->id), $description, $additional_data, $longitude, $latitude);
 
 }
 
@@ -84,8 +83,8 @@ function getCemeteriesInRegion($db, $regionId){
 
 function getCemeteriesInCountryInRegion($db,$countryName, $regionName){
     $query = "select * from centralcemeteries.cemetery cc
-				join centralcemeteries.region r on r.id=cc.regionId 
-				join centralcemeteries.country c on c.id=r.countryId 
+				join centralcemeteries.region r on r.id=cc.regionId
+				join centralcemeteries.country c on c.id=r.countryId
 				where c.name=:countryName and r.name=:regionName";
 
     $stmt = $db->prepare($query);
@@ -101,7 +100,7 @@ function getCemeteriesInCountryInRegion($db,$countryName, $regionName){
 }
 
 function getCemeteriesInCountry($db, $countryId){
-    $query = "select * 
+    $query = "select *
               from centralcemeteries.cemetery
               where regionId in (select id
                                  from centralcemeteries.region

@@ -102,16 +102,16 @@ else {
 
             case "POST":
                 $new_tag = json_decode(file_get_contents("php://input"));         
-				$new_tag_id = insertTag($pdo,$new_tag->id,$new_tag->name,$new_tag->categoryId);
 
-				if($new_tag_id == -1){
+                $new_tag_id = insertTagCategoryName($pdo, $new_tag->tagName, $new_tag->category);
+
+
+				if($new_tag_id == false){
 					$response->status = 400;
 					$response->data=null;
 				}
 				else{
 					$response->status = 201;
-					$response->data = new stdClass();
-					$response->data->newTagId = $new_tag_id;
                 }
                 break;
 
