@@ -132,7 +132,7 @@
                                 Close
                             </button>
                         </div>
-                        <!--	<div ng-show="showExpandInnerMessage">{{expandInnerMessage}}</div>-->
+                        <div ng-show="showExpandInnerMessage">{{expandInnerMessage}}</div>
                     </form>
                 </div>
             </div>
@@ -167,7 +167,7 @@
                                 Close
                             </button>
                         </div>
-                        <!--	<div ng-show="showNewTagMessage">{{NewTagMessage}}</div>-->
+                        <div ng-show="showNewTagMessage">{{NewTagMessage}}</div>
                     </form>
                 </div>
             </div>
@@ -198,7 +198,7 @@
                                 Close
                             </button>
                         </div>
-                        <!--	<div ng-show="showExpandInnerMessage">{{expandInnerMessage}}</div>-->
+                        <div ng-show="showExpandInnerMessage">{{expandInnerMessage}}</div>
                     </form>
                 </div>
             </div>
@@ -233,7 +233,7 @@
                                 Close
                             </button>
                         </div>
-                        <!--	<div ng-show="showNewRegionMessage">{{newRegionMessage}}</div>-->
+                        <div ng-show="showNewRegionMessage">{{newRegionMessage}}</div>
                     </form>
                 </div>
             </div>
@@ -284,7 +284,7 @@
                                 Close
                             </button>
                         </div>
-                        <!--	<div ng-show="shownNewCemeteryMessage">{{newCemeteryMessage}}</div>-->
+                        <div ng-show="shownNewCemeteryMessage">{{newCemeteryMessage}}</div>
                     </form>
                 </div>
             </div>

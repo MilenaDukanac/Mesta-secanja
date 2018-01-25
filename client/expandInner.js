@@ -25,23 +25,22 @@ expandInner.controller('expandInnerController', ['$scope', '$http', '$window', f
 
 
     };
-    /*
+
     $scope.expandInner = function () {
                 var userame = $scope.newInner.username;
 
         $http({
             method: "GET",
             url: '../server/user.php?type=expandInner&username=' + username
-            }
         }).then(function successHandler(result) {
-            $scope.expandInnerMessage = `Inner circle expanded`;
+            $scope.expandInnerMessage = "Inner circle expanded! User " + username + " is now in Inner circle.";
             $scope.showExpandInnerMessage = true;
             console.log(result);
         }, function errorHandler(result) {
-            $scope.expandInnerMessage = `Try again later`;
+            $scope.expandInnerMessage = "Try again later!";
             $scope.showExpandInnerMessage = true;
             console.log(result);
         });
-    };*/
+    };
 
 }]);
