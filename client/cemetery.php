@@ -59,13 +59,7 @@ else
         <h5 class="text-warning" style="background: #28324e">Tags:</h5>
 
     </div>
-
-    <div style="padding-top: 30px; padding-bottom: 0rem">
-        <h5 class="text-warning" style="background: #28324e">Tags:</h5>
-
-    </div>
-
-
+    
     <div style="padding-top: 30px; padding-bottom: 0rem">
         <h5 class="text-warning" style="background: #28324e">Map:</h5>
 

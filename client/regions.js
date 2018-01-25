@@ -10,7 +10,7 @@ regions.filter("CountryFilter", function(){
   }
 });
 
-regions.controller("mainController", ["$scope", "$http", "$filter", function($scope, $http, $filter){
+regions.controller("regionsController", ["$scope", "$http", "$filter", function($scope, $http, $filter){
   $scope.regions = [];
   $scope.countries = [];
   $scope.country ="all";

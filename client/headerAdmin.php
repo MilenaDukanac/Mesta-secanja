@@ -36,6 +36,7 @@
     <script type="text/javascript" src="newTag.js"></script>
     <script type="text/javascript" src="newCountry.js"></script>
     <script type="text/javascript" src="newRegion.js"></script>
+    <script type="text/javascript" src="newPlace.js"></script>
     <script type="text/javascript" src="newCemetery.js"></script>
 
     <script type="text/javascript">
@@ -90,6 +91,7 @@
                                 <li><a href="#newTag" class="dropdown-item" data-toggle="modal">Add new tag</a></li>
                                 <li><a href="#newCountry" class="dropdown-item" data-toggle="modal">Add new country</a></li>
                                 <li><a href="#newRegion" class="dropdown-item" data-toggle="modal">Add new region</a></li>
+                                <li><a href="#newPlace" class="dropdown-item" data-toggle="modal">Add new place</a></li>
                                 <li><a href="#newCemetery" class="dropdown-item" data-toggle="modal">Add new cemetery</a></li>
                                 <div class="dropdown-divider"></div>
                                 <li><a href="logout.php" class="dropdown-item">Log out</a></li>
@@ -115,17 +117,13 @@
                     <h4 class="modal-title">Expand inner circle</h4>
                 </div>
                 <div class="container modal-body">
-                    <form class="offset-3">
+                    <form>
                         <div class="form-group">
-                            <label class="form-control-label" for="form1-o-username">Username</label>
-                            <input type="text" class="form-control" name="username" data-form-field="Name" id="form1-o-username" ng-model="newInner.username">
+                            <label class="form-control-label" for="form1-o-username">Username*</label>
+                            <input type="text" class="form-control" required="" name="username" data-form-field="username" id="form1-o-username" ng-model="newInner.username">
                         </div>
-                <!--        <div class="form-group">
-                            <label class="form-control-label" for="form1-o-type">Type</label>
-                            <input type="text" class="form-control" name="type" data-form-field="Type" id="form1-o-type" ng-model="newInner.type">
-                        </div> -->
                         <div class=" form-group mbr-buttons mbr-buttons--center btn-inverse">
-                            <button type="submit" class="btn btn-sm btn-primary" ng-click="ExpandInner()">
+                            <button type="submit" class="btn btn-sm btn-primary" ng-click="expandInner()">
                                 Save
                             </button>
                             <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
@@ -150,17 +148,17 @@
                     <h4 class="modal-title">Add new tag</h4>
                 </div>
                 <div class="container modal-body">
-                    <form class="offset-3">
+                    <form>
                         <div class="form-group">
-                            <label class="form-control-label" for="form2-o-category">Category</label>
-                            <input type="text" class="form-control" name="category" data-form-field="Category" id="form2-o-category" ng-model="newTag.category">
+                            <label class="form-control-label" for="form2-o-category">Category*</label>
+                            <input type="text" class="form-control" required="" name="category" data-form-field="category" id="form2-o-category" ng-model="newTag.category">
                         </div>
                         <div class="form-group">
-                            <label class="form-control-label" for="form2-o-tagname">Tag name</label>
-                            <input type="text" class="form-control" name="tagname" data-form-field="Tag name" id="form2-o-tagname" ng-model="newTag.tagName">
+                            <label class="form-control-label" for="form2-o-tagname">Tag name*</label>
+                            <input type="text" class="form-control" required="" name="tagname" data-form-field="tag name" id="form2-o-tagname" ng-model="newTag.tagName">
                         </div>
                         <div class=" form-group mbr-buttons mbr-buttons--center btn-inverse">
-                            <button type="submit" class="btn btn-sm btn-primary" ng-click="newTag()">
+                            <button type="submit" class="btn btn-sm btn-primary" ng-click="insertTag()">
                                 Save
                             </button>
                             <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
@@ -185,20 +183,20 @@
                     <h4 class="modal-title">Add new country</h4>
                 </div>
                 <div class="container modal-body">
-                    <form class="offset-3">
+                    <form>
                         <div class="form-group">
-                            <label class="form-control-label" for="form3-o-country">Country</label>
-                            <input type="text" class="form-control" name="country" data-form-field="Country" id="form3-o-country" ng-model="countryName">
+                            <label class="form-control-label" for="form3-o-country">Country*</label>
+                            <input type="text" class="form-control" required="" name="country" data-form-field="country" id="form3-o-country" ng-model="countryName">
                         </div>
                         <div class=" form-group mbr-buttons mbr-buttons--center btn-inverse">
-                            <button type="submit" class="btn btn-sm btn-primary" ng-click="newCountry()">
+                            <button type="submit" class="btn btn-sm btn-primary" ng-click="insertCountry()">
                                 Save
                             </button>
                             <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
                                 Close
                             </button>
                         </div>
-                        <div ng-show="showExpandInnerMessage">{{expandInnerMessage}}</div>
+                        <div ng-show="showNewCountryMessage">{{newCountryMessage}}</div>
                     </form>
                 </div>
             </div>
@@ -219,11 +217,11 @@
                     <form class="offset-3">
                         <div class="form-group">
                             <label class="form-control-label" for="form4-o-country">Country</label>
-                            <input type="text" class="form-control" name="type" data-form-field="Country" id="form4-o-country" ng-model="newRegion.country">
+                            <input type="text" class="form-control" required="" name="country" data-form-field="country" id="form4-o-country" ng-model="newRegion.country">
                         </div>
                         <div class="form-group">
                             <label class="form-control-label" for="form4-o-region">Region</label>
-                            <input type="text" class="form-control" name="region" data-form-field="Region" id="form4-o-region" ng-model="newRegion.region">
+                            <input type="text" class="form-control" required="" name="region" data-form-field="region" id="form4-o-region" ng-model="newRegion.region">
                         </div>
                         <div class=" form-group mbr-buttons mbr-buttons--center btn-inverse">
                             <button type="submit" class="btn btn-sm btn-primary" ng-click="insertRegion()">
@@ -234,6 +232,41 @@
                             </button>
                         </div>
                         <div ng-show="showNewRegionMessage">{{newRegionMessage}}</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        niz.push("newPlace");
+    </script>
+    <div id="newPlace" class="modal fade">
+        <div class="modal-dialog modal-confirm text-center" ng-controller="newPlaceController">
+            <div class="modal-content">
+                <div class="modal-header bg-info">
+                    <h4 class="modal-title">Add new place</h4>
+                </div>
+                <div class="container modal-body">
+                    <form class="offset-3">
+                        <div class="form-group">
+                            <label class="form-control-label" for="form5-o-region">Region*</label>
+                            <input type="text" class="form-control" required="" name="region" data-form-field="region" id="form5-o-region" ng-model="newPlace.region">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="form4-o-region">Place*</label>
+                            <input type="text" class="form-control" required="" name="replacegion" data-form-field="place" id="form5-o-place" ng-model="newPlace.place">
+                        </div>
+                        <div class=" form-group mbr-buttons mbr-buttons--center btn-inverse">
+                            <button type="submit" class="btn btn-sm btn-primary" ng-click="insertPlace()">
+                                Save
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                                Close
+                            </button>
+                        </div>
+                        <div ng-show="showNewPlaceMessage">{{newPlaceMessage}}</div>
                     </form>
                 </div>
             </div>
@@ -253,28 +286,28 @@
                 <div class="container modal-body">
                     <form class="offset-3">
                         <div class="form-group">
-                            <label class="form-control-label" for="form5-o-region">Region</label>
-                            <input type="text" class="form-control" name="region" data-form-field="Region" id="form5-o-username" ng-model="newCemetery.region">
+                            <label class="form-control-label" for="form6-o-place">Place*</label>
+                            <input type="text" class="form-control" required="" name="place" data-form-field="place" id="form6-o-place" ng-model="newCemetery.place">
                         </div>
                         <div class="form-group">
-                            <label class="form-control-label" for="form5-o-cemetery">Cemetery</label>
-                            <input type="text" class="form-control" name="cemetery" data-form-field="Cemetery" id="form5-o-cemetery" ng-model="newCemetery.cemetery">
+                            <label class="form-control-label" for="form6-o-cemetery">Cemetery*</label>
+                            <input type="text" class="form-control" required="" name="cemetery" data-form-field="cemetery" id="form6-o-cemetery" ng-model="newCemetery.cemetery">
                         </div>
                         <div class="form-group">
-                            <label class="form-control-label" for="form5-o-description">Description</label>
-                            <input type="text" class="form-control" name="description" data-form-field="description" id="form5-o-description" ng-model="newCemetery.description">
+                            <label class="form-control-label" for="form6-o-description">Description</label>
+                            <input type="text" class="form-control" name="description" data-form-field="description" id="form6-o-description" ng-model="newCemetery.description">
                         </div>
                         <div class="form-group">
-                            <label class="form-control-label" for="form5-o-additional">Additional data</label>
-                            <input type="text" class="form-control" name="additional" data-form-field="Additional data" id="form5-o-additional" ng-model="newCemetery.additionalData">
+                            <label class="form-control-label" for="form6-o-additional">Additional data</label>
+                            <input type="text" class="form-control" name="additional" data-form-field="additional data" id="form6-o-additional" ng-model="newCemetery.additionalData">
                         </div>
                         <div class="form-group">
-                            <label class="form-control-label" for="form5-o-longitude">Longitude</label>
-                            <input type="text" class="form-control" name="longitude" data-form-field="Longitude" id="form5-o-longitude" ng-model="newCemetery.longitude">
+                            <label class="form-control-label" for="form6-o-longitude">Longitude</label>
+                            <input type="text" class="form-control" name="longitude" data-form-field="longitude" id="form6-o-longitude" ng-model="newCemetery.longitude">
                         </div>
                         <div class="form-group">
-                            <label class="form-control-label" for="form5-o-latitude">Latitude</label>
-                            <input type="text" class="form-control" name="latitude" data-form-field="Latitude" id="form5-o-latitude" ng-model="newCemetery.latitude">
+                            <label class="form-control-label" for="form6-o-latitude">Latitude</label>
+                            <input type="text" class="form-control" name="latitude" data-form-field="latitude" id="form6-o-latitude" ng-model="newCemetery.latitude">
                         </div>
                         <div class=" form-group mbr-buttons mbr-buttons--center btn-inverse">
                             <button type="submit" class="btn btn-sm btn-primary" ng-click="insertCemetery()">
