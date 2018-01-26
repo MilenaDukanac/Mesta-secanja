@@ -45,13 +45,15 @@
 							</div>
 						</form>
 					</div>
-					<br><br>
-					<div class="container text-xs-center" style="font-size: 15px;">
-						<p>&copy; Copyright Milena Dukanac, Jelena Ivković, Natalija Kominac, Miloš Lončarević, Anđela Mijailović, Filip Miljaković</p>
-					</div>
 				</div>
 			</div>
-		</footer>
+		</footer
+
+		<br><br>
+
+		<div class="container text-xs-center text-white" style="background-color: rgb(40, 50, 78); font-size: 15px;">
+			<p>&copy; Copyright Milena Dukanac, Jelena Ivković, Natalija Kominac, Miloš Lončarević, Anđela Mijailović, Filip Miljaković</p>
+		</div>
 
 		<div id="scrollToTop" class="scrollToTop mbr-arrow-up">
 			<a style="text-align: center;"><i class="mbr-arrow-up-icon" onclick="topFunction()"></i></a>

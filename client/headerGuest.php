@@ -42,7 +42,7 @@
   </head>
 
 
-<body style="padding-top: 90px;@media (max-width: device-width) { body {padding-top: 0px; }}">
+<body style="background-color: rgb(40, 50, 78); padding-top: 90px;@media (max-width: device-width) { body {padding-top: 0px; }}">
 <section id="ext_menu-n" data-rv-view="92">
   <nav class="navbar navbar-dropdown">
       <div class="container">

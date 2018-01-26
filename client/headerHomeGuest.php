@@ -43,14 +43,14 @@
 
 </head>
 
-<body style="padding-top: 90px;@media (max-width: device-width) { body {padding-top: 0px; }}">
+<body style="background-color: rgb(40, 50, 78); padding-top: 90px;@media (max-width: device-width) { body {padding-top: 0px; }}">
 <section id="ext_menu-n" data-rv-view="92">
     <nav class="navbar navbar-dropdown">
         <div class="container">
             <div class="mbr-table">
                 <div class="mbr-table-cell">
                     <div class="navbar-brand">
-                        <a href="home.php" class="etl-icon icon-lightbulb mbr-iconfont mbr-iconfont-menu navbar-logo" style="color: rgb(250, 197, 28);"></a>
+                        <img src="assets/images/logo-small.png" href="home.php">
                         <a class="navbar-caption text-warning" href="home.php">CENTRAL Cemeteries</a>
                     </div>
                 </div>

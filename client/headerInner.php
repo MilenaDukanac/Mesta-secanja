@@ -45,7 +45,7 @@
     <input name="animation" type="hidden">
 </head>
 
-<body style="padding-top: 90px;@media (max-width: device-width) { body {padding-top: 0px; }}">
+<body style="background-color: rgb(40, 50, 78); padding-top: 90px;@media (max-width: device-width) { body {padding-top: 0px; }}">
 <section id="ext_menu-n" data-rv-view="92" ng-controller=deleteController>
     <nav class="navbar navbar-dropdown">
         <div class="container">
@@ -167,11 +167,11 @@
                 <div class="container modal-body">
                     <form class="offset-3">
                         <div class="form-group">
-                            <label class="form-control-label" for="form2-o-country">Country</label>
+                            <label class="form-control-label" for="form2-o-country">Country*</label>
                             <input type="text" class="form-control" required="" name="country" data-form-field="country" id="form2-o-country" ng-model="newRegion.country">
                         </div>
                         <div class="form-group">
-                            <label class="form-control-label" for="form2-o-region">Region</label>
+                            <label class="form-control-label" for="form2-o-region">Region*</label>
                             <input type="text" class="form-control" required="" name="region" data-form-field="region" id="form2-o-region" ng-model="newRegion.region">
                         </div>
                         <div class=" form-group mbr-buttons mbr-buttons--center btn-inverse">
