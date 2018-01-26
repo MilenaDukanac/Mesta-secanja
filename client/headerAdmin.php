@@ -166,7 +166,7 @@
                                 Close
                             </button>
                         </div>
-                        <div ng-show="showNewTagMessage">{{NewTagMessage}}</div>
+                        <div ng-show="showNewTagMessage">{{newTagMessage}}</div>
                     </form>
                 </div>
             </div>
