@@ -27,7 +27,7 @@ else
         <!--Description-->
 
         <!-- Gallery -->
-        <h5 class="text-warning" style="background: #28324e">Galery:</h5>
+        <h5 class="text-warning" style="background: #28324e">Gallery:</h5>
         <div class="mbr-gallery-row">
           <div class=" mbr-gallery-layout-default">
               <div>
