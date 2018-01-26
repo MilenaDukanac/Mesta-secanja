@@ -45,10 +45,14 @@
 							</div>
 						</form>
 					</div>
+					<br><br>
+					<div class="container text-xs-center" style="font-size: 15px;">
+						<p>&copy; Copyright Milena Dukanac, Jelena Ivković, Natalija Kominac, Miloš Lončarević, Anđela Mijailović, Filip Miljaković</p>
+					</div>
 				</div>
 			</div>
 		</footer>
-		
+
 		<div id="scrollToTop" class="scrollToTop mbr-arrow-up">
 			<a style="text-align: center;"><i class="mbr-arrow-up-icon" onclick="topFunction()"></i></a>
 		</div>
@@ -63,6 +67,6 @@
             var rootApp = angular.module('rootApp', niz);
             console.log(niz);
         </script>
-		
+
 	</body>
 </html>

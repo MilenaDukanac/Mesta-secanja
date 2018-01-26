@@ -4,6 +4,7 @@
     <title>  CENTRAL cemeteries </title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link rel="shortcut icon" href="assets/images/logo-small.png" type="image/x-icon">
 
     <link rel="stylesheet" href="assets/et-line-font-plugin/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
@@ -79,7 +80,7 @@
                                 <b class="caret"></b>
                             </a>
   							<ul class="dropdown-menu">
-  								<li><a href="#myModal" class="dropdown-item" data-toggle="modal">Delete account</a></li>
+  								<li><a href="#deleteAcount" class="dropdown-item" data-toggle="modal">Delete account</a></li>
                                  <div class="dropdown-divider"></div>
   								<li><a href="logout.php" class="dropdown-item">Log out</a></li>
   							</ul>
@@ -96,7 +97,7 @@
         <script type="text/javascript">
             niz.push("deleteAcount");
         </script>
-    <div id="myModal" class="modal fade">
+    <div id="deleteAcount" class="modal fade">
       <div class="modal-dialog modal-confirm text-center" ng-controller="deleteController">
         <div class="modal-content">
           <div class="modal-header bg-danger">

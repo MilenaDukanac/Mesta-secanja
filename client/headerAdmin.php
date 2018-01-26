@@ -4,6 +4,7 @@
     <title>  CENTRAL cemeteries </title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link rel="shortcut icon" href="assets/images/logo-small.png" type="image/x-icon">
 
     <link rel="stylesheet" href="assets/et-line-font-plugin/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
