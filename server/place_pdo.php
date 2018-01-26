@@ -18,17 +18,25 @@ function getRegionsAndPlaces($db){
 
 function getAllPlaces($db){
 
-    $query = "select *
-              from centralcemeteries.place";
+    $query = "select p.id, p.name, r.name as regionName, c.name as countryName
+              from centralcemeteries.place p
+              join centralcemeteries.region r on p.regionId = r.id
+              join centralcemeteries.country c on r.countryId = c.id";
 
     $stmt = $db->prepare($query);
 
     if($stmt->execute()){
         return $stmt->fetchAll(PDO::FETCH_OBJ);
+//        $niz = $stmt->fetchAll(PDO::FETCH_OBJ);
     }
     else{
         return null;
     }
+
+//    foreach ($niz as $clan){
+//        $clan->name = utf8_encode($clan->name);
+//    }
+//    return $niz;
 }
 
 function getPlacesInRegion($db, $regionId){
@@ -121,10 +129,10 @@ function deletePlace($db, $id){
 }
 
 try{
-
+//
 //    $pdo=Connection::getConnectionInstance();
-
-//    $all_regions=getCountriesAndRegions($pdo);
+//
+//    $all_regions=getAllPlaces($pdo);
 //    var_dump($all_regions);
 //
 //    $insert_region=insertRegion($pdo,1, "Srem");
@@ -144,7 +152,6 @@ try{
 
 
 }catch(PDOException $e){
-    echo "greska";
     echo $e->getMessage();
     unset($pdo);
 }

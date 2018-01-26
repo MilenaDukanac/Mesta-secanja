@@ -52,12 +52,12 @@ else {
                             // GET /goals
                             $result = getAllPlaces($pdo);
                             if($result === FALSE){
-                              $response->data = null;
-                              $response->status = 404;
+                                $response->data = null;
+                                $response->status = 404;
                             }
                             else{
-                              $response->data = $result;
-                              $response->status = 200;
+                                $response->data = $result;
+                                $response->status = 200;
                             }
                         }
                         else{
@@ -73,7 +73,7 @@ else {
                 }
                 break;
 
-              case 'POST':
+            case 'POST':
                 $newPlace = json_decode(file_get_contents("php://input"));
 
                 if(insertPlaceWithRegionName($pdo, $newPlace->region, $newPlace->place)){

@@ -74,16 +74,16 @@ else {
                 break;
 
             case 'POST':
-              $new_country = json_decode(file_get_contents("php://input"));
+                  $new_country = json_decode(file_get_contents("php://input"));
 
-              if(insertCountry($pdo, $new_country)){
-                  $response->status = 201;
-              }
-              else{
-                  $response->status = 400;
-                  $response->data = null;
-              }
-              break;
+                  if(insertCountry($pdo, $new_country)){
+                      $response->status = 201;
+                  }
+                  else{
+                      $response->status = 400;
+                      $response->data = null;
+                  }
+                  break;
         }
 
 

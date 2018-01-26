@@ -1,6 +1,6 @@
 <?php
 
-include "cemetery_pdo.php";
+include_once "cemetery_pdo.php";
 
 $status_messages=array(
     200 => "OK",
@@ -19,8 +19,8 @@ $response->error_message="";
 
 /* Podrzane metode API-ja */
 $supported_methods=array("GET", "POST", "PUT", "DELETE");
-$method=strtoupper($_SERVER['REQUEST_METHOD']);
-
+//$method=strtoupper($_SERVER['REQUEST_METHOD']);
+$method="GET";
 /* Provera zahteva koji treba da se opsluzi */
 if(!in_array($method,$supported_methods)) {
     $response->status=405;
@@ -51,9 +51,16 @@ try{
             switch($number_of_url_elements){
                 case 1:
                     if($url_elements[1] == "cemeteries"){
-                        $response->data = getAllCemeteries($pdo);
-                        //echo "uzeo sam podatke";
-                        $response->status = 200;
+                        $result = getAllCemeteries($pdo);
+
+                        if($result === FALSE) {
+                            $response->status = 400;
+                            $response->data = null;
+                        }
+                        else{
+                            $response->data = $result;
+                            $response->status = 200;
+                        }
                     }
                     else{
                         $response->status = 400;
@@ -127,6 +134,7 @@ header("Content-Type:application/json");
 
 // telo
 if($response->data != null){
+
     echo json_encode($response->data);
 
 }
