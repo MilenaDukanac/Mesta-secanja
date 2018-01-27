@@ -1,29 +1,29 @@
 var newRegion = angular.module('newRegion', []);
 
 newRegion.controller('newRegionController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
-		$scope.newRegion = {};
-		$scope.newRegionMessage = "";
-		$scope.showNewRegionMessage = false;
-		$scope.clearMsg = function() {
-			$scope.newRegionMessage = "";
-		}
+    $scope.newRegion = {};
+    $scope.newRegionMessage = "";
+    $scope.showNewRegionMessage = false;
+    $scope.clearMsg = function() {
+        $scope.newRegionMessage = "";
+    }
 
     $scope.insertRegion = function () {
-				var region = angular.toJson($scope.newRegion);
+        var region = angular.toJson($scope.newRegion);
 
         $http({
             method: "POST",
             url: '../server/region.php',
-						data: region
-	        }).then(function successHandler(result) {
-						$scope.newRegionMessage = "New region is successfully added."
-						$scope.showNewRegionMessage = true;
-						document.formRegion.reset();
+            data: region
+        }).then(function successHandler(result) {
+            $scope.newRegionMessage = "New region is successfully added.";
+            $scope.showNewRegionMessage = true;
+            document.formRegion.reset();
             console.log(result);
-	        }, function errorHandler(result) {
-						$scope.newRegionMessage = "The country you added is not valid, please try again."
-						$scope.showNewRegionMessage = true;
-						document.formRegion.reset();
+        }, function errorHandler(result) {
+            $scope.newRegionMessage = "This region already exists in this country";
+            $scope.showNewRegionMessage = true;
+            document.formRegion.reset();
             console.log(result);
         });
     };
