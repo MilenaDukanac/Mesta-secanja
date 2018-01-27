@@ -6,7 +6,7 @@ include 'connection.php';
 function getPhotoComments($db, $photoId){
 
     $query="select id, COALESCE(username, 'unregistered') as username, time, text
-            from centralcemeteries.photo_comments 
+            from centralcemeteries.photo_comment
             where photoId=:photoId
             order by time desc";
 
@@ -27,7 +27,7 @@ function insertPhotoComment($db, $photoId, $username, $email, $text){
 
     $db->beginTransaction();
 
-    $query = "insert into centralcemeteries.photo_comments (photoId, username, email, text)
+    $query = "insert into centralcemeteries.photo_comment (photoId, username, email, text)
               values(:photoId, :username, :email, :text)";
 
     $stmt = $db->prepare($query);
@@ -52,7 +52,7 @@ function deletePhotoComment($db, $id){
 
     $db->beginTransaction();
 
-    $query="delete from centralcemeteries.photo_comments
+    $query="delete from centralcemeteries.photo_comment
             where id=:id";
 
     $stmt=$db->prepare($query);
