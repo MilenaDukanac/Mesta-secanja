@@ -58,11 +58,7 @@ else {
                             $response->data = getAllTags($pdo);
                             $response->status = 200;
                         }
-                        else{
-                            $response->status = 400;
-                            $response->data = null;
-                        }
-						if($url_elements[1] == "photos"){
+                        else if($url_elements[1] == "photos"){
                             // GET /photos
                             $response->data = getPhotos($pdo);
                             $response->status = 200;
@@ -86,6 +82,18 @@ else {
                                 $response->status = 200;
                             }
 
+                        }
+                        else if($url_elements[1] == "tagsCemetery"){
+
+                            $result = getAllTagsInCemetery($pdo, intval($url_elements[2]));
+                            if($result === FALSE){
+                                $response->data = null;
+                                $response->status = 404;
+                            }
+                            else{
+                                $response->data = $result;
+                                $response->status = 200;
+                            }
                         }
                         else{
                             $response->status = 400;

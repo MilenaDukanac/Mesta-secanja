@@ -9,7 +9,7 @@ $email='a@a.com';
 
     function insertTag($db,$name,$categoryId){
 
-        $query = "insert into centralcemeteries.tags values(NULL,:name,:categoryId);";
+        $query = "insert into centralcemeteries.tag values(NULL,:name,:categoryId);";
 
 				$stmt = $db->prepare($query);
 
@@ -43,21 +43,21 @@ $email='a@a.com';
 	function getAllTags($db) {
 
 		$query = "select *
-				  from centralcemeteries.tags";
+				  from centralcemeteries.tag";
 
 		$stmt = $db->prepare($query);
 
 		if($stmt->execute())
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         else
-            return -1;
+            return null;
 	}
 
 	//Metoda koja vraca tag sa datim identifikatorom
 	function getTag($db,$id) {
 
 		$query = "select *
-				  from centralcemeteries.tags
+				  from centralcemeteries.tag
 				  where id=:id";
 
 		$stmt = $db->prepare($query);
@@ -69,14 +69,32 @@ $email='a@a.com';
             return FALSE;
 	}
 
+	function getAllTagsInCemetery($db, $cemeteryId){
+
+        $query = "select t.id, t.name, t.categoryId, pt.value
+                  from centralcemeteries.photo p
+                  join centralcemeteries.photo_tag pt on p.id = pt.photoId
+                  join centralcemeteries.tag t on pt.tagId = t.id
+                  where p.cemeteryId = :cemeteryId";
+
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(":cemeteryId", $cemeteryId, PDO::PARAM_INT);
+
+        if($stmt->execute())
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        else
+            return FALSE;
+
+    }
+
 	//Metoda koja vrsi filtriranje po nekoj oznaci
 
     function getPhotos($db,$tag_id){
 
         $query = "select p.id
 				from centralcemeteries.photo p
-				join centralcemeteries.photo_tags pt on pt.photoId = p.id
-				join centralcemeteries.tags t on pt.tagId = t.id
+				join centralcemeteries.photo_tag pt on pt.photoId = p.id
+				join centralcemeteries.tag t on pt.tagId = t.id
 				where t.id=:tag_id";
 
         $stmt = $db->prepare($query);
@@ -101,8 +119,8 @@ try{
    // $insert_tag = insertTagCategoryName($pdo, "year of birth", "years");
     //var_dump($insert_tag);
 
- //$all_tags = $pdo->getAllTags();
- //var_dump($all_tags);
+ //$all_tag = $pdo->getAllTags();
+ //var_dump($all_tag);
 // $tag=getTag($pdo,1);
 // var_dump($tag);
 
