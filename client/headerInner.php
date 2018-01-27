@@ -156,7 +156,7 @@
                     <h4 class="modal-title">Add new country</h4>
                 </div>
                 <div class="container modal-body">
-                    <form>
+                    <form name="formCountry">
                         <div class="form-group">
                             <label class="form-control-label" for="form1-o-country">Country*</label>
                             <input type="text" class="form-control" required="" name="country" data-form-field="country" id="form1-o-country" ng-model="countryName">
@@ -165,7 +165,7 @@
                             <button type="submit" class="btn btn-sm btn-primary" ng-click="insertCountry()">
                                 Save
                             </button>
-                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal" ng-click="clearMsg()">
                                 Close
                             </button>
                         </div>
@@ -186,7 +186,7 @@
                     <h4 class="modal-title">Add new region</h4>
                 </div>
                 <div class="container modal-body">
-                    <form class="offset-3">
+                    <form class="offset-3" name="formRegion">
                         <div class="form-group">
                             <label class="form-control-label" for="form2-o-country">Country*</label>
                             <input type="text" class="form-control" required="" name="country" data-form-field="country" id="form2-o-country" ng-model="newRegion.country">
@@ -199,7 +199,7 @@
                             <button type="submit" class="btn btn-sm btn-primary" ng-click="insertRegion()">
                                 Save
                             </button>
-                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal" ng-click="clearMsg()">
                                 Close
                             </button>
                         </div>
@@ -220,7 +220,7 @@
                     <h4 class="modal-title">Add new place</h4>
                 </div>
                 <div class="container modal-body">
-                    <form class="offset-3">
+                    <form class="offset-3" name="formPlace">
                         <div class="form-group">
                             <label class="form-control-label" for="form3-o-region">Region*</label>
                             <input type="text" class="form-control" required="" name="region" data-form-field="region" id="form3-o-region" ng-model="newPlace.region">
@@ -233,7 +233,7 @@
                             <button type="submit" class="btn btn-sm btn-primary" ng-click="insertPlace()">
                                 Save
                             </button>
-                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal" ng-click="clearMsg()">
                                 Close
                             </button>
                         </div>
@@ -254,7 +254,7 @@
                     <h4 class="modal-title">Add new cemetery</h4>
                 </div>
                 <div class="container modal-body">
-                    <form class="offset-3">
+                    <form class="offset-3" name="formCemetery">
                         <div class="form-group">
                             <label class="form-control-label" for="form4-o-place">Place*</label>
                             <input type="text" class="form-control" required="" name="place" data-form-field="place" id="form4-o-place" ng-model="newCemetery.place">
@@ -280,10 +280,10 @@
                             <input type="text" class="form-control" name="latitude" data-form-field="latitude" id="form4-o-latitude" ng-model="newCemetery.latitude">
                         </div>
                         <div class=" form-group mbr-buttons mbr-buttons--center btn-inverse">
-                            <button type="submit" class="btn btn-sm btn-primary" ng-click="insertCemetery()">
+                            <button type="submit" class="btn btn-sm btn-primary" ng-click="insertCemetery()" >
                                 Save
                             </button>
-                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal" ng-click="clearMsg()">
                                 Close
                             </button>
                         </div>
