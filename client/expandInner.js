@@ -5,6 +5,10 @@ expandInner.controller('expandInnerController', ['$scope', '$http', '$window', f
     $scope.expandInnerMessage = "";
     $scope.showExpandInnerMessage = false;
 
+    $scope.clearMsg = function() {
+        $scope.expandInnerMessage = "";
+    };
+
     $scope.expandInner = function () {
 
         var content = angular.toJson($scope.newInner);
@@ -14,8 +18,9 @@ expandInner.controller('expandInnerController', ['$scope', '$http', '$window', f
             url: "../server/user.php",
             data: content
         }).then(function succesHandler(result) {
-            $scope.expandInnerMessage = 'Inner circle is successfully expanded';
+            $scope.expandInnerMessage = 'Inner circle is successfully expanded.';
             $scope.showExpandInnerMessage = true;
+            document.formExpandInner.reset();
             console.log(result);
         }, function errorHandler(result) {
             $scope.expandInnerMessage = 'The username you entered is not valid, please try again.';
@@ -25,23 +30,7 @@ expandInner.controller('expandInnerController', ['$scope', '$http', '$window', f
 
 
     };
-    /*
-    $scope.expandInner = function () {
-                var userame = $scope.newInner.username;
 
-        $http({
-            method: "GET",
-            url: '../server/user.php?type=expandInner&username=' + username
-            }
-        }).then(function successHandler(result) {
-            $scope.expandInnerMessage = `Inner circle expanded`;
-            $scope.showExpandInnerMessage = true;
-            console.log(result);
-        }, function errorHandler(result) {
-            $scope.expandInnerMessage = `Try again later`;
-            $scope.showExpandInnerMessage = true;
-            console.log(result);
-        });
-    };*/
+
 
 }]);
