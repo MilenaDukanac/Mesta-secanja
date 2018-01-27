@@ -17,7 +17,7 @@ include 'connection.php';
           return false;
         }
 
-        $query = "insert into centralcemeteries.tag values(NULL,:name,:categoryId);";
+        $query = "insert into centralcemeteries.tag(name,categoryId)values(:name,:categoryId);";
 
 				$stmt = $db->prepare($query);
 
