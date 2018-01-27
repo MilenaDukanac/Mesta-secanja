@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="assets/theme/css/style.css">
     <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
     <link rel="stylesheet" href="assets/navdrop.css" type="text/css">
+    <link rel="stylesheet" href="assets/ng-tags-input.min.css" />
 
     <script src="assets/web/assets/jquery/jquery.min.js"></script>
     <script src="assets/tether/tether.min.js"></script>
@@ -31,6 +32,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <script src="assets/ng-tags-input.min.js"></script>
 
     <script type="text/javascript" src="assets/angular-1.6.7/angular.min.js"></script>
     <script type="text/javascript" src="deleteAccount.js"></script>
@@ -38,6 +41,7 @@
     <script type="text/javascript" src="newRegion.js"></script>
     <script type="text/javascript" src="newPlace.js"></script>
     <script type="text/javascript" src="newCemetery.js"></script>
+    <script type="text/javascript" src="uploadPhoto.js"></script>
 
     <script type="text/javascript">
         var niz = [];
@@ -52,7 +56,7 @@
             <div class="mbr-table">
                 <div class="mbr-table-cell">
                     <div class="navbar-brand">
-                        <a href="home.php" class="etl-icon icon-lightbulb mbr-iconfont mbr-iconfont-menu navbar-logo" style="color: rgb(250, 197, 28);"></a>
+                        <img src="assets/images/logo-small.png" href="home.php">
                         <a class="navbar-caption text-warning" href="home.php">CENTRAL Cemeteries</a>
                     </div>
                 </div>
@@ -119,7 +123,24 @@
                 </div>
                 <div class="modal-footer btn-group center">
                     <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger" ng-click="delete()">Delete</button>
+                    <button type="button" class="btn btn-danger" ng-click="delete()" href="#deleteMessage" data-toggle="modal">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="deleteMessage" class="modal fade">
+        <div class="modal-dialog modal-confirm text-center">
+            <div class="modal-content">
+                <div class="modal-header bg-info">
+                    <h4 class="modal-title" >Delete Account</h4>
+                </div>
+                <div class="container modal-body">
+                    <label class="form-control-label"> Your account has been successfully deleted </label>
+                    <br>
+                    <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                        Close
+                    </button>
                 </div>
             </div>
         </div>
@@ -145,7 +166,7 @@
                                 Save
                             </button>
                             <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
-                              Close
+                                Close
                             </button>
                         </div>
                         <div ng-show="showNewCountryMessage">{{newCountryMessage}}</div>

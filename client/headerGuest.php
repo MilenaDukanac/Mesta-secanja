@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html ng-app="rootApp">
-  <head>
+<head>
     <title>  CENTRAL cemeteries </title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -26,7 +26,7 @@
     <script src="assets/dropdown/js/script.min.js"></script>
     <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
     <script src="assets/smooth-scroll/smooth-scroll.js"></script>
-	  <script src="assets/theme/js/script.js"></script>
+    <script src="assets/theme/js/script.js"></script>
     <script src="assets/masonry/masonry.pkgd.min.js"></script>
     <script src="assets/imagesloaded/imagesloaded.pkgd.min.js"></script>
     <script src="assets/bootstrap-carousel-swipe/bootstrap-carousel-swipe.js"></script>
@@ -34,51 +34,51 @@
     <script src="assets/mobirise-gallery/script.js"></script>
     <script type="text/javascript" src="assets/angular-1.6.7/angular.min.js"></script>
 
-      <script type="text/javascript">
-          var niz = [];
-      </script>
+    <script type="text/javascript">
+        var niz = [];
+    </script>
     <input name="animation" type="hidden">
 
-  </head>
+</head>
 
 
 <body style="background-color: rgb(40, 50, 78); padding-top: 90px;@media (max-width: device-width) { body {padding-top: 0px; }}">
 <section id="ext_menu-n" data-rv-view="92">
-  <nav class="navbar navbar-dropdown">
-      <div class="container">
-          <div class="mbr-table">
-              <div class="mbr-table-cell">
-                  <div class="navbar-brand">
-                      <a href="home.php" class="etl-icon icon-lightbulb mbr-iconfont mbr-iconfont-menu navbar-logo" style="color: rgb(250, 197, 28);"></a>
-                      <a class="navbar-caption text-warning" href="home.php">CENTRAL Cemeteries</a>
-                  </div>
-              </div>
+    <nav class="navbar navbar-dropdown">
+        <div class="container">
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+                    <div class="navbar-brand">
+                        <img src="assets/images/logo-small.png" href="home.php">
+                        <a class="navbar-caption text-warning" href="home.php">CENTRAL Cemeteries</a>
+                    </div>
+                </div>
 
-              <div class="mbr-table-cell">
-                  <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
-                      <div class="hamburger-icon"></div>
-                  </button>
+                <div class="mbr-table-cell">
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
 
-                  <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar">
-                      <li class="nav-item">
-                          <a class="nav-link link" href="cemeteries.php">CEMETERIES</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link link" href="regions.php">REGIONS</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link link" href="about.php">ABOUT</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link link" href="#contacts4-3">CONTACT</a>
-                      </li>
-                  </ul>
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar">
+                        <li class="nav-item">
+                            <a class="nav-link link" href="cemeteries.php">CEMETERIES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link" href="regions.php">REGIONS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link" href="about.php">ABOUT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link" href="#contacts4-3">CONTACT</a>
+                        </li>
+                    </ul>
 
-                  <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
-                      <div class="close-icon"></div>
-                  </button>
-              </div>
-          </div>
-      </div>
-  </nav>
-  </section>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>

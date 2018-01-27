@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="assets/theme/css/style.css">
     <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
     <link rel="stylesheet" href="assets/navdrop.css" type="text/css">
+    <link rel="stylesheet" href="assets/ng-tags-input.min.css" />
 
     <script src="assets/web/assets/jquery/jquery.min.js"></script>
     <script src="assets/tether/tether.min.js"></script>
@@ -31,6 +32,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <script src="assets/ng-tags-input.min.js"></script>
 
     <script type="text/javascript" src="assets/angular-1.6.7/angular.min.js"></script>
     <script type="text/javascript" src="expandInner.js"></script>
@@ -39,6 +42,7 @@
     <script type="text/javascript" src="newRegion.js"></script>
     <script type="text/javascript" src="newPlace.js"></script>
     <script type="text/javascript" src="newCemetery.js"></script>
+    <script type="text/javascript" src="uploadPhoto.js"></script>
 
     <script type="text/javascript">
         var niz = [];
@@ -47,6 +51,7 @@
     <input name="animation" type="hidden">
 </head>
 
+
 <body style="background-color: rgb(40, 50, 78); padding-top: 90px;@media (max-width: device-width) { body {padding-top: 0px; }}">
 <section id="ext_menu-n" data-rv-view="92">
     <nav class="navbar navbar-dropdown">
@@ -54,7 +59,7 @@
             <div class="mbr-table">
                 <div class="mbr-table-cell">
                     <div class="navbar-brand">
-                        <a href="home.php" class="etl-icon icon-lightbulb mbr-iconfont mbr-iconfont-menu navbar-logo" style="color: rgb(250, 197, 28);"></a>
+                        <img src="assets/images/logo-small.png" href="home.php">
                         <a class="navbar-caption text-warning" href="home.php">CENTRAL Cemeteries</a>
                     </div>
                 </div>
