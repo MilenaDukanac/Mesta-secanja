@@ -3,7 +3,6 @@ var oneCemetery = angular.module('oneCemetery',[]);
 oneCemetery.service('urlParser', function(){
     this.parse = function(url){
         var query = url.split('?');
-        console.log(query);
         if (url.length === 1){
             return {};
         } //it means it has no parameters
@@ -34,10 +33,14 @@ oneCemetery.controller('oneCemeteryController', ['$scope', '$http', '$window','u
 
     $scope.cemeteryId = params.id;
 
-
-    console.log($scope.cemeteryId);
     $scope.photos = [];
     $scope.cemetery = {};
+
+    $scope.showMap = true;
+    $scope.showAdditionalData = true;
+    $scope.showDescription = true;
+    $scope.showGallery = true;
+    $scope.showTags = true;
 
     $http({
         method: "GET",
@@ -49,6 +52,14 @@ oneCemetery.controller('oneCemeteryController', ['$scope', '$http', '$window','u
         console.log(result);
     });
 
+    if($scope.cemetery.longitude == null || $scope.cemetery.latitude == null)
+        $scope.showMap = false;
+
+    if($scope.cemetery.additionalData == null)
+        $scope.showAdditionalData = false;
+
+    if($scope.cemetery.description == null)
+        $scope.showDescription = false;
 
     $http({
         method: "GET",
@@ -56,9 +67,17 @@ oneCemetery.controller('oneCemeteryController', ['$scope', '$http', '$window','u
     }).then(function successHandler(result) {
         console.log(result);
         $scope.photos = result.data;
+        if($scope.photos.length == 0){
+            $scope.showGallery = false;
+            $scope.showTags = false;
+        }
+
     }, function errorHandler(result) {
-        console.log(result)
-    })
+        console.log(result);
+        $scope.showGallery = false;
+        $scope.showTags = false;
+    });
+
 
 
 }]);

@@ -1,35 +1,5 @@
 var cemeteries = angular.module('cemeteries',[]);
 
-cemeteries.filter("RegionCountryFilter", function(){
-    return function(regions, country){
-        if(country == "all"){
-            return regions;
-        }
-
-        return regions.filter(region => region.countryName == country);
-    }
-});
-
-cemeteries.filter("PlaceCountryFilter", function(){
-    return function(places, country){
-        if(country == "all"){
-            return places;
-        }
-
-        return places.filter(place => place.countryName == country);
-    }
-});
-
-
-cemeteries.filter("PlaceRegionFilter", function(){
-    return function(places, region){
-        if(region == "all"){
-            return places;
-        }
-
-        return places.filter(place => place.regionName == region);
-    }
-});
 
 cemeteries.filter("CemeteriesPlaceFilter", function(){
     return function(cemeteries, place){
@@ -117,9 +87,5 @@ cemeteries.controller('cemeteriesController', ['$scope', '$http', '$window', '$f
     }, function errorHandler(result){
       console.log(result);
     });
-
-    $scope.choose = function (id) {
-        $window.sessionStorage.setItem("cemeteryId", id);
-    };
 
 }]);
