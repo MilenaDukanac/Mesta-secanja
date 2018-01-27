@@ -6,7 +6,7 @@ include 'connection.php';
 function getCemeteryComments($db, $cemeteryId){
 
     $query="select id, COALESCE(username, 'neregistrovani') as username, time, text 
-            from centralcemeteries.cemetery_comments
+            from centralcemeteries.cemetery_comment
             where cemeteryId = :cemeteryId
             order by time desc";
 
@@ -28,7 +28,7 @@ function insertCemeteryComment($db, $cemeteryId, $username, $email, $text){
 
     $db->beginTransaction();
 
-    $query = "insert into centralcemeteries.cemetery_comments (cemeteryId, username, email, text)
+    $query = "insert into centralcemeteries.cemetery_comment (cemeteryId, username, email, text)
               values(:cemeteryId, :username, :email, :text)";
 
     $stmt = $db->prepare($query);
@@ -56,7 +56,7 @@ function deleteCemeteryComment($db, $id){
 
     $db->beginTransaction();
 
-    $query="delete from centralcemeteries.cemetery_comments
+    $query="delete from centralcemeteries.cemetery_comment
             where id=:id";
 
     $stmt=$db->prepare($query);
