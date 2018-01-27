@@ -4,7 +4,10 @@ newCemetery.controller('newCemeteryController', ['$scope', '$http', '$window', f
 		$scope.newCemetery = {};
 		$scope.newCemeteryMessage = "";
 		$scope.shownNewCemeteryMessage = false;
-
+		$scope.clearMsg = function() {
+		$scope.newCemeteryMessage = "";
+	}
+		
     $scope.insertCemetery = function () {
 		    if($scope.newCemetery.description === undefined) {
 		      $scope.newCemetery.description = "";
@@ -28,10 +31,12 @@ newCemetery.controller('newCemeteryController', ['$scope', '$http', '$window', f
         }).then(function successHandler(result) {
 						$scope.newCemeteryMessage = "New cemetery is successfully added."
 						$scope.shownNewCemeteryMessage = true;
+						document.formCemetery.reset();
             console.log(result);
         }, function errorHandler(result) {
 						$scope.newCemeteryMessage = "The place you entered is not valid, pleace try again."
 						$scope.shownNewCemeteryMessage = true;
+						document.formCemetery.reset();
             console.log(result);
         });
     };
