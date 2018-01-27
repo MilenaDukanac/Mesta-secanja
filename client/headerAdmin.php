@@ -127,7 +127,7 @@
                             <button type="submit" class="btn btn-sm btn-primary" ng-click="expandInner()">
                                 Save
                             </button>
-                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal" ng-click=clearMsg()>
                                 Close
                             </button>
                         </div>
@@ -149,7 +149,7 @@
                     <h4 class="modal-title">Add new tag</h4>
                 </div>
                 <div class="container modal-body">
-                    <form>
+                    <form name="formTag">
                         <div class="form-group">
                             <label class="form-control-label" for="form2-o-category">Category*</label>
                             <input type="text" class="form-control" required="" name="category" data-form-field="category" id="form2-o-category" ng-model="newTag.category">
@@ -162,7 +162,7 @@
                             <button type="submit" class="btn btn-sm btn-primary" ng-click="insertTag()">
                                 Save
                             </button>
-                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal" ng-click=clearMsg()>
                                 Close
                             </button>
                         </div>
@@ -184,7 +184,7 @@
                     <h4 class="modal-title">Add new country</h4>
                 </div>
                 <div class="container modal-body">
-                    <form>
+                    <form name="formCountry">
                         <div class="form-group">
                             <label class="form-control-label" for="form3-o-country">Country*</label>
                             <input type="text" class="form-control" required="" name="country" data-form-field="country" id="form3-o-country" ng-model="countryName">
@@ -193,7 +193,7 @@
                             <button type="submit" class="btn btn-sm btn-primary" ng-click="insertCountry()">
                                 Save
                             </button>
-                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal" ng-click=clearMsg()>
                                 Close
                             </button>
                         </div>
@@ -215,7 +215,7 @@
                     <h4 class="modal-title">Add new region</h4>
                 </div>
                 <div class="container modal-body">
-                    <form class="offset-3">
+                    <form class="offset-3" name="formRegion">
                         <div class="form-group">
                             <label class="form-control-label" for="form4-o-country">Country*</label>
                             <input type="text" class="form-control" required="" name="country" data-form-field="country" id="form4-o-country" ng-model="newRegion.country">
@@ -228,7 +228,7 @@
                             <button type="submit" class="btn btn-sm btn-primary" ng-click="insertRegion()">
                                 Save
                             </button>
-                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal" ng-click=clearMsg()>
                                 Close
                             </button>
                         </div>
@@ -250,7 +250,7 @@
                     <h4 class="modal-title">Add new place</h4>
                 </div>
                 <div class="container modal-body">
-                    <form class="offset-3">
+                    <form class="offset-3" name="formPlace">
                         <div class="form-group">
                             <label class="form-control-label" for="form5-o-region">Region*</label>
                             <input type="text" class="form-control" required="" name="region" data-form-field="region" id="form5-o-region" ng-model="newPlace.region">
@@ -263,7 +263,7 @@
                             <button type="submit" class="btn btn-sm btn-primary" ng-click="insertPlace()">
                                 Save
                             </button>
-                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal" ng-click=clearMsg()>
                                 Close
                             </button>
                         </div>
@@ -285,7 +285,7 @@
                     <h4 class="modal-title">Add new cemetery</h4>
                 </div>
                 <div class="container modal-body">
-                    <form class="offset-3">
+                    <form class="offset-3" name=formCemetery>
                         <div class="form-group">
                             <label class="form-control-label" for="form6-o-place">Place*</label>
                             <input type="text" class="form-control" required="" name="place" data-form-field="place" id="form6-o-place" ng-model="newCemetery.place">
@@ -314,7 +314,7 @@
                             <button type="submit" class="btn btn-sm btn-primary" ng-click="insertCemetery()">
                                 Save
                             </button>
-                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                            <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal" ng-click=clearMsg()>
                                 Close
                             </button>
                         </div>
