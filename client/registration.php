@@ -67,8 +67,8 @@ include('headerGuest.php');
               <span class="form-control-label"  style="color: darkred" ng-show="(f.password.$error.maxlength || f.password.$error.minlength) && f.password.$dirty">The username must be betwen 6 and 32 characters!</span>
             </div>
             <div class="form-group">
-              <label class="form-control-label" for="form1-o-password">Confirm Password*</label>
-              <input name="confpass" type="password" class="form-control" required="" data-form-field="Password" id="form1-o-password" ng-change="same(newUser.password,confpass)" ng-model="confpass">
+              <label class="form-control-label" for="form1-o-confirm-password">Confirm Password*</label>
+              <input name="confpass" type="password" class="form-control" required="" data-form-field="Password" id="form1-o-confirm-password" ng-change="same(newUser.password,confpass)" ng-model="confpass">
                 <span class="form-control-label"  style="color: darkred" ng-show="f.confpass.$error.required && f.confpass.$dirty">This field is required!</span>
                 <span class="form-control-label"  style="color: darkred" ng-show="sameR && f.confpass.$dirty">The passwords don't match!</span>
             </div>
