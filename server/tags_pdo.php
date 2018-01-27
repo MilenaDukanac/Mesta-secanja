@@ -5,7 +5,7 @@ include 'connection.php';
 
     function insertTag($db,$name,$categoryId){
 
-        $query = "insert into centralcemeteries.tag(name,categoryId)values(:name,:categoryId);";
+        $query = "insert into centralcemeteries.tag(name,categoryId) values(:name,:categoryId);";
 
 				$stmt = $db->prepare($query);
 
