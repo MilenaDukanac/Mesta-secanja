@@ -1,10 +1,6 @@
 <?php
 include 'connection.php';
 
-// Podrazumevane vrednosti za username i email, jer moze da se uloguje sa bilo kojim od ta dva
-$username='a';
-$email='a@a.com';
-
     //Metoda za kreiranje dodatnih oznaka
 
     function insertTag($db,$name,$categoryId){
@@ -21,7 +17,7 @@ $email='a@a.com';
           return false;
         }
 
-        $query = "insert into centralcemeteries.tags values(NULL,:name,:categoryId);";
+        $query = "insert into centralcemeteries.tag values(NULL,:name,:categoryId);";
 
 				$stmt = $db->prepare($query);
 
@@ -36,7 +32,7 @@ $email='a@a.com';
 
     function insertTagCategoryName($db, $name, $categoryName){
 
-        $query = "select id from centralcemeteries.categories where name = :name";
+        $query = "select id from centralcemeteries.category where name = :name";
 
         $stmt = $db->prepare($query);
 
@@ -55,7 +51,7 @@ $email='a@a.com';
 	function getAllTags($db) {
 
 		$query = "select *
-				  from centralcemeteries.tags";
+				  from centralcemeteries.tag";
 
 		$stmt = $db->prepare($query);
 
@@ -69,7 +65,7 @@ $email='a@a.com';
 	function getTag($db,$id) {
 
 		$query = "select *
-				  from centralcemeteries.tags
+				  from centralcemeteries.tag
 				  where id=:id";
 
 		$stmt = $db->prepare($query);
@@ -87,8 +83,8 @@ $email='a@a.com';
 
         $query = "select p.id
 				from centralcemeteries.photo p
-				join centralcemeteries.photo_tags pt on pt.photoId = p.id
-				join centralcemeteries.tags t on pt.tagId = t.id
+				join centralcemeteries.photo_tag pt on pt.photoId = p.id
+				join centralcemeteries.tag t on pt.tagId = t.id
 				where t.id=:tag_id";
 
         $stmt = $db->prepare($query);
