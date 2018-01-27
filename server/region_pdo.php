@@ -65,13 +65,26 @@ function getRegion($db, $id){
 }
 
 function insertRegion($db, $countryId, $name){
+    $query1 = "select *
+               from centralcemeteries.region
+               where countryId = :countryId and name = :name";
+
+    $stmt1 = $db->prepare($query1);
+
+    $stmt1->bindParam(":countryId", $countryId, PDO::PARAM_INT);
+    $stmt1->bindParam(":name", $name, PDO::PARAM_STR);
+
+    if($stmt1->execute()){
+      return false;
+    }
+
     $query = "insert into centralcemeteries.region
               values(NULL, :countryId, :name)";
 
     $stmt = $db->prepare($query);
 
     $stmt->bindParam(":countryId", $countryId, PDO::PARAM_INT);
-    $stmt->bindParam(":name", $name, PDO::PARAM_INT);
+    $stmt->bindParam(":name", $name, PDO::PARAM_STR);
 
     if($stmt->execute()){
         return true;

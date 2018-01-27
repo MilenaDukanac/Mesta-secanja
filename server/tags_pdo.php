@@ -8,8 +8,20 @@ $email='a@a.com';
     //Metoda za kreiranje dodatnih oznaka
 
     function insertTag($db,$name,$categoryId){
+        $query1 = "select *
+                   from centralcemeteries.tag
+                   where categoryId = :categoryId and name = :name";
 
-        $query = "insert into centralcemeteries.tag values(NULL,:name,:categoryId);";
+        $stmt1 = $db->prepare($query1);
+
+        $stmt1->bindParam(":categoryId", $categoryId, PDO::PARAM_INT);
+        $stmt1->bindParam(":name", $name, PDO::PARAM_STR);
+
+        if($stmt1->execute()){
+          return false;
+        }
+
+        $query = "insert into centralcemeteries.tags values(NULL,:name,:categoryId);";
 
 				$stmt = $db->prepare($query);
 
@@ -43,21 +55,21 @@ $email='a@a.com';
 	function getAllTags($db) {
 
 		$query = "select *
-				  from centralcemeteries.tag";
+				  from centralcemeteries.tags";
 
 		$stmt = $db->prepare($query);
 
 		if($stmt->execute())
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         else
-            return null;
+            return -1;
 	}
 
 	//Metoda koja vraca tag sa datim identifikatorom
 	function getTag($db,$id) {
 
 		$query = "select *
-				  from centralcemeteries.tag
+				  from centralcemeteries.tags
 				  where id=:id";
 
 		$stmt = $db->prepare($query);
@@ -69,32 +81,14 @@ $email='a@a.com';
             return FALSE;
 	}
 
-	function getAllTagsInCemetery($db, $cemeteryId){
-
-        $query = "select t.id, t.name, t.categoryId, pt.value
-                  from centralcemeteries.photo p
-                  join centralcemeteries.photo_tag pt on p.id = pt.photoId
-                  join centralcemeteries.tag t on pt.tagId = t.id
-                  where p.cemeteryId = :cemeteryId";
-
-        $stmt = $db->prepare($query);
-        $stmt->bindParam(":cemeteryId", $cemeteryId, PDO::PARAM_INT);
-
-        if($stmt->execute())
-            return $stmt->fetchAll(PDO::FETCH_OBJ);
-        else
-            return FALSE;
-
-    }
-
 	//Metoda koja vrsi filtriranje po nekoj oznaci
 
     function getPhotos($db,$tag_id){
 
         $query = "select p.id
 				from centralcemeteries.photo p
-				join centralcemeteries.photo_tag pt on pt.photoId = p.id
-				join centralcemeteries.tag t on pt.tagId = t.id
+				join centralcemeteries.photo_tags pt on pt.photoId = p.id
+				join centralcemeteries.tags t on pt.tagId = t.id
 				where t.id=:tag_id";
 
         $stmt = $db->prepare($query);
@@ -119,8 +113,8 @@ try{
    // $insert_tag = insertTagCategoryName($pdo, "year of birth", "years");
     //var_dump($insert_tag);
 
- //$all_tag = $pdo->getAllTags();
- //var_dump($all_tag);
+ //$all_tags = $pdo->getAllTags();
+ //var_dump($all_tags);
 // $tag=getTag($pdo,1);
 // var_dump($tag);
 
