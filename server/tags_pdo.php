@@ -4,18 +4,6 @@ include 'connection.php';
     //Metoda za kreiranje dodatnih oznaka
 
     function insertTag($db,$name,$categoryId){
-        $query1 = "select *
-                   from centralcemeteries.tag
-                   where categoryId = :categoryId and name = :name";
-
-        $stmt1 = $db->prepare($query1);
-
-        $stmt1->bindParam(":categoryId", $categoryId, PDO::PARAM_INT);
-        $stmt1->bindParam(":name", $name, PDO::PARAM_STR);
-
-        if($stmt1->execute()){
-          return false;
-        }
 
         $query = "insert into centralcemeteries.tag(name,categoryId)values(:name,:categoryId);";
 
