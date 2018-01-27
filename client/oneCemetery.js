@@ -34,6 +34,7 @@ oneCemetery.controller('oneCemeteryController', ['$scope', '$http', '$window','u
     $scope.cemeteryId = params.id;
 
     $scope.photos = [];
+    $scope.tags= [];
     $scope.cemetery = {};
 
     $scope.showMap = true;
@@ -78,6 +79,20 @@ oneCemetery.controller('oneCemeteryController', ['$scope', '$http', '$window','u
         $scope.showTags = false;
     });
 
+
+    $http({
+        method: "GET",
+        url: "..server/tags.php/tagsCemetery/"+$scope.cemeteryId
+    }).then(function successHandler(result) {
+        console.log(result);
+        $scope.tags = result.data;
+        if($scope.tags.length == 0){
+            $scope.showTags = false;
+        }
+    }, function errorHandler(result) {
+        console.log(result);
+        $scope.showTags = false;
+    });
 
 
 }]);
