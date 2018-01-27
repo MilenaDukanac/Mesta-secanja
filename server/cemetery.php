@@ -19,8 +19,8 @@ $response->error_message="";
 
 /* Podrzane metode API-ja */
 $supported_methods=array("GET", "POST", "PUT", "DELETE");
-//$method=strtoupper($_SERVER['REQUEST_METHOD']);
-$method="GET";
+$method=strtoupper($_SERVER['REQUEST_METHOD']);
+
 /* Provera zahteva koji treba da se opsluzi */
 if(!in_array($method,$supported_methods)) {
     $response->status=405;
