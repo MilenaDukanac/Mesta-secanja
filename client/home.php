@@ -12,16 +12,31 @@
 //dodati
 
 ?>
+
+<script type="text/javascript" src="search.js"></script>
+<script>
+    niz.push("searchCemetery");
+</script>
 <section class="row form-group id="exCollapsingNavbar" style= "padding:95px" align="center">
     <div class="btn-group col-xs-5"  align-items="center" ng-controller="searchController">
-        <label class="form-control-label" for="form1-o-name">Country</label>
-        <input type="text" class="form-control" name="country" required="" data-form-field="Country" id="form1-o-country" ng-model="country">
-
-
-        <label class="form-control-label" for="form1-o-name">Region</label>
-        <input type="text" class="form-control" name="region" required="" data-form-field="Region" id="form1-o-region" ng-model="region">
-
-        <input type="submit" value="Search" ng-click="searchCem()">
+        <div class="mbr">
+            <label for="country">Country: </label><br>
+            <select id="country" ng-model="country">
+                <option value="all" >All</option>
+                <option value="{{country.id}}" ng-repeat="country in countries">
+                    {{country.name}}
+                </option>
+            </select>
+            <br>
+            <label for="region">Region: </label><br>
+            <select id="region" ng-model="region">
+                <option value="all" >All</option>
+                <option value="{{region.regionId}}" ng-repeat="region in regions | CountryFilter:country">
+                    {{region.regionName}}
+                </option>
+            </select>
+        </div>
+        <input type="submit" value="Search" ng-click="search()">
 
 
     </div>

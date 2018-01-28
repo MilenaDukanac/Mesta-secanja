@@ -23,11 +23,11 @@ else
 <section class="mbr-cards mbr-section mbr-section-nopadding" id="features1-x" data-rv-view="54" style="background-color: rgb(255, 255, 255); padding-top:90px">
     <div ng-controller="cemeteriesController" class="mbr-cards-row row">
 
-      <div>
+      <div class="mbr">
         <label for="country">Country: </label><br>
         <select id="country" ng-model="country">
             <option value="all" >All</option>
-            <option value="{{country.name}}" ng-repeat="country in countries">
+            <option value="{{country.id}}" ng-repeat="country in countries">
               {{country.name}}
             </option>
         </select>
@@ -35,7 +35,7 @@ else
         <label for="region">Region: </label><br>
         <select id="region" ng-model="region">
             <option value="all" >All</option>
-            <option value="{{region.regionName}}" ng-repeat="region in regions | CemeteriesCountryFilter:country">
+            <option value="{{region.regionId}}" ng-repeat="region in regions | CemeteriesCountryFilter:country">
               {{region.regionName}}
             </option>
         </select>
@@ -43,7 +43,7 @@ else
         <label for="place">Place: </label><br>
         <select id="place" ng-model="place">
             <option value="all" >All</option>
-            <option value="{{place.name}}" ng-repeat="place in places | CemeteriesRegionFilter:region | CemeteriesCountryFilter: country">
+            <option value="{{place.id}}" ng-repeat="place in places | CemeteriesRegionFilter:region | CemeteriesCountryFilter: country">
               {{place.name}}
             </option>
         </select>
@@ -61,7 +61,7 @@ else
                                     <h5 class="card-subtitle">Country: {{cemetery.countryName}}</h5>
                                     <h5 class="card-subtitle">Region: {{cemetery.regionName}}</h5>
                                     <h5 class="card-subtitle">Place: {{cemetery.placeName}}</h5>
-                                    <h5 class="card-subtitle">Description: {{cemetery.description}}</h5>
+                                    <h5 class="card-subtitle">Place Description: {{cemetery.placeDescription}}</h5>
                                     <div class="card-btn">
                                         <a href="cemetery.php?id={{cemetery.id}}" class="btn btn-primary" ng-click="choose(cemetery.id)">MORE</a>
                                     </div>

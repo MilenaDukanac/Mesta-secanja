@@ -6,11 +6,11 @@ regions.filter("CountryFilter", function(){
       return regions;
     }
 
-    return regions.filter(region => region.countryName == country);
+    return regions.filter(region => region.countryId == country);
   }
 });
 
-regions.controller("regionsController", ["$scope", "$http", "$filter", function($scope, $http, $filter){
+regions.controller("regionsController", ["$scope", "$http", '$window', "$filter", function($scope, $http, $window, $filter){
   $scope.regions = [];
   $scope.countries = [];
   $scope.country ="all";
@@ -34,6 +34,12 @@ regions.controller("regionsController", ["$scope", "$http", "$filter", function(
   }, function errorHandler(result){
     console.log(result);
   });
+
+  $scope.search = function (id) {
+    $window.location.href = "cemeteries.php?country="+$scope.country+"&region="+id;
+  }
+
+
 
 }]);
 

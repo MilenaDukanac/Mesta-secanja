@@ -24,7 +24,7 @@ else
         <label for="country">Country: </label><br>
         <select id="country" ng-model="country">
             <option value="all" >All</option>
-            <option value="{{country.name}}" ng-repeat="country in countries">
+            <option value="{{country.id}}" ng-repeat="country in countries">
               {{country.name}}
             </option>
         </select>
@@ -40,7 +40,7 @@ else
                                       <h4 class="card-title">{{region.regionName}}</h4>
                                       <h5 class="card-subtitle">{{region.countryName}}</h5>
                                       <div class="card-btn">
-                                        <a href="region.php" class="btn btn-primary">MORE</a>
+                                        <a class="btn btn-primary" ng-click="search(region.regionId)">MORE</a>
                                       </div>
                                   </div>
                               </div><!--

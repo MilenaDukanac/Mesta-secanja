@@ -1,5 +1,31 @@
 var cemeteries = angular.module('cemeteries',[]);
 
+cemeteries.service('urlParser', function(){
+    this.parse = function(url){
+        var query = url.split('?');
+        if (query.length === 1){
+            return 1;
+        } //it means it has no parameters
+        else{
+            var paramsArray = query[1].split('&');
+            var obj = {}; //this is going to be your return object
+            var i;
+            for ( i=0; i < paramsArray.length; i++ ){
+                var arr = paramsArray[i].split('=');
+                var param = arr[0];
+                var value;
+                //check if is set with some value
+                if( arr.length === 1 )
+                    value = null;
+                else
+                    value = arr[1];
+                obj[param] = value;
+            }
+            return obj;
+        }
+    };
+});
+
 
 cemeteries.filter("CemeteriesPlaceFilter", function(){
     return function(cemeteries, place){
@@ -7,7 +33,7 @@ cemeteries.filter("CemeteriesPlaceFilter", function(){
             return cemeteries;
         }
 
-        return cemeteries.filter(cemetery => cemetery.placeName == place);
+        return cemeteries.filter(cemetery => cemetery.placeId == place);
     }
 });
 cemeteries.filter("CemeteriesRegionFilter", function(){
@@ -16,7 +42,7 @@ cemeteries.filter("CemeteriesRegionFilter", function(){
             return cemeteries;
         }
 
-        return cemeteries.filter(cemetery => cemetery.regionName == region);
+        return cemeteries.filter(cemetery => cemetery.regionId == region);
     }
 });
 cemeteries.filter("CemeteriesCountryFilter", function(){
@@ -25,24 +51,36 @@ cemeteries.filter("CemeteriesCountryFilter", function(){
             return cemeteries;
         }
 
-        return cemeteries.filter(cemetery => cemetery.countryName == country);
+        return cemeteries.filter(cemetery => cemetery.countryId == country);
     }
 });
 
 
-cemeteries.controller('cemeteriesController', ['$scope', '$http', '$window', '$filter', function ($scope, $http, $window, $filter) {
+cemeteries.controller('cemeteriesController', ['$scope', '$http', '$window', '$filter', 'urlParser', function ($scope, $http, $window, $filter, urlParser) {
+
+    var url = $window.location.href;
+    var params = urlParser.parse(url);
+
+    console.log(params);
+    if(params == 1) {
+        params.region = "all";
+        params.country = "all";
+    }
+
+    $scope.country = params.country;
+    $scope.region = params.region;
+
+    $scope.place = "all";
 
     $scope.cemeteries = [];
     $scope.places = [];
     $scope.regions = [];
     $scope.countries = [];
-    $scope.place = "all";
-    $scope.region = "all";
-    $scope.country = "all";
 
     $scope.$watch('country', function () {
         $scope.place = "all";
-        $scope.region = "all";
+        $scope.region = params.region;
+        params.region = "all";
     });
     $scope.$watch('region', function () {
         $scope.place = "all";
