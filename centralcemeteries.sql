@@ -167,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `place` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `regionId` int(10) NOT NULL,
   `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `place_desription` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `place_description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `regionId` (`regionId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
