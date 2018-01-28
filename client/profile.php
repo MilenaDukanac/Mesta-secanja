@@ -21,18 +21,18 @@ else if($_SESSION['type']==="inner")
                 </div>
                 <div class="col-xs-6">
                     <div class="mbr-author-name">
-                        <h3 class="mbr-section-title display-4 ">
+                        <h3 class="mbr-section-title display-4" style="color: rgb(0, 154, 200);">
                             <?php
                                 echo $_SESSION['name']." ".$_SESSION['surname'];
                             ?>
                         </h3>
-                        <p class="mbr-section-title display-5">
+                        <p class="mbr-section-title display-5" style="color: rgb(0, 154, 200);">
                             Type:
                             <?php
                                 echo $_SESSION['type'];
                             ?>
                         </p>
-                        <p class="mbr-section-title display-5">
+                        <p class="mbr-section-title display-5" style="color: rgb(0, 154, 200);">
                             Institution:
                             <?php
                                 echo $_SESSION['institution'];

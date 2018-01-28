@@ -16,18 +16,18 @@ else
     niz.push("oneCemetery");
 </script>
 <section ng-controller="oneCemeteryController" style="padding-top: 30px; padding-bottom: 0rem; padding-left: 30px; padding-right: 30px">
-    <h4 class="text-md-center text-warning" style="background: #28324e">{{cemetery.name}}</h4>
-    <h5 class="text-black text-md-center">Region:</h5>
+    <h4 class="text-md-center" style="background: #28324e; color: rgb(0, 154, 200);">{{cemetery.name}}</h4>
+    <h5 class="text-md-center" style="color: rgb(0, 154, 200);">Region:</h5>
 
     <div style="padding-top: 30px; padding-bottom: 0rem" ng-show="showDescription">
-        <h5 class="text-warning" style="background: #28324e">Description:</h5>
-        <h6 class="text-black text-justify" style="padding-right: 30px; padding-left: 30px;">{{cemetery.description}}</h6>
+        <h5 style="background: #28324e; color: rgb(0, 154, 200);">Description:</h5>
+        <h6 class="text-black text-justify" style="padding-right: 30px; padding-left: 30px; color: rgb(0, 154, 200);">{{cemetery.description}}</h6>
     </div>
-    <section  class="mbr-gallery mbr-section mbr-section-nopadding mbr-slider-carousel" data-filter="true" id="gallery4-v" data-rv-view="16" style="padding-top: 30px; padding-bottom: 0rem;" ng-show="showGallery">
+    <section class="mbr-gallery mbr-section mbr-section-nopadding mbr-slider-carousel" data-filter="true" id="gallery4-v" data-rv-view="16" style="padding-top: 30px; padding-bottom: 0rem; " ng-show="showGallery">
         <!--Description-->
 
         <!-- Gallery -->
-        <h5 class="text-warning" style="background: #28324e">Gallery:</h5>
+        <h5 style="background: #28324e; color: rgb(0, 154, 200);">Gallery:</h5>
         <div class="mbr-gallery-row">
           <div class=" mbr-gallery-layout-default">
               <div>
@@ -51,17 +51,16 @@ else
         </div>
     </section>
     <div style="padding-top: 30px; padding-bottom: 0rem" ng-show="showAdditionalData">
-        <h5 class="text-warning" style="background: #28324e">Additional data:</h5>
+        <h5 style="background: #28324e; color: rgb(0, 154, 200);">Additional data:</h5>
         <h6 class="text-black text-justify" style="padding-right: 30px; padding-left: 30px;">{{cemetery.additionalData}}</h6>
     </div>
 
     <div style="padding-top: 30px; padding-bottom: 0rem" ng-show="showTags">
-        <h5 class="text-warning" style="background: #28324e">Tags:</h5>
-
+        <h5 style="background: #28324e; color: rgb(0, 154, 200);">Tags:</h5>
     </div>
     <div ng-show="showMap">
         <div style="padding-top: 30px; padding-bottom: 0rem">
-            <h5 class="text-warning" style="background: #28324e">Map:</h5>
+            <h5 style="background: #28324e; color: rgb(0, 154, 200);">Map:</h5>
 
         </div>
 

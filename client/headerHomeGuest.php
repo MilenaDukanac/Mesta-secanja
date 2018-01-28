@@ -43,41 +43,46 @@
 
 </head>
 
-<body style="background-color: rgb(40, 50, 78); padding-top: 90px;@media (max-width: device-width) { body {padding-top: 0px; }}">
+<body class="container-fluid" style="background-color: rgb(40, 50, 78); padding-top: 90px;@media (max-width: device-width) { body {padding-top: 0px; }}">
 <section id="ext_menu-n" data-rv-view="92">
     <nav class="navbar navbar-dropdown">
         <div class="container">
             <div class="mbr-table">
                 <div class="mbr-table-cell">
                     <div class="navbar-brand">
-                        <img src="assets/images/logo-small.png" href="home.php">
-                        <a class="navbar-caption text-warning" href="home.php">CENTRAL Cemeteries</a>
+						<a class="navbar-caption image" href="home.php">
+							<img src="assets/images/logo-small.png">
+						</a>
+                        <a class="navbar-caption" href="home.php" style="color: rgb(0, 154, 200);">CENTRAL Cemeteries</a>
                     </div>
                 </div>
 
                 <div class="mbr-table-cell">
-                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
-                        <div class="hamburger-icon"></div>
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar" style="color: rgb(0, 154, 200);">
+                        <div class="hamburger-icon" style="color: rgb(0, 154, 200);"></div>
                     </button>
 
                     <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar">
                         <li class="nav-item">
-                            <a class="nav-link link" href="cemeteries.php">CEMETERIES</a>
+                            <a class="nav-link link" href="cemeteries.php" style="color: rgb(0, 154, 200);">CEMETERIES</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link link" href="regions.php">REGIONS</a>
+                            <a class="nav-link link" href="regions.php" style="color: rgb(0, 154, 200);">REGIONS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link link" href="about.php">ABOUT</a>
+                            <a class="nav-link link" href="about.php" style="color: rgb(0, 154, 200);">ABOUT</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link link" href="#contacts4-3">CONTACT</a>
+                            <a class="nav-link link" href="#contacts4-3" style="color: rgb(0, 154, 200);">CONTACT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link" href="registration.php" style="color: rgb(0, 154, 200);">REGISTER</a>
                         </li>
 
                     </ul>
 
-                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
-                        <div class="close-icon"></div>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar" style="color: rgb(0, 154, 200);">
+                        <div class="close-icon" style="color: rgb(0, 154, 200);"></div>
                     </button>
                 </div>
             </div>
@@ -92,7 +97,7 @@
         <div class="row">
             <div class="mbr-table-md-up">
                 <div class="mbr-table-cell mbr-right-padding-md-up col-md-8 text-xs-center text-md-left">
-                    <h3 class="mbr-info-title mbr-section-title display-2 text-warning">WELCOME</h3></br>
+                    <h3 class="mbr-info-title mbr-section-title display-2" style="color: rgb(0, 154, 200);">WELCOME</h3></br>
                     <h2 class="mbr-info-subtitle mbr-section-subtitle">To use some of our special services, register or log in if you already have an account</h2>
                 </div>
 
@@ -109,9 +114,12 @@
                                     <input type="password" class="form-control" name="password" required="" data-form-field="Password" id="form1-o-password" ng-model="password">
                                 </div>
                             </div>
+							<div class="mbr-buttons mbr-buttons--center btn-inverse">
+              					<button type="submit" class="btn btn-sm btn-black" ng-click="login()">
+              						Log in
+              					</button>
+              				</div>
                         </form>
-                        <a class="btn btn-primary" ng-click="login()" href="#newMessage" data-toggle="modal">Log in</a>
-                        <a class="btn btn-secondary" href="registration.php">Register</a>
                     </div>
                 </div>
             </div>

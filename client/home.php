@@ -15,11 +15,11 @@
 <section class="row form-group id="exCollapsingNavbar" style= "padding:95px" align="center">
     <div class="btn-group col-xs-5"  align-items="center" ng-controller="searchController">
         <label class="form-control-label" for="form1-o-name">Country</label>
-        <input type="text" class="form-control" name="name" required="" data-form-field="Name" id="form1-o-name" ng-model="country">
+        <input type="text" class="form-control" name="country" required="" data-form-field="Country" id="form1-o-country" ng-model="country">
 
 
         <label class="form-control-label" for="form1-o-name">Region</label>
-        <input type="text" class="form-control" name="name" required="" data-form-field="Name" id="form1-o-name" ng-model="region">
+        <input type="text" class="form-control" name="region" required="" data-form-field="Region" id="form1-o-region" ng-model="region">
 
         <input type="submit" value="Search" ng-click="searchCem()">
 

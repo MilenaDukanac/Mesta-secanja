@@ -40,7 +40,7 @@ else
                                       <h4 class="card-title">{{region.regionName}}</h4>
                                       <h5 class="card-subtitle">{{region.countryName}}</h5>
                                       <div class="card-btn">
-                                        <a href="cemetery.php" class="btn btn-primary">MORE</a>
+                                        <a href="region.php" class="btn btn-primary">MORE</a>
                                       </div>
                                   </div>
                               </div><!--

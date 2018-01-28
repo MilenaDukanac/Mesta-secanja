@@ -1,5 +1,5 @@
 <?php
-include('headerGuest.php');
+include('headerRegistration.php');
 ?>
 <script type="text/javascript" src="register.js"></script>
 <script type="text/javascript">

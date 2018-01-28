@@ -74,9 +74,6 @@
                         <li class="nav-item">
                             <a class="nav-link link" href="#contacts4-3" style="color: rgb(0, 154, 200);">CONTACT</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link link" href="registration.php" style="color: rgb(0, 154, 200);">REGISTER</a>
-                        </li>
                     </ul>
 
                     <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar" style="color: rgb(0, 154, 200);">

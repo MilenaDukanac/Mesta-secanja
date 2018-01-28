@@ -49,60 +49,62 @@
     <input name="animation" type="hidden">
 </head>
 
-<body style="background-color: rgb(40, 50, 78); padding-top: 90px;@media (max-width: device-width) { body {padding-top: 0px; }}">
+<body class="container-fluid" style="background-color: rgb(40, 50, 78); padding-top: 90px;@media (max-width: device-width) { body {padding-top: 0px; }}">
 <section id="ext_menu-n" data-rv-view="92" ng-controller=deleteController>
     <nav class="navbar navbar-dropdown">
         <div class="container">
             <div class="mbr-table">
                 <div class="mbr-table-cell">
                     <div class="navbar-brand">
-                        <img src="assets/images/logo-small.png" href="home.php">
-                        <a class="navbar-caption text-warning" href="home.php">CENTRAL Cemeteries</a>
+						<a class="navbar-caption image" href="home.php">
+							<img src="assets/images/logo-small.png">
+						</a>
+						<a class="navbar-caption" href="home.php" style="color: rgb(0, 154, 200);">CENTRAL Cemeteries</a>
                     </div>
                 </div>
 
                 <div class="mbr-table-cell">
-                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
-                        <div class="hamburger-icon"></div>
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar" style="color: rgb(0, 154, 200);">
+                        <div class="hamburger-icon" style="color: rgb(0, 154, 200);"></div>
                     </button>
 
                     <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar">
                         <li class="nav-item">
-                            <a class="nav-link link" href="cemeteries.php">CEMETERIES</a>
+                            <a class="nav-link link" href="cemeteries.php" style="color: rgb(0, 154, 200);">CEMETERIES</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link link" href="regions.php">REGIONS</a>
+                            <a class="nav-link link" href="regions.php" style="color: rgb(0, 154, 200);">REGIONS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link link" href="about.php">ABOUT</a>
+                            <a class="nav-link link" href="about.php" style="color: rgb(0, 154, 200);">ABOUT</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link link" href="#contacts4-3">CONTACT</a>
+                            <a class="nav-link link" href="#contacts4-3" style="color: rgb(0, 154, 200);">CONTACT</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action">
+                            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action" style="color: rgb(0, 154, 200);">
                                 <?php
                                 echo $_SESSION['name']." ".$_SESSION['surname'];
                                 ?>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="profile.php" class="dropdown-item">View profile</a></li>
+                                <li><a href="profile.php" class="dropdown-item" style="color: rgb(0, 154, 200);">View profile</a></li>
                                 <div class="dropdown-divider"></div>
-                                <li><a href="#newCountry" class="dropdown-item" data-toggle="modal">Add new country</a></li>
-                                <li><a href="#newRegion" class="dropdown-item" data-toggle="modal">Add new region</a></li>
-                                <li><a href="#newPlace" class="dropdown-item" data-toggle="modal">Add new place</a></li>
-                                <li><a href="#newCemetery" class="dropdown-item" data-toggle="modal">Add new cemetery</a></li>
+                                <li><a href="#newCountry" class="dropdown-item" data-toggle="modal" style="color: rgb(0, 154, 200);">Add new country</a></li>
+                                <li><a href="#newRegion" class="dropdown-item" data-toggle="modal" style="color: rgb(0, 154, 200);">Add new region</a></li>
+                                <li><a href="#newPlace" class="dropdown-item" data-toggle="modal" style="color: rgb(0, 154, 200);">Add new place</a></li>
+                                <li><a href="#newCemetery" class="dropdown-item" data-toggle="modal" style="color: rgb(0, 154, 200);">Add new cemetery</a></li>
                                 <div class="dropdown-divider"></div>
-                                <li><a href="#deleteAcount" class="dropdown-item" data-toggle="modal">Delete account</a></li>
+                                <li><a href="#deleteAcount" class="dropdown-item" data-toggle="modal" style="color: rgb(0, 154, 200);">Delete account</a></li>
                                 <div class="dropdown-divider"></div>
-                                <li><a href="logout.php" class="dropdown-item">Log out</a></li>
+                                <li><a href="logout.php" class="dropdown-item" style="color: rgb(0, 154, 200);">Log out</a></li>
                             </ul>
                         </li>
                     </ul>
 
-                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
-                        <div class="close-icon"></div>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar" style="color: rgb(0, 154, 200);">
+                        <div class="close-icon" style="color: rgb(0, 154, 200);"></div>
                     </button>
                 </div>
             </div>
