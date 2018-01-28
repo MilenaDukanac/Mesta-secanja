@@ -74,9 +74,11 @@ function insertRegion($db, $countryId, $name){
     $stmt1->bindParam(":countryId", $countryId, PDO::PARAM_INT);
     $stmt1->bindParam(":name", $name, PDO::PARAM_STR);
 
-    if($stmt1->execute()){
+    $stmt1->execute();
+    if($stmt1->fetch(PDO::FETCH_OBJ)){
       return false;
     }
+
 
     $query = "insert into centralcemeteries.region
               values(NULL, :countryId, :name)";
