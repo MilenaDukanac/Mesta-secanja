@@ -78,7 +78,25 @@ else {
                         }
 
                         break;
+                    case 2:
+                        if($url_elements[1] == "cemeteryregion"){
+                            // GET /goals
+                            $result = getRegionByCemetery($pdo, intval($url_elements[2]));
+                            if($result === FALSE){
+                                $response->data = null;
+                                $response->status = 404;
+                            }
+                            else{
+                                $response->data = $result;
+                                $response->status = 200;
+                            }
+                        }
+                        else{
+                            $response->status = 400;
+                            $response->data = null;
+                        }
 
+                        break;
                     default:
                         $response->status = 400;
                         $response->data = null;

@@ -85,7 +85,7 @@ else {
                         }
                         else if($url_elements[1] == "tagsCemetery"){
 
-                            $result = getAllTagsInCemetery($pdo, intval($url_elements[2]));
+                            $result = getTagsForCemetery($pdo, intval($url_elements[2]));
                             if($result === FALSE){
                                 $response->data = null;
                                 $response->status = 404;

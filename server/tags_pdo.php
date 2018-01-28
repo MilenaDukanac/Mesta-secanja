@@ -5,14 +5,14 @@ include 'connection.php';
 
     function insertTag($db,$name,$categoryId){
 
-        $query = "insert into centralcemeteries.tag(name,categoryId) values(:name,:categoryId);";
+        $query = "insert into centralcemeteries.tag(name,categoryId)values(:name,:categoryId);";
 
 				$stmt = $db->prepare($query);
 
 				$stmt->bindParam(":name", $name, PDO::PARAM_STR);
 				$stmt->bindParam(":categoryId", $categoryId, PDO::PARAM_INT);
 
-        if($stmt->execute())
+        if($stmt->fetch())
 			return true;
 		else
 			return false;
@@ -85,17 +85,38 @@ include 'connection.php';
         }
     }
 
+function getTagsForCemetery($db,$id) {
+
+    $query = "select t.name,ptag.value, ca.color 
+					from centralcemeteries.cemetery c 
+					join centralcemeteries.photo p on c.id=p.cemeteryId 
+					join centralcemeteries.photo_tag ptag on p.id=ptag.photoId 
+					join centralcemeteries.tag t on t.id=ptag.tagId
+					join centralcemeteries.category ca on ca.id = t.categoryId  
+					where c.id=:id
+					group by t.name, ptag.value
+					order by ca.color, t.name";
+
+    $stmt = $db->prepare($query);
+    $stmt->bindParam(":id",$id,PDO::PARAM_INT);
+
+    if($stmt->execute())
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    else
+        return FALSE;
+}
+
 
 try{
-     $pdo=Connection::getConnectionInstance();
+//     $pdo=Connection::getConnectionInstance();
 
 //    //getTag test
 //    $tag_id = 4;
 //    $tag_info = $pdo->getTag($tag_id);
 //    var_dump($tag_info);
 
-   // $insert_tag = insertTagCategoryName($pdo, "year of birth", "years");
-    //var_dump($insert_tag);
+//    $insert_tag = insertTagCategoryName($pdo, "yyyy", "years");
+//    var_dump($insert_tag);
 
  //$all_tags = $pdo->getAllTags();
  //var_dump($all_tags);
