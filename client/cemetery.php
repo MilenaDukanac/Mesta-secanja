@@ -17,7 +17,7 @@ else
     </script>
     <section ng-controller="oneCemeteryController" style="padding-top: 30px; padding-bottom: 0rem; padding-left: 30px; padding-right: 30px">
         <h4 class="text-md-center" style="background: #28324e; color: rgb(0, 154, 200);">{{cemetery.name}}</h4>
-        <h5 class="text-md-center" style="color: rgb(0, 154, 200);">Region:</h5>
+        <h5 class="text-md-center" style="color: rgb(0, 154, 200);">Region: <a href="cemeteries.php?country=all&region={{region.id}}">{{region.name}}</a></h5>
 
         <div style="padding-top: 30px; padding-bottom: 0rem" ng-show="showDescription">
             <h5 style="background: #28324e; color: rgb(0, 154, 200);">Description:</h5>
@@ -39,7 +39,7 @@ else
 
 
 
-                                    <img src="../photos/{{photo.name}}" alt="" class="img-thumbnail">
+                                    <img src="../server/upload/{{photo.name}}" alt="" class="img-thumbnail">
 
                                     <span class="icon-focus"></span>
 
@@ -59,6 +59,10 @@ else
 
         <div style="padding-top: 30px; padding-bottom: 0rem" ng-show="showTags">
             <h5 style="background: #28324e; color: rgb(0, 154, 200);">Tags:</h5>
+            <div ng-repeat="tag in tags">
+                <a style="color: {{tag.color}}; background: white;">{{tag.name}}: {{tag.value}}</a>
+            </div>
+
         </div>
         <div ng-show="showMap">
             <div style="padding-top: 30px; padding-bottom: 0rem">

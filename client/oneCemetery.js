@@ -36,6 +36,7 @@ oneCemetery.controller('oneCemeteryController', ['$scope', '$http', '$window','u
     $scope.photos = [];
     $scope.tags= [];
     $scope.cemetery = {};
+    $scope.region = {};
 
     $scope.showMap = true;
     $scope.showAdditionalData = true;
@@ -53,13 +54,27 @@ oneCemetery.controller('oneCemeteryController', ['$scope', '$http', '$window','u
         console.log(result);
     });
 
+    $http({
+        method: "GET",
+        url: "../server/region.php/cemeteryregion/"+$scope.cemeteryId
+    }).then(function successHandler(result) {
+        $scope.region=result.data;
+        console.log(result);
+    }, function errorHandler(result) {
+        console.log(result);
+    });
+
+
+
+
+
     if($scope.cemetery.longitude == null || $scope.cemetery.latitude == null)
         $scope.showMap = false;
 
-    if($scope.cemetery.additionalData == null)
+    if($scope.cemetery.additionalData == null || $scope.cemetery.additionalData == "")
         $scope.showAdditionalData = false;
 
-    if($scope.cemetery.description == null)
+    if($scope.cemetery.description == null || $scope.cemetery.description == "")
         $scope.showDescription = false;
 
     $http({
@@ -82,12 +97,15 @@ oneCemetery.controller('oneCemeteryController', ['$scope', '$http', '$window','u
 
     $http({
         method: "GET",
-        url: "..server/tags.php/tagsCemetery/"+$scope.cemeteryId
+        url: "../server/tags.php/tagsCemetery/"+$scope.cemeteryId
     }).then(function successHandler(result) {
         console.log(result);
         $scope.tags = result.data;
         if($scope.tags.length == 0){
             $scope.showTags = false;
+        }
+        else{
+            $scope.showTags = true;
         }
     }, function errorHandler(result) {
         console.log(result);
