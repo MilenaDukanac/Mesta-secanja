@@ -60,15 +60,18 @@ cemeteries.controller('cemeteriesController', ['$scope', '$http', '$window', '$f
 
     var url = $window.location.href;
     var params = urlParser.parse(url);
+    var region = params.region;
+    var country = params.country;
 
     console.log(params);
     if(params == 1) {
-        params.region = "all";
-        params.country = "all";
+        region = "all";
+        country = "all";
     }
 
-    $scope.country = params.country;
-    $scope.region = params.region;
+    $scope.country = country;
+    $scope.region = region;
+
 
     $scope.place = "all";
 
@@ -79,8 +82,8 @@ cemeteries.controller('cemeteriesController', ['$scope', '$http', '$window', '$f
 
     $scope.$watch('country', function () {
         $scope.place = "all";
-        $scope.region = params.region;
-        params.region = "all";
+        $scope.region = region;
+        region = "all";
     });
     $scope.$watch('region', function () {
         $scope.place = "all";
