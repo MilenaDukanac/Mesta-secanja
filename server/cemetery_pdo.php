@@ -4,7 +4,7 @@ include 'connection.php';
 
 function getAllCemeteries($db){
 
-    $query = "select cc.id, cc.name, cc.description, cc.additionalData, cc.longitude, cc.latitude, p.id as placeId, p.name as placeName, p.place_desription as placeDescription, r.id as regionId, r.name as regionName, c.id as countryId, c.name as countryName
+    $query = "select cc.id, cc.name, cc.description, cc.additionalData, cc.longitude, cc.latitude, p.id as placeId, p.name as placeName, p.place_description as placeDescription, r.id as regionId, r.name as regionName, c.id as countryId, c.name as countryName
               from centralcemeteries.cemetery cc
               join centralcemeteries.place p on cc.placeId = p.id
               join centralcemeteries.region r on p.regionId = r.id
