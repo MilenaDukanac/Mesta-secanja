@@ -3,13 +3,16 @@
 include 'connection.php';
 
 function getAllCemeteries($db){
-    $query = "select cc.id, cc.name, cc.description, cc.additionalData, cc.longitude, cc.latitude, p.name as placeName, r.name as regionName, c.name as countryName
+
+    $query = "select cc.id, cc.name, cc.description, cc.additionalData, cc.longitude, cc.latitude, p.id as placeId, p.name as placeName, p.place_desription as placeDescription, r.id as regionId, r.name as regionName, c.id as countryId, c.name as countryName
               from centralcemeteries.cemetery cc
               join centralcemeteries.place p on cc.placeId = p.id
               join centralcemeteries.region r on p.regionId = r.id
-              join centralcemeteries.country c on r.countryId = c.id";
+              join centralcemeteries.country c on r.countryId = c.id
+              order by placeId";
 
     $stmt = $db->prepare($query);
+
     if($stmt->execute()) {
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
@@ -54,6 +57,9 @@ function insertCemeteryWithPlaceName($db, $name, $place_name, $description, $add
                from centralcemeteries.place
                where name=:name";
     $stmt1 = $db->prepare($query1);
+
+
+
     $stmt1->bindParam(":name", $place_name, PDO::PARAM_STR);
 
     if($stmt1->execute()) {
@@ -161,7 +167,7 @@ try{
 //    $insert_cemetery=insertCemetery($pdo,1, "Test description", null, 45.3815612, 20.36857370000007);
 //    var_dump($insert_cemetery);
 //
-//    $insert_cemetery=insertCemeteryWithRegionName($pdo,"Najnovije groblje", "Sumadija", "neko bas lepo groblje", "many historical persons", 20.36857370000007, 24.45689769464);
+//    $insert_cemetery=insertCemeteryWithPlaceName($pdo,"Najnovije groblje", "Sarajevo", "neko bas lepo groblje", "many historical persons", 20.36857370000007, 24.45689769464);
 //    var_dump($insert_cemetery);
 
 

@@ -18,7 +18,7 @@ function getRegionsAndPlaces($db){
 
 function getAllPlaces($db){
 
-    $query = "select p.id, p.name, r.name as regionName, c.name as countryName
+    $query = "select p.id, p.name, r.id as regionId, c.id as countryId
               from centralcemeteries.place p
               join centralcemeteries.region r on p.regionId = r.id
               join centralcemeteries.country c on r.countryId = c.id";
@@ -74,12 +74,12 @@ function getPlace($db, $id){
 
 function insertPlace($db, $regionId, $name){
     $query = "insert into centralcemeteries.place
-              values(NULL, :regionId, :name)";
+              values(NULL, :regionId, :name, NULL)";
 
     $stmt = $db->prepare($query);
 
     $stmt->bindParam(":regionId", $regionId, PDO::PARAM_INT);
-    $stmt->bindParam(":name", $name, PDO::PARAM_INT);
+    $stmt->bindParam(":name", $name, PDO::PARAM_STR);
 
     if($stmt->execute()){
         return true;
@@ -130,7 +130,7 @@ function deletePlace($db, $id){
 
 try{
 //
-//    $pdo=Connection::getConnectionInstance();
+    $pdo=Connection::getConnectionInstance();
 //
 //    $all_regions=getAllPlaces($pdo);
 //    var_dump($all_regions);
@@ -147,7 +147,7 @@ try{
 //    $region = getRegion($pdo, 3);
 //    var_dump($region);
 
-//    $insert_region=insertRegionWithCountryName($pdo, "Serbia","Sumadija");
+//    $insert_region=insertPlaceWithRegionName($pdo, "VVVV","vvvv");
 //    var_dump($insert_region);
 
 
