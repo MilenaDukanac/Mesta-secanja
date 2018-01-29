@@ -29,12 +29,12 @@ newCemetery.controller('newCemeteryController', ['$scope', '$http', '$window', f
             url: '../server/cemetery.php',
 						data: cemetery
         }).then(function successHandler(result) {
-						$scope.newCemeteryMessage = "New cemetery is successfully added."
+						$scope.newCemeteryMessage = "New cemetery is successfully added.";
 						$scope.shownNewCemeteryMessage = true;
 						document.formCemetery.reset();
             console.log(result);
         }, function errorHandler(result) {
-						$scope.newCemeteryMessage = "The place you entered is not valid, pleace try again."
+						$scope.newCemeteryMessage = "Incorrect input! Please, check and try again.";
 						$scope.shownNewCemeteryMessage = true;
 						document.formCemetery.reset();
             console.log(result);
