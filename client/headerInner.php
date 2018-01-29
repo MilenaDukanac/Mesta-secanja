@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
     <link rel="stylesheet" href="assets/navdrop.css" type="text/css">
     <link rel="stylesheet" href="assets/ng-tags-input.min.css" />
-
     <link rel="stylesheet" href="assets/popover.css">
 
     <script src="assets/web/assets/jquery/jquery.min.js"></script>
@@ -232,6 +231,10 @@
                         <div class="form-group">
                             <label class="form-control-label" for="form3-o-region">Place*</label>
                             <input type="text" class="form-control" required="" name="replacegion" data-form-field="place" id="form3-o-place" ng-model="newPlace.place">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="form3-o-description">Description</label>
+                            <input type="text" class="form-control" name="description" data-form-field="description" id="form3-o-description" ng-model="newPlace.description">
                         </div>
                         <div class=" form-group mbr-buttons mbr-buttons--center btn-inverse">
                             <button type="submit" class="btn btn-sm btn-primary" ng-click="insertPlace()">

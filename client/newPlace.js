@@ -9,6 +9,10 @@ newPlace.controller('newPlaceController', ['$scope', '$http', '$window', functio
 		}
 
     $scope.insertPlace = function () {
+        if($scope.newPlace.description === undefined) {
+            $scope.newPlace.description = "";
+        }
+				
 				var place = angular.toJson($scope.newPlace);
 
         $http({
@@ -21,7 +25,7 @@ newPlace.controller('newPlaceController', ['$scope', '$http', '$window', functio
 						document.formPlace.reset();
             console.log(result);
 	        }, function errorHandler(result) {
-						$scope.newPlaceMessage = "The region you added does not exist or the place is already added.";
+						$scope.newPlaceMessage = "The region you added is not valid, please try again.";
 						$scope.showNewPlaceMessage = true;
 						document.formPlace.reset();
             console.log(result);

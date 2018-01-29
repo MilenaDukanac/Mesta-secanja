@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
     <link rel="stylesheet" href="assets/navdrop.css" type="text/css">
     <link rel="stylesheet" href="assets/ng-tags-input.min.css" />
-
     <link rel="stylesheet" href="assets/popover.css">
 
     <script src="assets/web/assets/jquery/jquery.min.js"></script>
@@ -127,7 +126,7 @@
                     <h4 class="modal-title">Expand inner circle</h4>
                 </div>
                 <div class="container modal-body">
-                    <form>
+                    <form id="formExpandInner">
                         <div class="form-group">
                             <label class="form-control-label" for="form1-o-username">Username*</label>
                             <input type="text" class="form-control" required="" name="username" data-form-field="username" id="form1-o-username" ng-model="newInner.username">
@@ -166,6 +165,11 @@
                         <div class="form-group">
                             <label class="form-control-label" for="form2-o-tagname">Tag name*</label>
                             <input type="text" class="form-control" required="" name="tagname" data-form-field="tag name" id="form2-o-tagname" ng-model="newTag.tagName">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="form2-o-tagname">Posible values*</label>
+                            <input type="text" placeholder="Insert possible values separated by ;" class="form-control" required="" name="possiblevalues" data-form-field="tag name" id="form2-o-possiblevalues" ng-model="newTag.possibleValues">
+
                         </div>
                         <div class=" form-group mbr-buttons mbr-buttons--center btn-inverse">
                             <button type="submit" class="btn btn-sm btn-primary" ng-click="insertTag()">
@@ -265,8 +269,12 @@
                             <input type="text" class="form-control" required="" name="region" data-form-field="region" id="form5-o-region" ng-model="newPlace.region">
                         </div>
                         <div class="form-group">
-                            <label class="form-control-label" for="form4-o-region">Place*</label>
-                            <input type="text" class="form-control" required="" name="replacegion" data-form-field="place" id="form5-o-place" ng-model="newPlace.place">
+                            <label class="form-control-label" for="form5-o-region">Place*</label>
+                            <input type="text" class="form-control" required="" name="place" data-form-field="place" id="form5-o-place" ng-model="newPlace.place">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="form5-o-description">Description</label>
+                            <input type="text" class="form-control" name="description" data-form-field="description" id="form5-o-description" ng-model="newPlace.description">
                         </div>
                         <div class=" form-group mbr-buttons mbr-buttons--center btn-inverse">
                             <button type="submit" class="btn btn-sm btn-primary" ng-click="insertPlace()">
