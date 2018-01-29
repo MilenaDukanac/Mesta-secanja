@@ -21,7 +21,7 @@ newTag.controller('newTagController', ['$scope', '$http', '$window', function ($
 				document.formTag.reset();
           console.log(result);
         }, function errorHandler(result) {
-		    	$scope.newTagMessage = "The category you entered is not valid, please try again.";
+		    	$scope.newTagMessage = "The category doesn't exist or the tag is already added!";
 		    	$scope.showNewTagMessage = true;
 				document.formTag.reset();
           console.log(result);
