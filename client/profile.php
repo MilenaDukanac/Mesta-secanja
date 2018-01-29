@@ -16,7 +16,7 @@ else if($_SESSION['type']==="inner")
             <div class = "row">
                 <div class="col-xs-3 col-xs-offset-3">
                     <div class="mbr-img">
-                        <img src="assets/images/face2.jpg" class="avatar" alt="Avatar">
+                        <img src="assets/images/avatar.png" class="avatar" style="border-radius: 50%" alt="Avatar">
                     </div>
                 </div>
                 <div class="col-xs-6">
@@ -38,6 +38,13 @@ else if($_SESSION['type']==="inner")
                                 echo $_SESSION['institution'];
                             ?>
                         </p>
+                        <a class="nav-item dropdown" style="color: rgb(0, 154, 200);" href="#" data-toggle="dropdown" class="mbr-section-title display-5 nav-link dropdown-toggle user-action" style="color: rgb(0, 154, 200);">Options
+                            <ul class="dropdown-menu">
+                                <li><a href="#changePhoto" class="dropdown-item" data-toggle="modal" style="color: rgb(0, 154, 200);">Change profile photo</a></li>
+                                    <div class="dropdown-divider"></div>
+                                <li><a href="#changePassword" class="dropdown-item" data-toggle="modal" style="color: rgb(0, 154, 200);">Change password</a></li>
+                            </ul>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -53,9 +60,19 @@ else if($_SESSION['type']==="inner")
             </div>
         </div>
     </div>
-
-
 </section>
+<!---->
+<!--<div class="container modal-body">-->
+<!--    <form id="changePhoto" class=" m-t-3 col-lg-10 col-lg-offset-1" method="post" action="upload.php"  enctype="multipart/form-data">-->
+<!--        <div class="form-group">-->
+<!--            <label class="form-control-label" for="photo"><h2>Upload Photo</h2></label>-->
+<!--            <br>-->
+<!--            <input type="file" name="photo" id="photo" required="">-->
+<!--            <br><br>-->
+<!--            <input class="btn btn-sm text-white" type="submit" name="submit" value="Upload" style="background-color: rgb(0, 154, 200);">-->
+<!--        </div>-->
+<!--    </form>-->
+<!--</div>-->
 
 <?php
 include('footer.php');

@@ -34,7 +34,7 @@ else
 
             <div class="mbr-gallery-row">
                 <div class=" mbr-gallery-layout-default">
-                    <div ng-repeat="photo in photos" class="mbr-gallery-item mbr-gallery-item__mobirise3 mbr-gallery-item--p1" data-video-url="false" data-tags="Awesome">
+                    <div ng-repeat="photo in photos" class="mbr-gallery-item mbr-gallery-item__mobirise3 mbr-gallery-item--p1" data-video-url="false">
                         <div href="#lb-gallery4-v" data-slide-to="0" data-toggle="modal">
                             <img src="../server/upload/{{photo.name}}" alt="" class="img-thumbnail">
                             <span class="icon-focus"></span>

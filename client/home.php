@@ -17,31 +17,32 @@
 <script>
     niz.push("searchCemetery");
 </script>
-<section class="row form-group id="exCollapsingNavbar" style= "padding:95px" align="center">
-    <div class="btn-group col-xs-5"  align-items="center" ng-controller="searchController">
-        <div class="mbr">
-            <label for="country">Country: </label><br>
-            <select id="country" ng-model="country">
-                <option value="all" >All</option>
-                <option value="{{country.id}}" ng-repeat="country in countries">
-                    {{country.name}}
-                </option>
-            </select>
-            <br>
-            <label for="region">Region: </label><br>
-            <select id="region" ng-model="region">
-                <option value="all" >All</option>
-                <option value="{{region.regionId}}" ng-repeat="region in regions | CountryFilter:country">
-                    {{region.regionName}}
-                </option>
-            </select>
-        </div>
-        <input type="submit" value="Search" ng-click="search()">
 
 
+<div class="form-group row"  ng-controller="searchController" style="padding-left: 25%;">
+    <div class="col-xs-3">
+        <label for="country" class="text-white">Country: </label><br>
+        <select class="form-control" id="country" ng-model="country">
+            <option value="all">All</option>
+            <option value="{{country.id}}" ng-repeat="country in countries">
+                {{country.name}}
+            </option>
+        </select>
     </div>
+    <div class="col-xs-3">
+        <label for="region" class="text-white">Region: </label><br>
+        <select class="form-control" id="region" ng-model="region">
+            <option value="all" >All</option>
+            <option value="{{region.regionId}}" ng-repeat="region in regions | CountryFilter:country">
+                {{region.regionName}}
+            </option>
+        </select>
+    </div>
+    <div class="col-xs-3">
+        <input class="btn btn-sm text-white" type="submit" value="Search" ng-click="search()" style="margin-top: 35px; background-color: rgb(0, 154, 200);">
+    </div>
+</div>
 
-</section>
 
 
 <section class="mt-5" id="map1-7" data-rv-view="101">
@@ -49,24 +50,6 @@
               <iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;q=place_id:ChIJvT-116N6WkcR5H4X8lxkuB0" allowfullscreen=""></iframe>
         </div>
     </section>
-
-<!--    <div>-->
-<!--        <div ng-controller="MainController">-->
-<!--            <div class="mapCanvas">-->
-<!--                <ui-gmap-google-map-->
-<!--                        center="map.center"-->
-<!--                        zoom="map.zoom"-->
-<!--                        draggable="map.draggable"-->
-<!--                        options="options">-->
-<!--                    <ui-gmap-marker-->
-<!--                            coords="marker.coords"-->
-<!--                            options="marker.options"-->
-<!--                            idkey="marker.id">-->
-<!--                    </ui-gmap-marker>-->
-<!--                </ui-gmap-google-map>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
 
 <?php
 include('footer.php');
