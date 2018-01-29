@@ -24,6 +24,12 @@ app.controller('tags', ['$scope', '$http', '$window', function($scope, $http, $w
     $scope.showBackButton = true;
     $scope.showPhotoForm = false;
     $scope.showTagsForm = false;
+    $scope.tagPossibleValues = [];
+
+    $scope.errorMessage = [];
+    $scope.errorMessageShow = false;
+
+    $scope.firstMessage = message;
 
     if(success == 1){
         $scope.showBackButton = false;
@@ -61,6 +67,7 @@ app.controller('tags', ['$scope', '$http', '$window', function($scope, $http, $w
             $scope.shownNewPhotoMessage = true;
             console.log(result);
         });
+
     };
 
     // za hvatanje svih tagova
@@ -74,7 +81,13 @@ app.controller('tags', ['$scope', '$http', '$window', function($scope, $http, $w
         console.log(result);
     });
 
+
+
+
     $scope.insertTags = function(){
+
+        $scope.errorMessage = [];
+        $scope.errorMessageShow = false;
 
         for(var key in $scope.photoTags){
 
@@ -90,6 +103,7 @@ app.controller('tags', ['$scope', '$http', '$window', function($scope, $http, $w
                     obj.photoId = $scope.photoId;
                     obj.tagId = key;
                     obj.value = $scope.photoTags[key][j].text;
+
                     var photoTag = angular.toJson(obj);
 
                     console.log(obj);
@@ -100,24 +114,29 @@ app.controller('tags', ['$scope', '$http', '$window', function($scope, $http, $w
                         url: "../server/photo_tag.php",
                         data: photoTag
                     }).then(function successHandler(result) {
-                        //   $scope.newPhotoMessage = "New photo is successfully added!";
-                        //   $scope.shownNewPhotoMessage = true;
                         console.log(result);
                     }, function errorHandler(result) {
-                        //    $scope.newPhotoMessage = "Try again!";
-                        //      $scope.shownNewPhotoMessage = true;
-                        console.log(result);
+                        if (result.data ==  "") {
+
+                        }else {
+                            $scope.errorMessage.push(result.data);
+                            $scope.errorMessageShow = true;
+                            console.log(result);
+                        }
                     });
                 }
             }
         }
+        $window.setTimeout(function () {
+            if($scope.errorMessageShow === false) {
+                $window.location.href = "cemetery.php?id=" + $scope.newPhoto.cemeteryId;
+            }
+        },1000);
 
-        $window.location.href = "cemetery.php?id="+$scope.newPhoto.cemeteryId;
-    }
+    };
 
     $scope.goBack = function () {
         $window.location.href = "cemetery.php?id="+$scope.newPhoto.cemeteryId;
     }
 
 }]);
-
