@@ -141,7 +141,6 @@ try{
             break;
 
         case "PUT":
-            //TODO
             $new_inner = json_decode(file_get_contents("php://input"));
 
             if(updateTypeByUsername($pdo, $new_inner->username)){

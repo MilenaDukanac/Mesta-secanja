@@ -128,7 +128,7 @@ function updateTypeByUsername($db, $username){
 
     $stmt=$db->prepare($query);
 
-    $stmt->bindParam(":username", $username, PDO::PARAM_INT);
+    $stmt->bindParam(":username", $username, PDO::PARAM_STR);
 
     if($stmt->execute()){
         $db->commit();
