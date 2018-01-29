@@ -95,6 +95,19 @@ else {
                                 $response->status = 200;
                             }
                         }
+                        else if($url_elements[1] == "possiblevalues"){
+
+                            $result = getTagPossibleValues($pdo, intval($url_elements[2]));
+                            if($result === FALSE){
+                                $response->data = null;
+                                $response->status = 404;
+                            }
+                            else{
+                                $response->data = $result;
+                                $response->status = 200;
+                            }
+
+                        }
                         else{
                             $response->status = 400;
                             $response->data = null;
@@ -109,9 +122,10 @@ else {
 
 
             case "POST":
+
                 $new_tag = json_decode(file_get_contents("php://input"));         
 
-                $new_tag_id = insertTagCategoryName($pdo, $new_tag->tagName, $new_tag->category);
+                $new_tag_id = insertTagCategoryName($pdo, $new_tag->tagName, $new_tag->category, $new_tag->possibleValuesArray);
 
 
 				if($new_tag_id == false){
@@ -125,6 +139,7 @@ else {
 
         }
     }catch(Exception $e){
+
         $response->status = 500;
         $response->error = true;
         $response->data = null;

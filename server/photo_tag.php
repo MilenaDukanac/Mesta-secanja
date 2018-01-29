@@ -70,8 +70,14 @@ else {
                 if(insertPhotoTag($pdo, $newPhotoTag->photoId, $newPhotoTag->tagId, $newPhotoTag->value)){
                     $response->status = 201;
                 } else {
+
                     $response->status = 400;
-                    $response->data = null;
+
+                    $mmm = getTagName($pdo, $newPhotoTag->tagId);
+                    $values = getTagPossibleValues($pdo, $newPhotoTag->tagId);
+                    $response->data = "Value --". $newPhotoTag->value ."-- for tag --". $mmm->name ."-- is not correct.
+                                       Possible values for tag --". $mmm->name . "-- are: " . $values . "." ;
+
                 }
                 break;
 

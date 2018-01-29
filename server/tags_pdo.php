@@ -3,22 +3,57 @@ include 'connection.php';
 
     //Metoda za kreiranje dodatnih oznaka
 
-    function insertTag($db,$name,$categoryId){
+    function insertTag($db,$name,$categoryId, $possibleValues){
 
-        $query = "insert into centralcemeteries.tag(name,categoryId)values(:name,:categoryId);";
+        $db->beginTransaction();
+
+        $query = "insert into centralcemeteries.tag (name, categoryId)
+                  values(:name, :categoryId);";
 
 				$stmt = $db->prepare($query);
 
 				$stmt->bindParam(":name", $name, PDO::PARAM_STR);
 				$stmt->bindParam(":categoryId", $categoryId, PDO::PARAM_INT);
 
-        if($stmt->fetch())
-			return true;
-		else
-			return false;
+        if($stmt->execute()){}
+		else {
+            $db->rollback();
+            return false;
+        }
+
+
+        $query1 = "select id from centralcemeteries.tag where name = :name";
+        $stmt1 = $db->prepare($query1);
+
+        $stmt1->bindParam(":name", $name, PDO::PARAM_STR);
+        $stmt1->execute();
+        $tagId = $stmt1->fetch(PDO::FETCH_OBJ);
+        $tagIdInt = intval($tagId->id);
+        $query2 = "insert into centralcemeteries.tag_possible_value (tagId, value)
+                   values (:tagId, :value)";
+
+        $stmt2 = $db->prepare($query2);
+
+        foreach($possibleValues as $possiblevalue){
+
+            $stmt2->bindParam(":tagId", $tagIdInt, PDO::PARAM_INT);
+            $stmt2->bindParam(":value", $possiblevalue, PDO::PARAM_STR);
+
+            if($stmt2->execute()){
+            }
+            else{
+                $db->rollback();
+                return false;
+            }
+
+        }
+        $db->commit();
+        return true;
+
+
     }
 
-    function insertTagCategoryName($db, $name, $categoryName){
+    function insertTagCategoryName($db, $name, $categoryName, $possibleValues){
 
         $query = "select id from centralcemeteries.category where name = :name";
 
@@ -31,7 +66,7 @@ include 'connection.php';
         else
             return false;
 
-        return insertTag($db, $name, intval($categoryId->id));
+        return insertTag($db, $name, intval($categoryId->id), $possibleValues);
     }
 
 	//Metoda koja vraca sve oznake
@@ -106,16 +141,32 @@ function getTagsForCemetery($db,$id) {
         return FALSE;
 }
 
+function getTagPossibleValues($db, $tagId){
+    $query = "select value
+			  from centralcemeteries.tag_possible_value
+			  where tagId = :tagId";
+
+    $stmt = $db->prepare($query);
+
+    $stmt->bindParam(":tagId", $tagId, PDO::PARAM_INT);
+
+    if($stmt->execute())
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    else
+        return false;
+}
+
 
 try{
 //     $pdo=Connection::getConnectionInstance();
-
-//    //getTag test
-//    $tag_id = 4;
-//    $tag_info = $pdo->getTag($tag_id);
-//    var_dump($tag_info);
-
-//    $insert_tag = insertTagCategoryName($pdo, "yyyy", "years");
+//
+////    //getTag test
+////    $tag_id = 4;
+////    $tag_info = $pdo->getTag($tag_id);
+////    var_dump($tag_info);
+//
+//    $array = ["1924","1925","1926"];
+//    $insert_tag = insertTagCategoryName($pdo, "year off", "years", $array);
 //    var_dump($insert_tag);
 
  //$all_tags = $pdo->getAllTags();

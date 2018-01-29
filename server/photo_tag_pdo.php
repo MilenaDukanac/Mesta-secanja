@@ -46,7 +46,11 @@ function insertPhotoTag($db, $photoId, $tagId, $value){
 
     $db->beginTransaction();
 
-    $query = "insert into centralcemeteries.photo_tags (photoId, tagId, value)
+    if(checkTagValue($db, $tagId, $value) == false){
+        return false;
+    }
+
+    $query = "insert into centralcemeteries.photo_tag (photoId, tagId, value)
               values(:photoId, :tagId, :value)";
 
     $stmt = $db->prepare($query);
@@ -64,6 +68,62 @@ function insertPhotoTag($db, $photoId, $tagId, $value){
         $db->rollback();
         return false;
     }
+}
+
+function checkTagValue($db, $tagId, $value){
+    $query = "select *
+			  from centralcemeteries.tag_possible_value
+			  where tagId = :tagId and value = :value";
+
+    $stmt = $db->prepare($query);
+
+    $stmt->bindParam(":tagId", $tagId, PDO::PARAM_INT);
+    $stmt->bindParam(":value", $value, PDO::PARAM_STR);
+    $stmt->execute();
+
+    if($stmt->fetch(PDO::FETCH_OBJ) == null)
+        return false;
+    else
+        return true;
+}
+
+function getTagName($db, $tagId){
+    $query = "select name
+			  from centralcemeteries.tag
+			  where id = :tagId";
+
+    $stmt = $db->prepare($query);
+
+    $stmt->bindParam(":tagId", $tagId, PDO::PARAM_INT);
+
+
+    if($stmt->execute())
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    else
+        return null;
+}
+
+function getTagPossibleValues($db, $tagId){
+    $query = "select value
+			  from centralcemeteries.tag_possible_value
+			  where tagId = :tagId";
+
+    $stmt = $db->prepare($query);
+
+    $stmt->bindParam(":tagId", $tagId, PDO::PARAM_INT);
+
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+    $str = "";
+
+    foreach ($result as $value){
+        if($str == ""){
+            $str .= $value->value;
+        }else {
+            $str .=  ", " . $value->value;
+        }
+    }
+    return $str;
 }
 
 // Brisanje naloga
@@ -115,6 +175,10 @@ try{
        $deleted = deletePhoto($pdo, $id);
        var_dump($deleted);*/
 
+
+   // var_dump(getTagName($pdo, 10));
+
+//    var_dump(getTagPossibleValues($pdo, 20));
 
 }catch(PDOException $e){
     echo $e->getMessage();
