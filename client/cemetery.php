@@ -30,7 +30,12 @@ else
         <section class="mbr-gallery mbr-section mbr-section-nopadding mbr-slider-carousel" data-filter="true" id="gallery4-v" data-rv-view="16" style="padding-top: 30px; padding-bottom: 0rem; " ng-show="showGallery">
             <h5 style="color: rgb(0, 154, 200);">Gallery:</h5>
 
-            <input type="button" class="btn btn-sm text-white" href="#addNewPhoto" data-toggle="modal" value="Add New Photo" style="background-color: rgb(0, 154, 200);">
+            <?php
+
+            if($_SESSION['type']==="admin" || $_SESSION['type']==="inner") {
+                echo "<input type = \"button\" class=\"btn btn-sm text-white\" href = \"#addNewPhoto\" data-toggle = \"modal\" value = \"Add New Photo\" style = \"background-color: rgb(0, 154, 200);\" >";
+            }
+            ?>
 
             <div class="mbr-gallery-row">
                 <div class=" mbr-gallery-layout-default">
