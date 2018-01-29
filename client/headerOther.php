@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="assets/navdrop.css" type="text/css">
     <link rel="stylesheet" href="assets/ng-tags-input.min.css" />
 
+    <link rel="stylesheet" href="assets/popover.css">
+
     <script src="assets/web/assets/jquery/jquery.min.js"></script>
     <script src="assets/tether/tether.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -92,7 +94,6 @@
                             </ul>
                         </li>
                     </ul>
-
                     <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar" style="color: rgb(0, 154, 200);">
                         <div class="close-icon" style="color: rgb(0, 154, 200);"></div>
                     </button>

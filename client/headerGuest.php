@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="assets/mobirise-gallery/style.css">
     <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
 
+    <link rel="stylesheet" href="assets/popover.css">
+
     <script src="assets/web/assets/jquery/jquery.min.js"></script>
     <script src="assets/tether/tether.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>

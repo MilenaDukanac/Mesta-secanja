@@ -13,10 +13,10 @@
 										<a class="text-white" href="home.php">Home</a>
 									</li>
 									<li>
-										<a class="text-white" href="regions.php">Regions</a>
+										<a class="text-white" href="cemeteries.php">Cemeteries</a>
 									</li>
 									<li>
-										<a class="text-white" href="cemeteries.php">Cemeteries</a>
+										<a class="text-white" href="regions.php">Regions</a>
 									</li>
 									<li>
 										<a class="text-white" href="about.php">About</a>
@@ -93,24 +93,31 @@
 
 		<br><br>
 
-		<div class="container text-xs-center text-white" style="background-color: rgb(40, 50, 78); font-size: 15px;">
-			<p>&copy; Copyright Milena Dukanac, Jelena Ivković, Natalija Kominac, Miloš Lončarević, Anđela Mijailović, Filip Miljaković</p>
+		<div class="container text-xs-center text-white" style="font-size: 15px;">
+			<p title="Design & Development" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Milena Dukanac, Jelena Ivković, Natalija Kominac, Miloš Lončarević, Anđela Mijailović, Filip Miljaković">Copyright &copy; 2018 Faculty of Mathematics, University of Belgrade</p>
 		</div>
+
+		<script>
+				$(document).ready(function(){
+			  $('[data-toggle="popover"]').popover();
+			});
+		</script>
 
 		<div id="scrollToTop" class="scrollToTop mbr-arrow-up">
 			<a style="text-align: center;"><i class="mbr-arrow-up-icon" onclick="topFunction()"></i></a>
 		</div>
 
 		<script>
-		function topFunction() {
-			document.body.scrollTop = 0;
-			document.documentElement.scrollTop = 0;
-		}
+			function topFunction() {
+				document.body.scrollTop = 0;
+				document.documentElement.scrollTop = 0;
+			}
 		</script>
-        <script type="text/javascript">
-            var rootApp = angular.module('rootApp', niz);
-            console.log(niz);
-        </script>
+
+    <script type="text/javascript">
+        var rootApp = angular.module('rootApp', niz);
+        console.log(niz);
+  	</script>
 
 	</body>
 </html>
