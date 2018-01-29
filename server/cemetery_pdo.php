@@ -31,15 +31,15 @@ function getCemetery($db, $id){
     return $stmt->fetch(PDO::FETCH_OBJ);
 }
 
-function insertCemetery($db, $name,$place_id, $description, $additional_data, $longitude, $latitude){
+function insertCemetery($db, $name, $place_id, $description, $additional_data, $longitude, $latitude){
 
-    $query = "insert into centralcemeteries.cemetery
-              values(NULL, :name, :region_id, :description, :additional_data, :longitude, :latitude)";
+    $query = "insert into centralcemeteries.cemetery(name, placeId, description, additionalData, longitude, latitude)
+              values(:name, :place_id, :description, :additional_data, :longitude, :latitude)";
 
     $stmt = $db->prepare($query);
 
-    $stmt->bindParam(":name", $name, PDO::PARAM_INT);
-    $stmt->bindParam(":region_id", $place_id, PDO::PARAM_INT);
+    $stmt->bindParam(":name", $name, PDO::PARAM_STR);
+    $stmt->bindParam(":place_id", $place_id, PDO::PARAM_INT);
     $stmt->bindParam(":description", $description, PDO::PARAM_STR);
     $stmt->bindParam(":additional_data", $additional_data, PDO::PARAM_STR);
     $stmt->bindParam(":longitude", $longitude, PDO::PARAM_STR);
@@ -49,7 +49,6 @@ function insertCemetery($db, $name,$place_id, $description, $additional_data, $l
         return true;
     else
         return false;
-
 }
 
 function insertCemeteryWithPlaceName($db, $name, $place_name, $description, $additional_data, $longitude, $latitude){
@@ -58,18 +57,17 @@ function insertCemeteryWithPlaceName($db, $name, $place_name, $description, $add
                where name=:name";
     $stmt1 = $db->prepare($query1);
 
-
-
     $stmt1->bindParam(":name", $place_name, PDO::PARAM_STR);
+    $place_id = "";
 
     if($stmt1->execute()) {
         $place_id = $stmt1->fetch(PDO::FETCH_OBJ);
     }
-    else
+    else{
         return false;
+    }
 
     return insertCemetery($db, $name, intval($place_id->id), $description, $additional_data, $longitude, $latitude);
-
 }
 
 function getCemeteriesInRegion($db, $regionId){

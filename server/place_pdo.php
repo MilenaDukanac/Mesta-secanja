@@ -72,24 +72,29 @@ function getPlace($db, $id){
     }
 }
 
-function insertPlace($db, $regionId, $name){
+function insertPlace($db, $regionId, $name, $description){
+    $db->beginTransaction();
+
     $query = "insert into centralcemeteries.place
-              values(NULL, :regionId, :name, NULL)";
+              values(NULL, :regionId, :name, :description)";
 
     $stmt = $db->prepare($query);
 
     $stmt->bindParam(":regionId", $regionId, PDO::PARAM_INT);
     $stmt->bindParam(":name", $name, PDO::PARAM_STR);
+    $stmt->bindParam(":description", $description, PDO::PARAM_STR);
 
     if($stmt->execute()){
+        $db->commit();
         return true;
     }
     else{
+        $db->rollback();
         return false;
     }
 }
 
-function insertPlaceWithRegionName($db, $regionName, $name){
+function insertPlaceWithRegionName($db, $regionName, $name, $description){
     $query1 = "select id
                from centralcemeteries.region
                where name = :name";
@@ -98,6 +103,8 @@ function insertPlaceWithRegionName($db, $regionName, $name){
 
     $stmt1->bindParam(":name", $regionName, PDO::PARAM_STR);
 
+    $regionId = "";
+
     if($stmt1->execute()){
         $regionId = $stmt1->fetch(PDO::FETCH_OBJ);
     }
@@ -105,7 +112,7 @@ function insertPlaceWithRegionName($db, $regionName, $name){
         return false;
     }
 
-    return insertPlace($db, intval($regionId->id), $name);
+    return insertPlace($db, intval($regionId->id), $name, $description);
 }
 
 function deletePlace($db, $id){
@@ -130,7 +137,7 @@ function deletePlace($db, $id){
 
 try{
 //
-    $pdo=Connection::getConnectionInstance();
+ //   $pdo=Connection::getConnectionInstance();
 //
 //    $all_regions=getAllPlaces($pdo);
 //    var_dump($all_regions);

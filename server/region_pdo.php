@@ -65,7 +65,7 @@ function getRegion($db, $id){
 }
 
 function getRegionByCemetery($db, $cemeteryId) {
-	
+
 	 $query = "select r.id, r.name
               from centralcemeteries.region r
 					join centralcemeteries.place p on p.regionId = r.id
@@ -75,10 +75,10 @@ function getRegionByCemetery($db, $cemeteryId) {
     $stmt = $db->prepare($query);
     $stmt->bindParam(":cemId", $cemeteryId, PDO::PARAM_INT);
 	$stmt->execute();
-	
+
 	$region = new stdClass();
 	$region = $stmt->fetch(PDO::FETCH_OBJ);
-	
+
     if($region != null){
         return $region;
     }
@@ -90,6 +90,8 @@ function getRegionByCemetery($db, $cemeteryId) {
 
 
 function insertRegion($db, $countryId, $name){
+    $db->beginTransaction();
+
     $query1 = "select *
                from centralcemeteries.region
                where countryId = :countryId and name = :name";
@@ -114,9 +116,11 @@ function insertRegion($db, $countryId, $name){
     $stmt->bindParam(":name", $name, PDO::PARAM_STR);
 
     if($stmt->execute()){
+        $db->commit();
         return true;
     }
     else{
+        $db->rollback();
         return false;
     }
 }
@@ -162,7 +166,7 @@ function deleteRegion($db, $id){
 
 try{
 
-    $pdo=Connection::getConnectionInstance();
+   // $pdo=Connection::getConnectionInstance();
 
 //    $all_regions=getCountriesAndRegions($pdo);
 //    var_dump($all_regions);
@@ -176,8 +180,8 @@ try{
 //    $regioos_in_country = getRegionsInCountry($pdo, 1);
 //    var_dump($regioos_in_country);
 //
-    $region = getRegionByCemetery($pdo, 2);
-    var_dump($region);
+  //  $region = getRegionByCemetery($pdo, 2);
+  //  var_dump($region);
 
 //    $insert_region=insertRegionWithCountryName($pdo, "Serbia","Sumadija");
 //    var_dump($insert_region);

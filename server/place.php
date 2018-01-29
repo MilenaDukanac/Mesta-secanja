@@ -76,7 +76,7 @@ else {
             case 'POST':
                 $newPlace = json_decode(file_get_contents("php://input"));
 
-                if(insertPlaceWithRegionName($pdo, $newPlace->region, $newPlace->place)){
+                if(insertPlaceWithRegionName($pdo, $newPlace->region, $newPlace->place, $newPlace->description)){
                     $response->data = "true";
                     $response->status = 201;
                 }

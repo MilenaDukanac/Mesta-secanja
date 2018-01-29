@@ -34,12 +34,12 @@ function getCountry($db, $id){
 }
 
 function insertCountry($db, $name){
-    $query = "insert into centralcemeteries.country
-              values(NULL, :nname)";
+    $query = "insert into centralcemeteries.country(name)
+              values(:name)";
 
     $stmt = $db->prepare($query);
 
-    $stmt->bindParam(":nname", $name, PDO::PARAM_INT);
+    $stmt->bindParam(":name", $name, PDO::PARAM_STR);
 
     if($stmt->execute()){
         return true;
@@ -98,7 +98,7 @@ try{
 
 //    $delete = deleteCountry($pdo, 1);
 //    var_dump($delete);
-    
+
 }catch(PDOException $e){
 
     echo $e->getMessage();
