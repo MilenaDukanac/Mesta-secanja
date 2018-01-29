@@ -7,16 +7,30 @@ else if($_SESSION['type']==="other")
     include 'headerOther.php';
 else if($_SESSION['type']==="inner")
     include 'headerInner.php';
+
+$username = $_SESSION['username'];
+
 ?>
 
 <section class="mbr-section" id="testimonials1-17" data-rv-view="16" style="background-color: rgb(40, 50, 78); padding-top: 80px; padding-bottom: 40px;">
 
     <div class="mbr-section mbr-section__container mbr-section__container--middle">
         <div class="container">
-            <div class = "row">
+            <div class = "row col-xs-12">
                 <div class="col-xs-3 col-xs-offset-3">
                     <div class="mbr-img">
-                        <img src="assets/images/avatar.png" class="avatar" style="border-radius: 50%" alt="Avatar">
+
+                        <?php
+                            if (file_exists("../server/profilePhotos/".$username."Avatar.png")) {
+                                echo "<input type=\"image\" src=\"../server/profilePhotos/" . $username . "Avatar.png\" href=\"#changePhoto\" data-toggle=\"modal\" class=\"avatar\" style=\"border-radius: 50%; width:250px;height:250px;\" alt=\"Avatar\"/>";
+                            }
+                            else{
+                                echo "<input type=\"image\" src=\"../server/profilePhotos/avatar.png\" href=\"#changePhoto\" data-toggle=\"modal\" class=\"avatar\" style=\"border-radius: 50%; width:250px;height:250px;\" alt=\"Avatar\"/>";
+
+                            }
+                        ?>
+<!--                        <input type="file" id="my_file" style="display: none;" />-->
+<!--                        <img src="assets/images/avatar.png" class="avatar" style="border-radius: 50%" alt="Avatar">-->
                     </div>
                 </div>
                 <div class="col-xs-6">
@@ -40,8 +54,6 @@ else if($_SESSION['type']==="inner")
                         </p>
                         <a class="nav-item dropdown" style="color: rgb(0, 154, 200);" href="#" data-toggle="dropdown" class="mbr-section-title display-5 nav-link dropdown-toggle user-action" style="color: rgb(0, 154, 200);">Options
                             <ul class="dropdown-menu">
-                                <li><a href="#changePhoto" class="dropdown-item" data-toggle="modal" style="color: rgb(0, 154, 200);">Change profile photo</a></li>
-                                    <div class="dropdown-divider"></div>
                                 <li><a href="#changePassword" class="dropdown-item" data-toggle="modal" style="color: rgb(0, 154, 200);">Change password</a></li>
                             </ul>
                         </a>
@@ -61,18 +73,29 @@ else if($_SESSION['type']==="inner")
         </div>
     </div>
 </section>
-<!---->
-<!--<div class="container modal-body">-->
-<!--    <form id="changePhoto" class=" m-t-3 col-lg-10 col-lg-offset-1" method="post" action="upload.php"  enctype="multipart/form-data">-->
-<!--        <div class="form-group">-->
-<!--            <label class="form-control-label" for="photo"><h2>Upload Photo</h2></label>-->
-<!--            <br>-->
-<!--            <input type="file" name="photo" id="photo" required="">-->
-<!--            <br><br>-->
-<!--            <input class="btn btn-sm text-white" type="submit" name="submit" value="Upload" style="background-color: rgb(0, 154, 200);">-->
-<!--        </div>-->
-<!--    </form>-->
-<!--</div>-->
+
+<div id="changePhoto" class="modal fade">
+    <div class="modal-dialog modal-confirm text-center">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: rgb(0, 154, 200);">
+                <h4 class="modal-title text-white">Add New Photo</h4>
+            </div>
+
+            <div class="container modal-body">
+                <form id="uploadForm" class=" m-t-3 col-lg-10 col-lg-offset-1" method="post" action="uploadProfilePhoto.php"  enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="form-control-label" for="photo"><h2>Upload Profile Photo</h2></label>
+                        <br>
+                        <input type="file" name="photo" id="photo" required="">
+                        <input type="hidden" value="<?php echo $username;?>" id="username" name="username">
+                        <br><br>
+                        <input class="btn btn-sm text-white" type="submit" name="submit" value="Upload" style="background-color: rgb(0, 154, 200);">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php
 include('footer.php');
