@@ -72,6 +72,7 @@ try{
                     $_SESSION['type']=$data->type;
                     $_SESSION['name']=$data->name;
                     $_SESSION['surname']=$data->surname;
+                    $_SESSION['username']=$data->username;
                     $_SESSION['userId']=$data->userId;
                     $_SESSION['institution']=$data->institution;
                 }
