@@ -16,12 +16,12 @@ newPlace.controller('newPlaceController', ['$scope', '$http', '$window', functio
             url: '../server/place.php',
 						data: place
 	        }).then(function successHandler(result) {
-						$scope.newPlaceMessage = "New place is successfully added."
+						$scope.newPlaceMessage = "New place is successfully added.";
 						$scope.showNewPlaceMessage = true;
 						document.formPlace.reset();
             console.log(result);
 	        }, function errorHandler(result) {
-						$scope.newPlaceMessage = "The region you added is not valid, please try again."
+						$scope.newPlaceMessage = "The region you added does not exist or the place is already added.";
 						$scope.showNewPlaceMessage = true;
 						document.formPlace.reset();
             console.log(result);
