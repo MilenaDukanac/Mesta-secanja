@@ -21,7 +21,7 @@ newRegion.controller('newRegionController', ['$scope', '$http', '$window', funct
             document.formRegion.reset();
             console.log(result);
         }, function errorHandler(result) {
-            $scope.newRegionMessage = "This region already exists in this country";
+            $scope.newRegionMessage = "The country doesn't exist or the region is already added!";
             $scope.showNewRegionMessage = true;
             document.formRegion.reset();
             console.log(result);
