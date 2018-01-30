@@ -122,22 +122,36 @@ function updateTypeByUsername($db, $username){
 
     $db->beginTransaction();
 
-    $query="update centralcemeteries.user
-            set type='inner'
-            where username=:username";
+	$query1 = "select type
+			   from centralcemeteries.user
+			   where username = :username" ; 
+	$stmt1 = $db->prepare($query1);
+	$stmt1->bindParam(":username", $username, PDO::PARAM_STR);
+	$stmt1->execute();
+	$user_type = $stmt1->fetch(PDO::FETCH_OBJ);
+	
+	if ($user_type->type === "other") {
+				$query="update centralcemeteries.user
+				set type='inner'
+				where username=:username";
 
-    $stmt=$db->prepare($query);
+				$stmt=$db->prepare($query);
 
-    $stmt->bindParam(":username", $username, PDO::PARAM_STR);
+				$stmt->bindParam(":username", $username, PDO::PARAM_STR);
 
-    if($stmt->execute()){
-        $db->commit();
-        return true;
-    }
-    else{
-        $db->rollback();
-        return false;
-    }
+				if($stmt->execute()){
+					$db->commit();
+					return true;
+				}
+				else{
+					$db->rollback();
+					return false;
+				}
+	}
+	else  {
+		$db->rollback();
+		return false;
+	}
 }
 
 // Brisanje naloga
