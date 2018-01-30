@@ -75,6 +75,7 @@ try{
                     $_SESSION['username']=$data->username;
                     $_SESSION['userId']=$data->userId;
                     $_SESSION['institution']=$data->institution;
+                    $_SESSION['lastTime']=time();
                 }
 
             }
