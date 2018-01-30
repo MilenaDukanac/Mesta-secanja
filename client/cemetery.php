@@ -5,29 +5,29 @@ if(!isset($_SESSION['type'])) {
 }
 else if($_SESSION['type']==="admin"){
     if((time() - $_SESSION['lastTime']) > 1440){
-      header("location:logout.php");
+        header("location:logout.php");
     }
     else{
-      $_SESSION['lastTime'] = time();
-      include 'headerAdmin.php';
+        $_SESSION['lastTime'] = time();
+        include 'headerAdmin.php';
     }
 }
 else if($_SESSION['type']==="other"){
     if((time() - $_SESSION['lastTime']) > 1440){
-      header("location:logout.php");
+        header("location:logout.php");
     }
     else{
-      $_SESSION['lastTime'] = time();
-      include 'headerOther.php';
+        $_SESSION['lastTime'] = time();
+        include 'headerOther.php';
     }
 }
 else if($_SESSION['type']==="inner"){
     if((time() - $_SESSION['lastTime']) > 1440){
-      header("location:logout.php");
+        header("location:logout.php");
     }
     else{
-      $_SESSION['lastTime'] = time();
-      include 'headerInner.php';
+        $_SESSION['lastTime'] = time();
+        include 'headerInner.php';
     }
 }
 ?>
@@ -36,6 +36,25 @@ else if($_SESSION['type']==="inner"){
 
     <script type="text/javascript">
         niz.push("oneCemetery");
+    </script>
+
+    <script>
+	
+        var $username = " <?php
+							if(isset($_SESSION['type'])){
+								if((time() - $_SESSION['lastTime']) > 1440){
+									header("location:logout.php");
+								}
+								else{
+									$_SESSION['lastTime'] = time();
+									if($_SESSION['type']==="admin" || $_SESSION['type']==="inner" || $_SESSION['type']==="other") {
+										echo $_SESSION['username'];
+									}
+								}
+							}
+							else
+								echo "";
+						?>";
     </script>
 
     <section ng-controller="oneCemeteryController" style="padding-top: 30px; padding-bottom: 0rem; padding-left: 30px; padding-right: 30px">
@@ -51,17 +70,26 @@ else if($_SESSION['type']==="inner"){
         <section class="mbr-gallery mbr-section mbr-section-nopadding mbr-slider-carousel" data-filter="true" id="gallery4-v" data-rv-view="16" style="padding-top: 30px; padding-bottom: 0rem; " ng-show="showGallery">
             <h5 style="color: rgb(0, 154, 200);">Gallery:</h5>
 
-            <?php
-
-            if($_SESSION['type']==="admin" || $_SESSION['type']==="inner") {
-                echo "<input type = \"button\" class=\"btn btn-sm text-white\" href = \"#addNewPhoto\" data-toggle = \"modal\" value = \"Add New Photo\" style = \"background-color: rgb(0, 154, 200);\" >";
-            }
+			
+			
+           <?php
+                if(isset($_SESSION['type'])){
+                  if((time() - $_SESSION['lastTime']) > 1440){
+                    header("location:logout.php");
+                  }
+                  else{
+                    $_SESSION['lastTime'] = time();
+                	  if($_SESSION['type']==="admin" || $_SESSION['type']==="inner") {
+                      echo "<button class=\"btn btn-sm text-white\" href = \"#addNewPhoto\" data-toggle = \"modal\" style = \"background-color: rgb(0, 154, 200);\" >Add new photo </button>";
+                    }
+                  }
+                }
             ?>
 
             <div class="mbr-gallery-row">
                 <div class=" mbr-gallery-layout-default">
                     <div ng-repeat="photo in photos" class="mbr-gallery-item mbr-gallery-item__mobirise3 mbr-gallery-item--p1" data-video-url="false">
-                        <div href="#lb-gallery4-v" data-slide-to="0" data-toggle="modal">
+                        <div href="#onePhoto" data-slide-to="0" data-toggle="modal" ng-click="choosePhoto(photo.id)">
                             <img src="../server/upload/{{photo.name}}" alt="" class="img-thumbnail">
                             <span class="icon-focus"></span>
                         </div>
@@ -82,8 +110,8 @@ else if($_SESSION['type']==="inner"){
                 <a style="color: {{tag.color}}; background: white;">{{tag.name}}: {{tag.value}}</a>
             </div>
         </div>
-
         <!-- Map -->
+
         <div ng-show="showMap">
             <div style="padding-top: 30px; padding-bottom: 0rem">
                 <h5 style="color: rgb(0, 154, 200);">Map:</h5>
@@ -120,6 +148,80 @@ else if($_SESSION['type']==="inner"){
             </div>
         </div>
 
+
+        <div id="onePhoto" class="modal fade">
+            <div class="modal-dialog modal-confirm modal-lg">
+
+                <div class="modal-content" style="background: white;">
+                    <div class="container modal-body">
+                        <div class="row">
+                            <div class="col-md-9" align="center">
+                                <img src="../server/upload/{{photoInfo.name}}" alt="" class="img-thumbnail">
+                                <label class="form-control-label" align="center">{{photoInfo.note}}</label>
+                            </div>
+                            <div>
+                                <label class="form-control-label" align="left"><strong>Author: {{photoInfo.author}}</strong></label>
+                                <label class="form-control-label" align="left"><strong>Year of photography: {{photoInfo.year}}</strong></label>
+                                <div ng-show="showPhotoPosition">
+                                    <label class="form-control-label" align="left">longitude: {{photoInfo.longitude}}</label>
+                                    <br>
+                                    <label class="form-control-label" align="left">latitude: {{photoInfo.latitude}}</label>
+                                </div>
+                                <br>
+                                <label class="form-control-label" align="left"><strong>TAGS</strong>:</label>
+                                <br>
+                                <div class="offset-1" ng-repeat="photoTag in photoTags">
+                                    <label style="color: {{photoTag.color}};">{{photoTag.name}}: {{photoTag.value}} </label>
+                                    <br>
+                                </div>
+                                <div>
+                                    <label class="form-control-label"><strong>COMMENTS</strong></label>
+                                    <br> 	
+									<ul>					
+										<li ng-repeat="comment in comments | limitTo:5">
+											<span class='complete-{{item.complete}}'> 
+												<strong>{{comment.username}}</strong> <small>{{comment.time}}</small>
+												<br> <i>{{comment.text}}</i>
+												<br>
+												</span>	
+										</li>
+									</ul>
+									<button class="btn btn-sm text-white" style = "background-color: rgb(0, 154, 200); width: 25%;" ng-show="showButtonMoreComments" ng-click="change()">Show More Comments</button>
+
+									<ul>
+										<li ng-show="showMoreComments" ng-repeat="comment in comments | limitTo:(5-comments.length)">
+											<span class='complete-{{item.complete}}'> 
+												<strong>{{comment.username}}</strong> <small>{{comment.time}}</small>
+												<br> <i>{{comment.text}}</i>
+												<br>
+												</span>	
+										</li>
+									</ul>
+
+                                    <br/>
+
+									 <?php
+										if(isset($_SESSION['type'])){
+											if((time() - $_SESSION['lastTime']) > 1440){
+												header("location:logout.php");
+											}
+											else{
+												$_SESSION['lastTime'] = time();
+												if($_SESSION['type']==="admin" || $_SESSION['type']==="inner" || $_SESSION['type']==="other") {
+													echo "<textarea class=\"form-control\" placeholder=\"Type your comment...\" id=\"text\" required=\"\" ng-model=\"text\"> </textarea>
+															<br/>
+															<input type=\"button\" class=\"btn btn-sm text-white\" style = \"background-color: rgb(0, 154, 200);\" value=\"Add Comment\" ng-click=\"addComment()\">";
+												}
+											}
+										}
+									?>									
+								</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
 <?php
