@@ -219,7 +219,7 @@ function getTagPossibleValues($db, $tagId){
 
 
 try{
-     $pdo=Connection::getConnectionInstance();
+ //    $pdo=Connection::getConnectionInstance();
 //
 ////    //getTag test
 ////    $tag_id = 4;
@@ -227,8 +227,8 @@ try{
 ////    var_dump($tag_info);
 //
 //    $array = ["1924","1925","1926"];
-    $insert_tag = insertTagCategoryName($pdo, "veroispovest", "nesto", ["nesto","drugo"]);
-    var_dump($insert_tag);
+//    $insert_tag = insertTagCategoryName($pdo, "veroispovest", "nesto", ["nesto","drugo"]);
+ //   var_dump($insert_tag);
 
  //$all_tags = $pdo->getAllTags();
  //var_dump($all_tags);
