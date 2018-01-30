@@ -87,7 +87,7 @@ else if($_SESSION['type']==="inner"){
                                     <h5 class="card-subtitle">Place: {{cemetery.placeName}}</h5>
                                     <h5 class="card-subtitle">Place Description: {{cemetery.placeDescription}}</h5>
                                     <div class="card-btn">
-                                        <a href="cemetery.php?id={{cemetery.id}}" class="btn btn-info" ng-click="choose(cemetery.id)">MORE</a>
+                                        <a href="cemetery.php?id={{cemetery.id}}" class="btn btn-sm btn-info" ng-click="choose(cemetery.id)">MORE</a>
                                     </div>
                                 </div>
                             </div>
