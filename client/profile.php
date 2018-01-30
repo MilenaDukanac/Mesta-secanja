@@ -58,11 +58,17 @@ $username = $_SESSION['username'];
                 </div>
                 <div class="col-xs-6">
                     <div class="mbr-author-name">
-                        <h3 class="mbr-section-title display-4" style="color: rgb(0, 154, 200);">
+                        <h3 class="mbr-section-title display-4" style="color: rgb(0, 154, 200);"><b>
                             <?php
                                 echo $_SESSION['name']." ".$_SESSION['surname'];
-                            ?>
+                            ?></b>
                         </h3>
+                        <p class="mbr-section-title display-5" style="color: rgb(0, 154, 200);">
+                            Type:<i>
+                            <?php
+                                echo $_SESSION['username'];
+                            ?></i>
+                        </p>
                         <p class="mbr-section-title display-5" style="color: rgb(0, 154, 200);">
                             Type:
                             <?php
@@ -82,16 +88,6 @@ $username = $_SESSION['username'];
                                 <li><a href="#deleteAccount" class="dropdown-item" data-toggle="modal" style="color: rgb(0, 154, 200);">Delete account</a></li>
                             </ul>
                         </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Deo za tekst o korisniku -->
-            <div class="col-xs-12 col-md-12 col-lg-12 m-t-3 text-xs-center">
-                <div class=" card ">
-                    <div class="card-block">
-                        <p>“Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, aspernatur, voluptatibus, atque, tempore molestiae sed modi a ullam sint adipisci rerum vel praesentium voluptas deserunt veniam provident culpa sequi veritatis.”
-                        </p>
                     </div>
                 </div>
             </div>
