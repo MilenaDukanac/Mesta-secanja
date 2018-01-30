@@ -60,8 +60,20 @@
     <div class="col-xs-3">
         <input class="btn btn-sm text-white" type="submit" value="Search" ng-click="search()" style="margin-top: 35px; background-color: rgb(0, 154, 200);">
     </div>
+    <div class="col-xs-3">
+      <?php
+          if(isset($_SESSION['type'])){
+            if((time() - $_SESSION['lastTime']) > 1440){
+              header("location:logout.php");
+            }
+            else{
+              $_SESSION['lastTime'] = time();
+              echo "<a href = \"tagSearch.php\"><button class=\"btn btn-sm text-white\" style = \"margin-top: 35px; background-color: rgb(0, 154, 200);\" >Search by tags</button></a>";
+            }
+          }
+      ?>
+    </div>
 </div>
-
 
 
 <section class="mt-5" id="map1-7" data-rv-view="101">
