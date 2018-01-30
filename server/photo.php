@@ -67,14 +67,10 @@ else {
             case "POST":
                 $newPhoto = json_decode(file_get_contents("php://input"));
 
-                var_dump($newPhoto);
-                echo "post";
-
                 $tmpId = insertPhoto($pdo, $newPhoto->name, $newPhoto->cemeteryId, $newPhoto->author, $newPhoto->year, $newPhoto->note, $newPhoto->longitude, $newPhoto->latitude);
                 if ($tmpId != null) {
                     $response->data = $tmpId;
                     $response->status = 201;
-                    echo "ubacio";
                 } else {
                     echo "greska";
                     $response->status = 400;
