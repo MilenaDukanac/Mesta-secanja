@@ -14,8 +14,7 @@ function getUser($db, $pass, $username){
     $stmt->bindParam(":username", $username, PDO::PARAM_STR);
     $stmt->bindParam(":pass", $pass, PDO::PARAM_STR);
 
-    if($stmt->execute())
-        {
+    if($stmt->execute()){
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
     else{
@@ -161,6 +160,50 @@ function updateTypeByUsername($db, $username){
 		$db->rollback();
 		return false;
 	}
+}
+
+function updatePasswordByUsername($db, $username, $oldPassword, $newPassword){
+    $query = "select pass
+              from centralcemeteries.user
+              where username = :username";
+
+    $stmt = $db->prepare($query);
+
+    $stmt->bindParam(":username", $username, PDO::PARAM_STR);
+
+    $old = "";
+
+    if($stmt->execute()){
+      $old = $stmt->fetch(PDO::FETCH_OBJ);
+    }
+    else{
+      return false;
+    }
+
+    if($old->pass === $oldPassword){
+      $db->beginTransaction();
+
+      $query1 = "update centralcemeteries.user
+                 set pass = :password
+                 where username = :username";
+
+      $stmt1 = $db->prepare($query1);
+
+      $stmt1->bindParam(":password", $newPassword, PDO::PARAM_STR);
+      $stmt1->bindParam(":username", $username, PDO::PARAM_STR);
+
+      if($stmt1->execute()){
+        $db->commit();
+        return true;
+      }
+      else{
+        $db->rollback();
+        return false;
+      }
+    }
+    else{
+      return false;
+    }
 }
 
 // Brisanje naloga

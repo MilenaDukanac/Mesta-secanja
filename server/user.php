@@ -101,47 +101,92 @@ try{
 
         case "POST":
 
-            // POST/user
+              $new_data = json_decode(file_get_contents("php://input"));
 
-            $new_user = json_decode(file_get_contents("php://input"));
+              if($new_data->type === "changepassword"){
+                // JWT
 
-            // JWT
+                /* header */
+                $header = new stdClass();
+                $header->alg = "HS256";
+                $header->typ = "JWT";
+                $header_json = json_encode($header);
+                $header_json_base64 = base64_encode($header_json);
 
-            /* header */
-            $header = new stdClass();
-            $header->alg = "HS256";
-            $header->typ = "JWT";
-            $header_json = json_encode($header);
-            $header_json_base64 = base64_encode($header_json);
+                /* payload za staru sifru*/
+                $payload = new stdClass();
+                $payload->password = $new_data->oldPassword;
+                $payload_json = json_encode($payload);
+                $payload_json_base64 = base64_encode($payload_json);
 
-            /* payload */
-            $payload = new stdClass();
-            $payload->password = $new_user->password;
-            $payload_json = json_encode($payload);
-            $payload_json_base64 = base64_encode($payload_json);
+                /* signature za staru sifru*/
+                $secret = "ovoJeTajna";
+                $signature = base64_encode(hash_hmac("sha256",$header_json_base64.".".$payload_json_base64, $secret, true));
 
-            /* signature */
-            $secret = "ovoJeTajna";
-            $signature = base64_encode(hash_hmac("sha256",$header_json_base64.".".$payload_json_base64, $secret, true));
+                /* token za staru sifru*/
+                $token = $header_json_base64.".".$payload_json_base64.".".$signature;
 
-            $token = $header_json_base64.".".$payload_json_base64.".".$signature;
+                /* payload za novu sifru*/
+                $payload1 = new stdClass();
+                $payload1->password = $new_data->newPassword;
+                $payload_json1 = json_encode($payload1);
+                $payload_json_base64_1 = base64_encode($payload_json1);
 
+                /* signature za novu sifru*/
+                $secret1 = "ovoJeTajna";
+                $signature1 = base64_encode(hash_hmac("sha256",$header_json_base64.".".$payload_json_base64_1, $secret1, true));
 
+                /* token za novu sifru*/
+                $token1 = $header_json_base64.".".$payload_json_base64_1.".".$signature1;
 
-            if(insertUser($pdo, $new_user->name, $new_user->surname, $new_user->username, $token, $new_user->email, $new_user->institution, $new_user->note)){
+                session_start();
+                $username = $_SESSION['username'];
 
-                //$response->data = new StdClass();
-                $response->status = 201;
+                if(updatePasswordByUsername($pdo, $username, $token, $token1)){
+                    //$response->data = new StdClass();
+
+                    $response->status = 200;
+                }
+                else{
+                    $response->status = 400;
+                    $response->data = null;
+                }
+            }else{
+              // POST/user
+              // $new_user = json_decode(file_get_contents("php://input"));
+              // JWT
+              /* header */
+              $header = new stdClass();
+              $header->alg = "HS256";
+              $header->typ = "JWT";
+              $header_json = json_encode($header);
+              $header_json_base64 = base64_encode($header_json);
+
+              /* payload */
+              $payload = new stdClass();
+              $payload->password = $new_data->password;
+              $payload_json = json_encode($payload);
+              $payload_json_base64 = base64_encode($payload_json);
+
+              /* signature */
+              $secret = "ovoJeTajna";
+              $signature = base64_encode(hash_hmac("sha256",$header_json_base64.".".$payload_json_base64, $secret, true));
+
+              $token = $header_json_base64.".".$payload_json_base64.".".$signature;
+
+              if(insertUser($pdo, $new_data->name, $new_data->surname, $new_data->username, $token, $new_data->email, $new_data->institution, $new_data->note)){
+                  //$response->data = new StdClass();
+                  $response->status = 201;
+              }
+              else{
+                  $response->status = 400;
+                  $response->data = null;
+              }
             }
-            else{
-
-                $response->status = 400;
-                $response->data = null;
-            }
-
             break;
 
         case "PUT":
+
             $new_inner = json_decode(file_get_contents("php://input"));
 
             if(updateTypeByUsername($pdo, $new_inner->username)){
