@@ -156,7 +156,13 @@ try{
         case "DELETE":
           session_start();
 
-          if(deleteId($pdo, intval($_SESSION['userId']))){ //Ne brise mi iz baze
+          if(deleteId($pdo, intval($_SESSION['userId']))){
+            $filename = "profilePhotos/".$_SESSION['username']."Avatar.png";
+
+            if(file_exists($filename)) {
+              unlink($filename);
+            }
+
             $response->data = "true";
             $response->status = 200;
           }
