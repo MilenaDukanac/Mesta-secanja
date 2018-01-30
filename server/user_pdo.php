@@ -120,35 +120,44 @@ function updateType($db, $userId, $type){
 
 function updateTypeByUsername($db, $username){
 
-    $db->beginTransaction();
+  $db->beginTransaction();
 
 	$query1 = "select type
-			   from centralcemeteries.user
-			   where username = :username" ; 
+			     from centralcemeteries.user
+			        where username = :username" ;
+
 	$stmt1 = $db->prepare($query1);
+
 	$stmt1->bindParam(":username", $username, PDO::PARAM_STR);
-	$stmt1->execute();
-	$user_type = $stmt1->fetch(PDO::FETCH_OBJ);
-	
-	if ($user_type->type === "other") {
-				$query="update centralcemeteries.user
+
+	$user_type = "";
+
+	if($stmt1->execute()){
+		$user_type = $stmt1->fetch(PDO::FETCH_OBJ);
+	}
+	else{
+		return false;
+	}
+
+	if($user_type->type === "other"){
+		$query="update centralcemeteries.user
 				set type='inner'
 				where username=:username";
 
-				$stmt=$db->prepare($query);
+		$stmt=$db->prepare($query);
 
-				$stmt->bindParam(":username", $username, PDO::PARAM_STR);
+		$stmt->bindParam(":username", $username, PDO::PARAM_STR);
 
-				if($stmt->execute()){
-					$db->commit();
-					return true;
-				}
-				else{
-					$db->rollback();
-					return false;
-				}
+		if($stmt->execute()){
+			$db->commit();
+			return true;
+		}
+		else{
+			$db->rollback();
+			return false;
+		}
 	}
-	else  {
+	else{
 		$db->rollback();
 		return false;
 	}
