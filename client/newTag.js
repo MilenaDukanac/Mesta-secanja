@@ -32,7 +32,7 @@ newTag.controller('newTagController', ['$scope', '$http', '$window', function ($
             document.formTag.reset();
             console.log(result);
         }, function errorHandler(result) {
-            if(result.data == undefined) {
+            if(result.data == undefined || result.data == "") {
                 $scope.newTagMessage = "This tag is already added!";
             }
             else{
