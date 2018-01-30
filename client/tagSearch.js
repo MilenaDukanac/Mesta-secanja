@@ -79,6 +79,8 @@ tagSearch.controller("tagSearchController",['$scope','$http', '$window','$filter
             console.log(result);
         });
 
+        $scope.photoTags = [];
+
 
 
     }
