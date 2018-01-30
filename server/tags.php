@@ -125,15 +125,23 @@ else {
 
                 $new_tag = json_decode(file_get_contents("php://input"));         
 
+                $new_tag_category = insertCategory($pdo, $new_tag->category);
+
                 $new_tag_id = insertTagCategoryName($pdo, $new_tag->tagName, $new_tag->category, $new_tag->possibleValuesArray);
 
-
+                $message = "";
+                if($new_tag_category == true){
+                    $message .= "New category is successfully added! ";
+                }
 				if($new_tag_id == false){
 					$response->status = 400;
-					$response->data=null;
+                    $message .= "There was an error adding this tag!";
+					$response->data=$message;
 				}
 				else{
+				    $message .= "New tag is successfully added!";
 					$response->status = 201;
+					$response->data = $message;
                 }
                 break;
 
