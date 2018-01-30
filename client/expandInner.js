@@ -7,6 +7,7 @@ expandInner.controller('expandInnerController', ['$scope', '$http', '$window', f
 
     $scope.clearMsg = function() {
         $scope.expandInnerMessage = "";
+		document.expandInnerForm.reset();
     };
 
     $scope.expandInner = function () {
@@ -20,11 +21,12 @@ expandInner.controller('expandInnerController', ['$scope', '$http', '$window', f
         }).then(function succesHandler(result) {
             $scope.expandInnerMessage = 'Inner circle is successfully expanded.';
             $scope.showExpandInnerMessage = true;
-            document.formExpandInner.reset();
+            document.expandInnerForm.reset();
             console.log(result);
         }, function errorHandler(result) {
-            $scope.expandInnerMessage = 'The username you entered is not valid, please try again.';
+            $scope.expandInnerMessage = 'The user is already inner.';
             $scope.showExpandInnerMessage = true;
+			document.expandInnerForm.reset();
             console.log(result);
         });
 
