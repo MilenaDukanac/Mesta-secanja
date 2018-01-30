@@ -24,7 +24,7 @@ function insertTag($db,$name,$categoryId, $possibleValues){
 
     $query1 = "select id from centralcemeteries.tag where name = :name";
     $stmt1 = $db->prepare($query1);
-    return true;
+    
     $stmt1->bindParam(":name", $name, PDO::PARAM_STR);
     $stmt1->execute();
     $tagId = $stmt1->fetch(PDO::FETCH_OBJ);
