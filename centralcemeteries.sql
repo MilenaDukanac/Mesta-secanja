@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 26, 2018 at 11:44 PM
+-- Generation Time: Jan 30, 2018 at 12:49 PM
 -- Server version: 5.7.21-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -120,6 +120,7 @@ CREATE TABLE IF NOT EXISTS `photo` (
   `longitude` double DEFAULT NULL,
   `latitude` double DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`),
   KEY `cemeteryId` (`cemeteryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -233,7 +234,10 @@ CREATE TABLE IF NOT EXISTS `user` (
   `username` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
   `institution` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `note` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`userId`)
+  `token` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`userId`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
