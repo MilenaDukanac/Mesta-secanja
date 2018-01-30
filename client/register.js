@@ -36,10 +36,9 @@ app.controller('registerControler', ['$scope', '$http','$window', function ($sco
             $scope.newUser.note = "";
         }
 
-
+        $scope.newUser.type = "registration";
 
         var user = angular.toJson($scope.newUser);
-
 
         $http({
             method: "POST",
