@@ -40,7 +40,7 @@ $username = $_SESSION['username'];
     <div class="mbr-section mbr-section__container mbr-section__container--middle">
         <div class="container">
             <div class = "row col-xs-12">
-                <div class="col-xs-3 col-xs-offset-3">
+                <div class="col-xs-3 col-xs-offset-3" align="center">
                     <div class="mbr-img">
 
                         <?php
@@ -56,21 +56,21 @@ $username = $_SESSION['username'];
 <!--                        <img src="assets/images/avatar.png" class="avatar" style="border-radius: 50%" alt="Avatar">-->
                     </div>
                 </div>
-                <div class="col-xs-6">
-                    <div class="mbr-author-name">
+                <div class="col-xs-6" align="center">
+                    <div class="mbr-author-name" >
                         <h3 class="mbr-section-title display-4" style="color: rgb(0, 154, 200);"><b>
                             <?php
                                 echo $_SESSION['name']." ".$_SESSION['surname'];
                             ?></b>
                         </h3>
-                        <p class="mbr-section-title display-5" style="color: rgb(0, 154, 200);">
-                            Type:<i>
+                        <h2 class="mbr-section-title display-5" style="color: rgb(0, 154, 200);">
+                            <i>
                             <?php
                                 echo $_SESSION['username'];
                             ?></i>
-                        </p>
+                        </h2>
                         <p class="mbr-section-title display-5" style="color: rgb(0, 154, 200);">
-                            Type:
+                           
                             <?php
                                 echo $_SESSION['type'];
                             ?>
