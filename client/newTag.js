@@ -27,12 +27,18 @@ newTag.controller('newTagController', ['$scope', '$http', '$window', function ($
             url: '../server/tags.php',
             data: tag
         }).then(function successHandler(result) {
-            $scope.newTagMessage = "New tag is successfully added.";
+            $scope.newTagMessage = result.data;
             $scope.showNewTagMessage = true;
             document.formTag.reset();
             console.log(result);
         }, function errorHandler(result) {
-            $scope.newTagMessage = "The category doesn't exist or the tag is already added!";
+            if(result.data == undefined) {
+                $scope.newTagMessage = "This tag is already added!";
+            }
+            else{
+                $scope.newTagMessage = result.data;
+            }
+
             $scope.showNewTagMessage = true;
             document.formTag.reset();
             console.log(result);
