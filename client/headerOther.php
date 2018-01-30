@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
     <link rel="stylesheet" href="assets/navdrop.css" type="text/css">
     <link rel="stylesheet" href="assets/ng-tags-input.min.css" />
-
     <link rel="stylesheet" href="assets/popover.css">
 
     <script src="assets/web/assets/jquery/jquery.min.js"></script>
@@ -94,6 +93,7 @@
                             </ul>
                         </li>
                     </ul>
+
                     <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar" style="color: rgb(0, 154, 200);">
                         <div class="close-icon" style="color: rgb(0, 154, 200);"></div>
                     </button>
