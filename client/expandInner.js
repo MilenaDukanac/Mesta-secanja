@@ -7,7 +7,7 @@ expandInner.controller('expandInnerController', ['$scope', '$http', '$window', f
 
     $scope.clearMsg = function() {
         $scope.expandInnerMessage = "";
-		document.expandInnerForm.reset();
+        document.expandInnerForm.reset();
     };
 
     $scope.expandInner = function () {
@@ -24,9 +24,9 @@ expandInner.controller('expandInnerController', ['$scope', '$http', '$window', f
             document.expandInnerForm.reset();
             console.log(result);
         }, function errorHandler(result) {
-            $scope.expandInnerMessage = 'The user is already inner.';
+            $scope.expandInnerMessage = 'This user is already inner.';
             $scope.showExpandInnerMessage = true;
-			document.expandInnerForm.reset();
+            document.expandInnerForm.reset();
             console.log(result);
         });
 
