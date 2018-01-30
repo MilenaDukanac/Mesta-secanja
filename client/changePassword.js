@@ -2,6 +2,7 @@ var changePassword = angular.module('changePassword', []);
 
 changePassword.controller('changePasswordController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
     $scope.user = {};
+    $scope.user.type = "changepassword";
   	$scope.changePasswordMessage = "";
   	$scope.showChangePasswordMessage = false;
 
@@ -19,7 +20,7 @@ changePassword.controller('changePasswordController', ['$scope', '$http', '$wind
 
         $http({
             method: "POST",
-            url: '../server/user.php?type=changepassword',
+            url: '../server/user.php',
             data: user,
             header:  {
                 "Content-Type": "application/json"
