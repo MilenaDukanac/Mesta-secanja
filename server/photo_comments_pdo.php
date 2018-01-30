@@ -5,7 +5,7 @@ include 'connection.php';
 // dohvatanje svih komentara jedne slike po photoId
 function getPhotoComments($db, $photoId){
 
-    $query="select id, COALESCE(username, 'unregistered') as username, time, text
+    $query="select username, time, text
             from centralcemeteries.photo_comment
             where photoId=:photoId
             order by time desc";
@@ -23,18 +23,17 @@ function getPhotoComments($db, $photoId){
 }
 
 // unosenje novog komentara
-function insertPhotoComment($db, $photoId, $username, $email, $text){
+function insertPhotoComment($db, $photoId, $username, $text){
 
     $db->beginTransaction();
 
-    $query = "insert into centralcemeteries.photo_comment (photoId, username, email, text)
-              values(:photoId, :username, :email, :text)";
+    $query = "insert into centralcemeteries.photo_comment (photoId, username, text)
+              values(:photoId, :username, :text)";
 
     $stmt = $db->prepare($query);
 
     $stmt->bindParam(":photoId", $photoId, PDO::PARAM_INT);
     $stmt->bindParam(":username", $username, PDO::PARAM_STR);
-    $stmt->bindParam(":email", $email, PDO::PARAM_STR);
     $stmt->bindParam(":text", $text, PDO::PARAM_STR);
 
     if($stmt->execute()){
@@ -71,7 +70,7 @@ function deletePhotoComment($db, $id){
 
 
 try{
-$pdo=Connection::getConnectionInstance();
+//$pdo=Connection::getConnectionInstance();
 
     //getAllPhotoComments test
  //   $photoId=1;
@@ -79,17 +78,17 @@ $pdo=Connection::getConnectionInstance();
  //   var_dump($photoComments);
 
     // insertPhotoComment test
-  //  $photoId = 1;
-  //  $username = "test_korisnik";
-  //  $email = "test@test.com";
-  //  $text = "Mnogo lepa slika";
-  //  $inserted = insertPhotoComment($pdo, $photoId, $username, $email, $text);
-  //  echo $inserted;
+//    $photoId = 42;
+//    $username = "test_korisnik";
+//    $email = "test@test.com";
+//    $text = "Bas je lepo";
+//    $inserted = insertPhotoComment($pdo, $photoId, $username, $email, $text);
+//    echo $inserted;
 
     // deletePhotoComment test
-    $id = 1;
-    $deleted = deletePhotoComment($pdo, $id);
-    echo $deleted;
+  //  $id = 1;
+  //  $deleted = deletePhotoComment($pdo, $id);
+  //  echo $deleted;
 
 
 }catch(PDOException $e){
