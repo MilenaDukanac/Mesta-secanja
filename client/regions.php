@@ -62,7 +62,7 @@ else if($_SESSION['type']==="inner"){
                                       <h4 class="card-title">{{region.regionName}}</h4>
                                       <h5 class="card-subtitle">{{region.countryName}}</h5>
                                       <div class="card-btn">
-                                        <a class="btn btn-info" ng-click="search(region.regionId)">MORE</a>
+                                        <a class="btn btn-sm btn-info" ng-click="search(region.regionId)">MORE</a>
                                       </div>
                                   </div>
                               </div>

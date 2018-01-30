@@ -40,6 +40,7 @@
     <script type="text/javascript" src="assets/angular-1.6.7/angular.min.js"></script>
     <script type="text/javascript" src="deleteAccount.js"></script>
     <script type="text/javascript" src="uploadPhoto.js"></script>
+    <script type="text/javascript" src="changePassword.js"></script>
 
     <script type="text/javascript">
         var niz = [];
@@ -87,7 +88,7 @@
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#deleteAcount" class="dropdown-item" data-toggle="modal" style="color: rgb(0, 154, 200);">Delete account</a></li>
+                                <li><a href="profile.php" class="dropdown-item" style="color: rgb(0, 154, 200);">View profile</a></li>
                                 <div class="dropdown-divider"></div>
                                 <li><a href="logout.php" class="dropdown-item" style="color: rgb(0, 154, 200);">Log out</a></li>
                             </ul>
@@ -101,40 +102,3 @@
             </div>
         </div>
     </nav>
-    <script type="text/javascript">
-        niz.push("deleteAcount");
-    </script>
-    <div id="deleteAcount" class="modal fade">
-        <div class="modal-dialog modal-confirm text-center" ng-controller="deleteController">
-            <div class="modal-content">
-                <div class="modal-header bg-danger">
-                    <h4 class="modal-title">Are you sure?</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Do you really want to delete your account?</p>
-                </div>
-                <div class="modal-footer btn-group center">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger" ng-click="delete()" href="#deleteMessage" data-toggle="modal">Delete</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div id="deleteMessage" class="modal fade">
-    <div class="modal-dialog modal-confirm text-center">
-        <div class="modal-content">
-            <div class="modal-header bg-info">
-                <h4 class="modal-title" >Delete Account</h4>
-            </div>
-            <div class="container modal-body">
-                <label class="form-control-label"> Your account has been successfully deleted </label>
-                <br>
-                <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
-                    Close
-                </button>
-            </div>
-        </div>
-    </div>
-</div>

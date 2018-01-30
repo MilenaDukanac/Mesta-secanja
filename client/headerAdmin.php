@@ -44,6 +44,8 @@
     <script type="text/javascript" src="newPlace.js"></script>
     <script type="text/javascript" src="newCemetery.js"></script>
     <script type="text/javascript" src="uploadPhoto.js"></script>
+    <script type="text/javascript" src="changePassword.js"></script>
+    <script type="text/javascript" src="deleteAccount.js"></script>
 
     <script type="text/javascript">
         var niz = [];

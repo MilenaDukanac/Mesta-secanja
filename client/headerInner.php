@@ -43,6 +43,7 @@
     <script type="text/javascript" src="newPlace.js"></script>
     <script type="text/javascript" src="newCemetery.js"></script>
     <script type="text/javascript" src="uploadPhoto.js"></script>
+    <script type="text/javascript" src="changePassword.js"></script>
 
     <script type="text/javascript">
         var niz = [];
@@ -51,7 +52,7 @@
 </head>
 
 <body class="container-fluid" style="background-color: rgb(40, 50, 78); padding-top: 90px;@media (max-width: device-width) { body {padding-top: 0px; }}">
-<section id="ext_menu-n" data-rv-view="92" ng-controller=deleteController>
+<section id="ext_menu-n" data-rv-view="92">
     <nav class="navbar navbar-dropdown">
         <div class="container">
             <div class="mbr-table">
@@ -97,8 +98,6 @@
                                 <li><a href="#newPlace" class="dropdown-item" data-toggle="modal" style="color: rgb(0, 154, 200);">Add new place</a></li>
                                 <li><a href="#newCemetery" class="dropdown-item" data-toggle="modal" style="color: rgb(0, 154, 200);">Add new cemetery</a></li>
                                 <div class="dropdown-divider"></div>
-                                <li><a href="#deleteAcount" class="dropdown-item" data-toggle="modal" style="color: rgb(0, 154, 200);">Delete account</a></li>
-                                <div class="dropdown-divider"></div>
                                 <li><a href="logout.php" class="dropdown-item" style="color: rgb(0, 154, 200);">Log out</a></li>
                             </ul>
                         </li>
@@ -111,43 +110,6 @@
             </div>
         </div>
     </nav>
-
-    <script type="text/javascript">
-        niz.push("deleteAcount");
-    </script>
-    <div id="deleteAcount" class="modal fade">
-        <div class="modal-dialog modal-confirm text-center"  ng-controller="deleteController">
-            <div class="modal-content">
-                <div class="modal-header bg-danger">
-                    <h4 class="modal-title">Are you sure?</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Do you really want to delete your account?</p>
-                </div>
-                <div class="modal-footer btn-group center">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger" ng-click="delete()" href="#deleteMessage" data-toggle="modal">Delete</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="deleteMessage" class="modal fade">
-        <div class="modal-dialog modal-confirm text-center">
-            <div class="modal-content">
-                <div class="modal-header bg-info">
-                    <h4 class="modal-title" >Delete Account</h4>
-                </div>
-                <div class="container modal-body">
-                    <label class="form-control-label"> Your account has been successfully deleted </label>
-                    <br>
-                    <button type="submit" class="btn btn-sm btn-secondary" data-dismiss="modal">
-                        Close
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script type="text/javascript">
         niz.push("newCountry");
