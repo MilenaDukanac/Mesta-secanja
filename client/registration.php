@@ -1,6 +1,14 @@
 <?php
-include('headerRegistration.php');
+    session_start();
+    if(isset($_SESSION['type'])) {
+        header("Location: home.php");
+    }
+    else{
+      include 'headerRegistration.php';
+    }
+
 ?>
+
 <script type="text/javascript" src="register.js"></script>
 <script type="text/javascript">
     niz.push("app");
@@ -72,14 +80,14 @@ include('headerRegistration.php');
                 <span class="form-control-label"  style="color: darkred" ng-show="f.confpass.$error.required && f.confpass.$dirty">This field is required!</span>
                 <span class="form-control-label"  style="color: darkred" ng-show="sameR && f.confpass.$dirty">The passwords don't match!</span>
             </div>
-			
+
 			<div class="form-group">
               <label class="form-control-label" for="form1-o-institution">Institution*</label>
               <input type="text" class="form-control" name="institution" required="" data-form-field="Institution" id="form1-o-institution" ng-model="newUser.institution" ng-pattern="/^[a-zA-Z ]+$/">
               <span class="form-control-label"  style="color: darkred" ng-show="f.institution.$error.required && f.institution.$dirty">This field is required!</span>
               <span class="form-control-label"  style="color: darkred" ng-show="f.institution.$error.pattern && f.institution.$dirty">The institution is not valid, it can only contains uppercase, lowercase and spaces!</span>
             </div>
-			
+
 			<div class="form-group">
               <label class="form-control-label" for="form1-o-note">Note</label>
               <input type="note" class="form-control text-area" name="note" data-form-field="Note" id="form1-o-note" ng-model="newUser.note">

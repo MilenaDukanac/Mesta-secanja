@@ -1,30 +1,16 @@
 var app = angular.module('app', []);
 
-app.controller('loginControler', ['$scope', '$http', '$window', function ($scope, $http, $window) {
+app.controller('loginController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
 
     $scope.username = "";
     $scope.password = "";
-	$scope.loginMessage="";
-	$scope.showLoginMessage=false;
-	$scope.showLoginIndicator=true;
-	
+  	$scope.loginMessage="";
+  	$scope.showLoginMessage=false;
+  	$scope.showLoginIndicator=true;
+
     $scope.login = function () {
         var user = $scope.username;
         var pass = $scope.password;
-	
-
-        // $http.get('../server/user1.php?type=login&username=' + user + '&password=' + pass, {responsetype: JSON}).
-        // success(function(data, status, headers, config){
-        //     if(data!=="null"){
-        //         if(data.isEmpty)
-        //             $scope.greska = false;
-        //         else
-        //             $scope.greska=true;
-        //     }
-        // }).
-        // error(function(data, status, headers, config){
-        //
-        // });
 
         $http({
             method: "GET",
@@ -36,7 +22,7 @@ app.controller('loginControler', ['$scope', '$http', '$window', function ($scope
 
         }, function errorHandler(result) {
 			//$scope.loginMessage="Incorrect username or password!";
-			
+
 			$scope.showLoginMessage=true;
 			$scope.showLoginIndicator=true;
             console.log(result);
