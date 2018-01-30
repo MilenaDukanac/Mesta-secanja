@@ -51,7 +51,7 @@ else if($_SESSION['type']==="inner"){
                     <div class="mbr-testimonial card mbr-testimonial-lg">
                         <div class="card-block"><p style="color: rgb(0, 154, 200);">“Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, aspernatur, voluptatibus, atque, tempore molestiae sed modi a ullam sint adipisci rerum vel praesentium voluptas deserunt veniam provident culpa sequi veritatis.”</p></div>
                         <div class="mbr-author card-footer">
-                            <div class="mbr-author-img"><img src="assets/images/face3.jpg" class="img-circle"></div>
+                            <div class="mbr-author-img"><img src="assets/images/avatar.png" class="img-circle"></div>
                             <div class="mbr-author-name" style="color: rgb(0, 154, 200);">Julian Nyča</div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@ else if($_SESSION['type']==="inner"){
                     <div class="mbr-testimonial card mbr-testimonial-lg">
                         <div class="card-block"><p style="color: rgb(0, 154, 200);">“Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, aspernatur, voluptatibus, atque, tempore molestiae sed modi a ullam sint adipisci rerum vel praesentium voluptas deserunt veniam provident culpa sequi veritatis.”</p></div>
                         <div class="mbr-author card-footer">
-                            <div class="mbr-author-img"><img src="assets/images/face1.jpg" class="img-circle"></div>
+                            <div class="mbr-author-img"><img src="assets/images/avatar.png" class="img-circle"></div>
                             <div class="mbr-author-name" style="color: rgb(0, 154, 200);">Soňa Mikulová</div>
                         </div>
                     </div>
@@ -69,7 +69,7 @@ else if($_SESSION['type']==="inner"){
                     <div class="mbr-testimonial card mbr-testimonial-lg">
                         <div class="card-block"><p style="color: rgb(0, 154, 200);">“Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, aspernatur, voluptatibus, atque, tempore molestiae sed modi a ullam sint adipisci rerum vel praesentium voluptas deserunt veniam provident culpa sequi veritatis.”</p></div>
                         <div class="mbr-author card-footer">
-                            <div class="mbr-author-img"><img src="assets/images/face2.jpg" class="img-circle"></div>
+                            <div class="mbr-author-img"><img src="assets/images/avatar.png" class="img-circle"></div>
                             <div class="mbr-author-name" style="color: rgb(0, 154, 200);">Suzana Stanković</div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@ else if($_SESSION['type']==="inner"){
                     <div class="mbr-testimonial card mbr-testimonial-lg">
                         <div class="card-block"><p style="color: rgb(0, 154, 200);">“Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, aspernatur, voluptatibus, atque, tempore molestiae sed modi a ullam sint adipisci rerum vel praesentium voluptas deserunt veniam provident culpa sequi veritatis.”</p></div>
                         <div class="mbr-author card-footer">
-                            <div class="mbr-author-img"><img src="assets/images/face2.jpg" class="img-circle"></div>
+                            <div class="mbr-author-img"><img src="assets/images/avatar.png" class="img-circle"></div>
                             <div class="mbr-author-name" style="color: rgb(0, 154, 200);">Anđelka Zečević</div>
                         </div>
                     </div>
