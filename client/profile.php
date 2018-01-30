@@ -1,12 +1,35 @@
 <?php
 session_start();
-
-if($_SESSION['type']==="admin")
-    include 'headerAdmin.php';
-else if($_SESSION['type']==="other")
-    include 'headerOther.php';
-else if($_SESSION['type']==="inner")
-    include 'headerInner.php';
+if(!isset($_SESSION['type'])) {
+    include 'headerGuest.php';
+}
+else if($_SESSION['type']==="admin"){
+    if((time() - $_SESSION['lastTime']) > 1440){
+      header("location:logout.php");
+    }
+    else{
+      $_SESSION['lastTime'] = time();
+      include 'headerAdmin.php';
+    }
+}
+else if($_SESSION['type']==="other"){
+    if((time() - $_SESSION['lastTime']) > 1440){
+      header("location:logout.php");
+    }
+    else{
+      $_SESSION['lastTime'] = time();
+      include 'headerOther.php';
+    }
+}
+else if($_SESSION['type']==="inner"){
+    if((time() - $_SESSION['lastTime']) > 1440){
+      header("location:logout.php");
+    }
+    else{
+      $_SESSION['lastTime'] = time();
+      include 'headerInner.php';
+    }
+}
 
 $username = $_SESSION['username'];
 

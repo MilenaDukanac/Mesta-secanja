@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['type'])) {
-    include 'headerHomeGuest.php';
+    include 'headerGuest.php';
 }
 else if($_SESSION['type']==="admin"){
     if((time() - $_SESSION['lastTime']) > 1440){
