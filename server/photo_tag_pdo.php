@@ -2,12 +2,14 @@
 
 include 'connection.php';
 
-// Dohvatanje informacija o fotografiji kada se na nju klikne
-/*function getPhotoInfo($db, $id){
+// Dohvatanje vrednosti tagova o fotografiji kada se na nju klikne
+function getPhotoTags($db, $id){
 
-    $query="select name, author, year, note, longitude, latitude
-            from centralcemeteries.photo
-            where id=:id";
+    $query="select t.name, pt.value, c.color
+            from centralcemeteries.photo_tag pt join centralcemeteries.tag t on pt.tagId = t.id 
+              join  centralcemeteries.category c on t.categoryId = c.id 
+            where pt.photoId=:id
+            order by t.name, pt.value";
 
     $stmt=$db->prepare($query);
 
@@ -15,12 +17,24 @@ include 'connection.php';
 
     if($stmt->execute())
     {
-        return $stmt->fetch(PDO::FETCH_OBJ);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
     else{
         return null;
     }
-}*/
+}
+
+function getSpecialPhotos($db, $query){
+
+    $stmt=$db->prepare($query);
+    if($stmt->execute())
+    {
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+    else{
+        return null;
+    }
+}
 
 // dohvatanje svih slika jednog groblja po cemeteryId
 /*function getAllCemeteryPhotos($db, $cemeteryId){
@@ -175,8 +189,8 @@ try{
        $deleted = deletePhoto($pdo, $id);
        var_dump($deleted);*/
 
-
-   // var_dump(getTagName($pdo, 10));
+   // var_dump(getSpecialPhotos($pdo, 'select p.name, p.id from centralcemeteries.photo_tag pt join centralcemeteries.photo p on pt.photoId = p.id where pt.tagId=18 and pt.value="1926" and p.id in (select photoId from centralcemeteries.photo_tag where tagId=20 and pt.value="1994" and p.id in (select id from centralcemeteries.photo)) group by p.id '));
+//   // var_dump(getTagName($pdo, 10));
 
 //    var_dump(getTagPossibleValues($pdo, 20));
 

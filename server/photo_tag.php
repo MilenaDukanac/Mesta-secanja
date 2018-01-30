@@ -45,17 +45,16 @@ else {
 
             case "GET":
 
-              /*  switch ($number_of_url_elements) {
+                switch ($number_of_url_elements) {
                     case 2:
                         // GET/photo/{photoId}
                         if ($url_elements[1] == "photo") {
-                            $response->data = getPhotoInfo($pdo, intval($url_elements[2]));
+                            $response->data = getPhotoTags($pdo, intval($url_elements[2]));
                             $response->status = 200;
-                        } // GET/photos/{cemeteryId}
-                        else if ($url_elements[1] == "photos") {
-                            $response->data = getAllCemeteryPhotos($pdo, intval($url_elements[2]));
+                        }  if ($url_elements[1] == "query") {
+                            //echo $url_elements[2];
+                            $response->data = getSpecialPhotos($pdo, $url_elements[2]);
                             $response->status = 200;
-
                         } else {
                             $response->status = 400;
                             $response->data = null;
@@ -63,7 +62,7 @@ else {
                         break;
 
                 }
-                break;*/
+                break;
             case "POST":
                 $newPhotoTag = json_decode(file_get_contents("php://input"));
 

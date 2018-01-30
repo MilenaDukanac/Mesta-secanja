@@ -1,7 +1,7 @@
 <?php
 include 'connection.php';
 
-    //Metoda za kreiranje dodatnih oznaka
+//Metoda za kreiranje dodatnih oznaka
 
 function insertTag($db,$name,$categoryId, $possibleValues){
 
@@ -10,10 +10,10 @@ function insertTag($db,$name,$categoryId, $possibleValues){
     $query = "insert into centralcemeteries.tag (name, categoryId)
               values(:name, :categoryId);";
 
-            $stmt = $db->prepare($query);
+    $stmt = $db->prepare($query);
 
-            $stmt->bindParam(":name", $name, PDO::PARAM_STR);
-            $stmt->bindParam(":categoryId", $categoryId, PDO::PARAM_INT);
+    $stmt->bindParam(":name", $name, PDO::PARAM_STR);
+    $stmt->bindParam(":categoryId", $categoryId, PDO::PARAM_INT);
 
     if($stmt->execute()){}
     else {
@@ -24,7 +24,7 @@ function insertTag($db,$name,$categoryId, $possibleValues){
 
     $query1 = "select id from centralcemeteries.tag where name = :name";
     $stmt1 = $db->prepare($query1);
-    
+
     $stmt1->bindParam(":name", $name, PDO::PARAM_STR);
     $stmt1->execute();
     $tagId = $stmt1->fetch(PDO::FETCH_OBJ);
@@ -145,6 +145,19 @@ function getAllTags($db) {
         return -1;
 }
 
+function getAllPossibleValues($db) {
+
+    $query = "select *
+              from centralcemeteries.tag_possible_value";
+
+    $stmt = $db->prepare($query);
+
+    if($stmt->execute())
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    else
+        return false;
+}
+
 //Metoda koja vraca tag sa datim identifikatorom
 function getTag($db,$id) {
 
@@ -219,7 +232,7 @@ function getTagPossibleValues($db, $tagId){
 
 
 try{
- //    $pdo=Connection::getConnectionInstance();
+    //    $pdo=Connection::getConnectionInstance();
 //
 ////    //getTag test
 ////    $tag_id = 4;
@@ -228,10 +241,10 @@ try{
 //
 //    $array = ["1924","1925","1926"];
 //    $insert_tag = insertTagCategoryName($pdo, "veroispovest", "nesto", ["nesto","drugo"]);
- //   var_dump($insert_tag);
+    //   var_dump($insert_tag);
 
- //$all_tags = $pdo->getAllTags();
- //var_dump($all_tags);
+    //$all_tags = $pdo->getAllTags();
+    //var_dump($all_tags);
 // $tag=getTag($pdo,1);
 // var_dump($tag);
 

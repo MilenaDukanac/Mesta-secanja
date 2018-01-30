@@ -63,6 +63,11 @@ else {
                             $response->data = getPhotos($pdo);
                             $response->status = 200;
                         }
+                        else if($url_elements[1] == "possiblevalues"){
+                            // GET /possiblevalues
+                            $response->data = getAllPossibleValues($pdo);
+                            $response->status = 200;
+                        }
                         else{
                             $response->status = 400;
                             $response->data = null;
@@ -123,7 +128,7 @@ else {
 
             case "POST":
 
-                $new_tag = json_decode(file_get_contents("php://input"));         
+                $new_tag = json_decode(file_get_contents("php://input"));
 
                 $new_tag_category = insertCategory($pdo, $new_tag->category);
 
@@ -133,15 +138,15 @@ else {
                 if($new_tag_category == true){
                     $message .= "New category is successfully added! ";
                 }
-				if($new_tag_id == false){
-					$response->status = 400;
+                if($new_tag_id == false){
+                    $response->status = 400;
                     $message .= "There was an error adding this tag!";
-					$response->data=$message;
-				}
-				else{
-				    $message .= "New tag is successfully added!";
-					$response->status = 201;
-					$response->data = $message;
+                    $response->data=$message;
+                }
+                else{
+                    $message .= "New tag is successfully added!";
+                    $response->status = 201;
+                    $response->data = $message;
                 }
                 break;
 
