@@ -51,7 +51,7 @@ else {
                         if ($url_elements[1] == "photo") {
                             $response->data = getPhotoTags($pdo, intval($url_elements[2]));
                             $response->status = 200;
-                        }  if ($url_elements[1] == "query") {
+                        } else if ($url_elements[1] == "query") {
                             //echo $url_elements[2];
                             $response->data = getSpecialPhotos($pdo, $url_elements[2]);
                             $response->status = 200;
