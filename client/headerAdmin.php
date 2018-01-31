@@ -169,7 +169,7 @@
                             <input type="text" class="form-control" required="" name="tagname" data-form-field="tag name" id="form2-o-tagname" ng-model="newTag.tagName">
                         </div>
                         <div class="form-group">
-                            <label class="form-control-label" for="form2-o-tagname">Posible values*</label>
+                            <label class="form-control-label" for="form2-o-tagname">Posible values</label>
                             <input type="text" placeholder="Insert possible values separated by ;" class="form-control" name="possiblevalues" data-form-field="tag name" id="form2-o-possiblevalues" ng-model="newTag.possibleValues">
 
                         </div>
