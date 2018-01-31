@@ -39,8 +39,8 @@ $username = $_SESSION['username'];
 
     <div class="mbr-section mbr-section__container mbr-section__container--middle">
         <div class="container">
-            <div class = "row col-xs-12">
-                <div class="col-xs-3 col-xs-offset-3" align="center">
+            <div class = "row col-lg-12">
+                <div class="col-lg-3 col-lg-offset-3" align="center">
                     <div class="mbr-img">
 
                         <?php
@@ -49,14 +49,13 @@ $username = $_SESSION['username'];
                             }
                             else{
                                 echo "<input type=\"image\" src=\"../server/profilePhotos/avatar.png\" href=\"#changePhoto\" data-toggle=\"modal\" class=\"avatar\" style=\"border-radius: 50%; width:250px;height:250px;\" alt=\"Avatar\"/>";
-
                             }
                         ?>
 <!--                        <input type="file" id="my_file" style="display: none;" />-->
 <!--                        <img src="assets/images/avatar.png" class="avatar" style="border-radius: 50%" alt="Avatar">-->
                     </div>
                 </div>
-                <div class="col-xs-6" align="center">
+                <div class="col-lg-3 col-lg-offset-1">
                     <div class="mbr-author-name" >
                         <h3 class="mbr-section-title display-4" style="color: rgb(0, 154, 200);"><b>
                             <?php
@@ -81,13 +80,16 @@ $username = $_SESSION['username'];
                                 echo $_SESSION['institution'];
                             ?>
                         </p>
-                        <a class="nav-item dropdown" style="color: rgb(0, 154, 200);" href="#" data-toggle="dropdown" class="mbr-section-title display-5 nav-link dropdown-toggle user-action" style="color: rgb(0, 154, 200);">Options
-                            <ul class="dropdown-menu">
-                                <li><a href="#changePassword" class="dropdown-item" data-toggle="modal" style="color: rgb(0, 154, 200);">Change password</a></li>
-                                <div class="dropdown-divider"></div>
-                                <li><a href="#deleteAccount" class="dropdown-item" data-toggle="modal" style="color: rgb(0, 154, 200);">Delete account</a></li>
-                            </ul>
-                        </a>
+                        <div class="dropdown">
+                          <a class="dropdown-toggle user-action" style="color: rgb(0, 154, 200);" href="#" data-toggle="dropdown">Options
+                              <b class="caret"></b>
+                          </a>
+                          <ul class="dropdown-menu">
+                              <li><a href="#changePassword" class="dropdown-item" data-toggle="modal" style="color: rgb(0, 154, 200);">Change password</a></li>
+                              <div class="dropdown-divider"></div>
+                              <li><a href="#deleteAccount" class="dropdown-item" data-toggle="modal" style="color: rgb(0, 154, 200);">Delete account</a></li>
+                          </ul>
+                        </div>
                     </div>
                 </div>
             </div>

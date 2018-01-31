@@ -89,9 +89,16 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action" style="color: rgb(0, 154, 200);">
-                                <?php
+                              <?php
+                                if (file_exists("../server/profilePhotos/".$_SESSION['username']."Avatar.png")) {
+                                    echo "<img src=\"../server/profilePhotos/" . $_SESSION['username'] . "Avatar.png\" class=\"avatar\" alt=\"Avatar\"/>";
+                                }
+                                else{
+                                    echo "<img src=\"../server/profilePhotos/avatar.png\" alt=\"Avatar\"/>";
+                                }
+
                                 echo $_SESSION['name']." ".$_SESSION['surname'];
-                                ?>
+                            ?>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
