@@ -70,7 +70,7 @@ $username = $_SESSION['username'];
                             ?></i>
                         </h2>
                         <p class="mbr-section-title display-5" style="color: rgb(0, 154, 200);">
-                           
+
                             <?php
                                 echo $_SESSION['type'];
                             ?>
