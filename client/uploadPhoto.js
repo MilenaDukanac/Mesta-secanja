@@ -116,6 +116,13 @@ app.controller('tags', ['$scope', '$http', '$window', function($scope, $http, $w
                     }).then(function successHandler(result) {
                         console.log(result);
                     }, function errorHandler(result) {
+                        // if (result.data ==  "") {
+                        //
+                        // }else {
+                        //     $scope.errorMessage.push(result.data);
+                        //     $scope.errorMessageShow = true;
+                        //     console.log(result);
+                        // }
                         if (result.data ==  "") {
 
                         }else {

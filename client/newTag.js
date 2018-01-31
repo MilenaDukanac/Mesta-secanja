@@ -8,6 +8,8 @@ newTag.controller('newTagController', ['$scope', '$http', '$window', function ($
         $scope.newTagMessage = "";
     }
 
+    $scope.newTag.possibleValues = "";
+
 
 
     $scope.insertTag = function () {

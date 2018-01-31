@@ -62,10 +62,10 @@
             <div class="mbr-table">
                 <div class="mbr-table-cell">
                     <div class="navbar-brand">
-						<a class="navbar-caption image" href="home.php">
-							<img src="assets/images/logo-small.png">
-						</a>
-						<a class="navbar-caption" href="home.php" style="color: rgb(0, 154, 200);">CENTRAL Cemeteries</a>
+                        <a class="navbar-caption image" href="home.php">
+                            <img src="assets/images/logo-small.png">
+                        </a>
+                        <a class="navbar-caption" href="home.php" style="color: rgb(0, 154, 200);">CENTRAL Cemeteries</a>
                     </div>
                 </div>
 
@@ -170,7 +170,7 @@
                         </div>
                         <div class="form-group">
                             <label class="form-control-label" for="form2-o-tagname">Posible values*</label>
-                            <input type="text" placeholder="Insert possible values separated by ;" class="form-control" required="" name="possiblevalues" data-form-field="tag name" id="form2-o-possiblevalues" ng-model="newTag.possibleValues">
+                            <input type="text" placeholder="Insert possible values separated by ;" class="form-control" name="possiblevalues" data-form-field="tag name" id="form2-o-possiblevalues" ng-model="newTag.possibleValues">
 
                         </div>
                         <div class=" form-group mbr-buttons mbr-buttons--center btn-inverse">
