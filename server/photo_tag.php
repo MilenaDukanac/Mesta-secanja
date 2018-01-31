@@ -72,10 +72,12 @@ else {
 
                     $response->status = 400;
 
+//                    $mmm = getTagName($pdo, $newPhotoTag->tagId);
+//                    $values = getTagPossibleValues($pdo, $newPhotoTag->tagId);
+//                    $response->data = "Value --". $newPhotoTag->value ."-- for tag --". $mmm->name ."-- is not correct.
+//                                       Possible values for tag --". $mmm->name . "-- are: " . $values . "." ;
                     $mmm = getTagName($pdo, $newPhotoTag->tagId);
-                    $values = getTagPossibleValues($pdo, $newPhotoTag->tagId);
-                    $response->data = "Value --". $newPhotoTag->value ."-- for tag --". $mmm->name ."-- is not correct.
-                                       Possible values for tag --". $mmm->name . "-- are: " . $values . "." ;
+                    $response->data = "There was an error adding tag '"+$mmm + "'.";
 
                 }
                 break;

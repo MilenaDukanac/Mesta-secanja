@@ -95,10 +95,25 @@ function checkTagValue($db, $tagId, $value){
     $stmt->bindParam(":value", $value, PDO::PARAM_STR);
     $stmt->execute();
 
-    if($stmt->fetch(PDO::FETCH_OBJ) == null)
-        return false;
-    else
-        return true;
+//    if($stmt->fetch(PDO::FETCH_OBJ) == null)
+//        return false;
+//    else
+//        return true;
+    if($stmt->fetch(PDO::FETCH_OBJ) == null){
+        $query1 = "insert into centralcemeteries.tag_possible_value
+                  values (:tagId, :value)";
+        $stmt1 = $db->prepare($query1);
+        $stmt1->bindParam(":tagId", $tagId, PDO::PARAM_INT);
+        $stmt1->bindParam(":value", $value, PDO::PARAM_STR);
+
+        if($stmt1->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    return true;
 }
 
 function getTagName($db, $tagId){
