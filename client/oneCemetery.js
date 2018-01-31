@@ -66,13 +66,13 @@ oneCemetery.controller('oneCemeteryController', ['$scope', '$http', '$window','u
     });
 
 
-    if($scope.cemetery.longitude == null || $scope.cemetery.latitude == null)
+    if($scope.cemetery.longitude === null || $scope.cemetery.latitude === null)
         $scope.showMap = false;
 
-    if($scope.cemetery.additionalData == null || $scope.cemetery.additionalData == "")
+    if($scope.cemetery.additionalData === null || $scope.cemetery.additionalData === "")
         $scope.showAdditionalData = false;
 
-    if($scope.cemetery.description == null || $scope.cemetery.description == "")
+    if($scope.cemetery.description === null || $scope.cemetery.description === "")
         $scope.showDescription = false;
 
     $http({
@@ -114,10 +114,10 @@ oneCemetery.controller('oneCemeteryController', ['$scope', '$http', '$window','u
     $scope.photoTags = [];
     $scope.showPhotoPosition = false;
 
-	$scope.comments = [];
+    $scope.comments = [];
     $scope.choosePhoto = function (id) {
-		
-		$scope.photoId = id;
+
+        $scope.photoId = id;
 
         $scope.showPhotoPosition = true;
         $http({
@@ -143,7 +143,7 @@ oneCemetery.controller('oneCemeteryController', ['$scope', '$http', '$window','u
         if ($scope.photoInfo.longitude == null || $scope.photoInfo.latitude == null){
             $scope.showPhotoPosition = false;
         }
-		$http({
+        $http({
             method: "GET",
             url: "../server/photo_comments.php/photo_comments/"+id
         }).then(function successHandler(result) {
@@ -155,15 +155,15 @@ oneCemetery.controller('oneCemeteryController', ['$scope', '$http', '$window','u
 
     };
 
-	$scope.newComment = {};
+    $scope.newComment = {};
     $scope.username = "";
-	
-	$scope.addComment = function () {
+
+    $scope.addComment = function () {
 
         $scope.newComment.photoId = $scope.photoId;
         $scope.newComment.username = $username;
         $scope.newComment.text = $scope.text;
-		
+
         var newComment = angular.toJson($scope.newComment);
 
         $http({
@@ -172,26 +172,26 @@ oneCemetery.controller('oneCemeteryController', ['$scope', '$http', '$window','u
             data: newComment
         }).then(function successHandler(result) {
             console.log(result);
-			console.log(newComment);
-			console.log("---");
-			console.log(result.data);
-			$scope.comments.push($scope.newComment);
+            console.log(newComment);
+            console.log("---");
+            console.log(result.data);
+            $scope.comments.push($scope.newComment);
         }, function errorHandler(result) {
             $scope.errorMessageShow = true;
             console.log(result);
 
         });
     };
-	
-	
-	$scope.showMoreComments = false;
-	$scope.showButtonMoreComments = true;
-	
-	$scope.change = function(){
-		
-		$scope.showMoreComments = true;
-		$scope.showButtonMoreComments = false;
-	}
+
+
+    $scope.showMoreComments = false;
+    $scope.showButtonMoreComments = true;
+
+    $scope.change = function(){
+
+        $scope.showMoreComments = true;
+        $scope.showButtonMoreComments = false;
+    }
 
 }]);
 
